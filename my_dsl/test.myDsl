@@ -1,0 +1,3 @@
+Set file path input "input.csv";
+Set file path output "output.csv";
+Combine columns "first_name" and "last_name" and save result to "full_name";

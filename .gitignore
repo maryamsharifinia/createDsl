@@ -1,0 +1,12 @@
+.idea
+*__pycache__*
+simple_postman.sh
+venv
+config.ini
+*.pyc
+DB_API_Service.py
+fund_of_fund/TseClient 2.0/
+report/outputs
+.run/
+Pipfile
+Pipfile.lock
