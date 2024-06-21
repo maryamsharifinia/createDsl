@@ -1,4 +1,4 @@
-# Generated from E:/uni file/compiler/hw5/my_dsl/grammar/ExampleDSL.g4 by ANTLR 4.13.1
+# Generated from E:/uni file/compiler/createDsl/my_dsl/grammar/ExampleDSL.g4 by ANTLR 4.13.1
 from antlr4 import *
 if "." in __name__:
     from .ExampleDSLParser import ExampleDSLParser
@@ -7,6 +7,15 @@ else:
 
 # This class defines a complete listener for a parse tree produced by ExampleDSLParser.
 class ExampleDSLListener(ParseTreeListener):
+
+    # Enter a parse tree produced by ExampleDSLParser#start.
+    def enterStart(self, ctx:ExampleDSLParser.StartContext):
+        pass
+
+    # Exit a parse tree produced by ExampleDSLParser#start.
+    def exitStart(self, ctx:ExampleDSLParser.StartContext):
+        pass
+
 
     # Enter a parse tree produced by ExampleDSLParser#program.
     def enterProgram(self, ctx:ExampleDSLParser.ProgramContext):
@@ -26,12 +35,48 @@ class ExampleDSLListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by ExampleDSLParser#setFilePathStatement.
-    def enterSetFilePathStatement(self, ctx:ExampleDSLParser.SetFilePathStatementContext):
+    # Enter a parse tree produced by ExampleDSLParser#setFileOutputPathStatement.
+    def enterSetFileOutputPathStatement(self, ctx:ExampleDSLParser.SetFileOutputPathStatementContext):
         pass
 
-    # Exit a parse tree produced by ExampleDSLParser#setFilePathStatement.
-    def exitSetFilePathStatement(self, ctx:ExampleDSLParser.SetFilePathStatementContext):
+    # Exit a parse tree produced by ExampleDSLParser#setFileOutputPathStatement.
+    def exitSetFileOutputPathStatement(self, ctx:ExampleDSLParser.SetFileOutputPathStatementContext):
+        pass
+
+
+    # Enter a parse tree produced by ExampleDSLParser#setFileInputPathStatement.
+    def enterSetFileInputPathStatement(self, ctx:ExampleDSLParser.SetFileInputPathStatementContext):
+        pass
+
+    # Exit a parse tree produced by ExampleDSLParser#setFileInputPathStatement.
+    def exitSetFileInputPathStatement(self, ctx:ExampleDSLParser.SetFileInputPathStatementContext):
+        pass
+
+
+    # Enter a parse tree produced by ExampleDSLParser#path.
+    def enterPath(self, ctx:ExampleDSLParser.PathContext):
+        pass
+
+    # Exit a parse tree produced by ExampleDSLParser#path.
+    def exitPath(self, ctx:ExampleDSLParser.PathContext):
+        pass
+
+
+    # Enter a parse tree produced by ExampleDSLParser#column.
+    def enterColumn(self, ctx:ExampleDSLParser.ColumnContext):
+        pass
+
+    # Exit a parse tree produced by ExampleDSLParser#column.
+    def exitColumn(self, ctx:ExampleDSLParser.ColumnContext):
+        pass
+
+
+    # Enter a parse tree produced by ExampleDSLParser#result.
+    def enterResult(self, ctx:ExampleDSLParser.ResultContext):
+        pass
+
+    # Exit a parse tree produced by ExampleDSLParser#result.
+    def exitResult(self, ctx:ExampleDSLParser.ResultContext):
         pass
 
 
@@ -80,6 +125,15 @@ class ExampleDSLListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by ExampleDSLParser#type.
+    def enterType(self, ctx:ExampleDSLParser.TypeContext):
+        pass
+
+    # Exit a parse tree produced by ExampleDSLParser#type.
+    def exitType(self, ctx:ExampleDSLParser.TypeContext):
+        pass
+
+
     # Enter a parse tree produced by ExampleDSLParser#sortDataStatement.
     def enterSortDataStatement(self, ctx:ExampleDSLParser.SortDataStatementContext):
         pass
@@ -107,6 +161,15 @@ class ExampleDSLListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by ExampleDSLParser#file_name.
+    def enterFile_name(self, ctx:ExampleDSLParser.File_nameContext):
+        pass
+
+    # Exit a parse tree produced by ExampleDSLParser#file_name.
+    def exitFile_name(self, ctx:ExampleDSLParser.File_nameContext):
+        pass
+
+
     # Enter a parse tree produced by ExampleDSLParser#applyConditionStatement.
     def enterApplyConditionStatement(self, ctx:ExampleDSLParser.ApplyConditionStatementContext):
         pass
@@ -122,6 +185,15 @@ class ExampleDSLListener(ParseTreeListener):
 
     # Exit a parse tree produced by ExampleDSLParser#generateReportStatement.
     def exitGenerateReportStatement(self, ctx:ExampleDSLParser.GenerateReportStatementContext):
+        pass
+
+
+    # Enter a parse tree produced by ExampleDSLParser#period.
+    def enterPeriod(self, ctx:ExampleDSLParser.PeriodContext):
+        pass
+
+    # Exit a parse tree produced by ExampleDSLParser#period.
+    def exitPeriod(self, ctx:ExampleDSLParser.PeriodContext):
         pass
 
 
@@ -152,6 +224,15 @@ class ExampleDSLListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by ExampleDSLParser#value.
+    def enterValue(self, ctx:ExampleDSLParser.ValueContext):
+        pass
+
+    # Exit a parse tree produced by ExampleDSLParser#value.
+    def exitValue(self, ctx:ExampleDSLParser.ValueContext):
+        pass
+
+
     # Enter a parse tree produced by ExampleDSLParser#searchTextStatement.
     def enterSearchTextStatement(self, ctx:ExampleDSLParser.SearchTextStatementContext):
         pass
@@ -167,6 +248,15 @@ class ExampleDSLListener(ParseTreeListener):
 
     # Exit a parse tree produced by ExampleDSLParser#replaceValuesStatement.
     def exitReplaceValuesStatement(self, ctx:ExampleDSLParser.ReplaceValuesStatementContext):
+        pass
+
+
+    # Enter a parse tree produced by ExampleDSLParser#values.
+    def enterValues(self, ctx:ExampleDSLParser.ValuesContext):
+        pass
+
+    # Exit a parse tree produced by ExampleDSLParser#values.
+    def exitValues(self, ctx:ExampleDSLParser.ValuesContext):
         pass
 
 

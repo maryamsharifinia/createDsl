@@ -1,4 +1,4 @@
-# Generated from E:/uni file/compiler/hw5/my_dsl/grammar/ExampleDSL.g4 by ANTLR 4.13.1
+# Generated from E:/uni file/compiler/createDsl/my_dsl/grammar/ExampleDSL.g4 by ANTLR 4.13.1
 # encoding: utf-8
 from antlr4 import *
 from io import StringIO
@@ -10,104 +10,116 @@ else:
 
 def serializedATN():
     return [
-        4,1,63,302,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
+        4,1,66,341,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
         6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,2,13,7,13,
         2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,20,
-        7,20,2,21,7,21,2,22,7,22,1,0,4,0,48,8,0,11,0,12,0,49,1,1,1,1,1,1,
-        1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-        1,1,1,1,3,1,73,8,1,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,
-        2,3,2,87,8,2,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,4,
-        1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,5,1,5,1,5,1,5,1,5,1,5,1,5,1,5,1,5,
-        1,5,1,5,1,5,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,7,1,7,1,7,1,7,1,7,1,7,
-        1,7,1,7,1,7,1,7,1,7,1,7,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,9,
-        1,9,1,9,1,9,1,9,1,10,1,10,1,10,1,10,1,10,1,10,1,10,1,11,1,11,1,11,
-        1,11,1,11,1,11,1,11,1,11,1,11,1,12,1,12,1,12,1,12,1,12,1,12,1,12,
-        1,12,1,12,1,12,1,12,1,13,1,13,1,13,1,13,1,13,5,13,186,8,13,10,13,
-        12,13,189,9,13,1,13,1,13,1,13,1,13,5,13,195,8,13,10,13,12,13,198,
-        9,13,1,13,1,13,1,14,1,14,1,14,1,14,1,14,1,14,1,14,1,14,1,14,1,14,
-        1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,16,1,16,1,16,1,16,1,16,
-        1,16,1,16,1,16,1,16,1,16,1,17,1,17,1,17,1,17,1,17,1,17,1,17,1,17,
-        1,17,1,17,1,17,1,17,1,18,1,18,1,18,1,18,1,18,1,18,1,18,1,18,1,19,
-        1,19,1,19,1,19,1,19,1,19,1,19,1,19,1,19,1,19,1,19,1,20,1,20,1,20,
-        1,20,1,20,1,20,1,20,1,20,1,20,1,20,1,20,1,20,1,20,1,20,1,20,1,20,
-        1,21,1,21,1,21,1,21,1,21,1,21,1,21,1,21,1,21,1,21,1,21,1,21,1,22,
-        1,22,1,22,1,22,1,22,1,22,1,22,1,22,1,22,1,22,1,22,1,22,1,22,1,22,
-        0,0,23,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,
-        42,44,0,0,302,0,47,1,0,0,0,2,72,1,0,0,0,4,86,1,0,0,0,6,88,1,0,0,
-        0,8,100,1,0,0,0,10,108,1,0,0,0,12,120,1,0,0,0,14,127,1,0,0,0,16,
-        139,1,0,0,0,18,148,1,0,0,0,20,153,1,0,0,0,22,160,1,0,0,0,24,169,
-        1,0,0,0,26,180,1,0,0,0,28,201,1,0,0,0,30,211,1,0,0,0,32,219,1,0,
-        0,0,34,229,1,0,0,0,36,241,1,0,0,0,38,249,1,0,0,0,40,260,1,0,0,0,
-        42,276,1,0,0,0,44,288,1,0,0,0,46,48,3,2,1,0,47,46,1,0,0,0,48,49,
-        1,0,0,0,49,47,1,0,0,0,49,50,1,0,0,0,50,1,1,0,0,0,51,73,3,4,2,0,52,
-        73,3,6,3,0,53,73,3,8,4,0,54,73,3,10,5,0,55,73,3,12,6,0,56,73,3,14,
-        7,0,57,73,3,16,8,0,58,73,3,18,9,0,59,73,3,20,10,0,60,73,3,22,11,
-        0,61,73,3,24,12,0,62,73,3,26,13,0,63,73,3,28,14,0,64,73,3,30,15,
-        0,65,73,3,32,16,0,66,73,3,34,17,0,67,73,3,36,18,0,68,73,3,38,19,
-        0,69,73,3,40,20,0,70,73,3,42,21,0,71,73,3,44,22,0,72,51,1,0,0,0,
-        72,52,1,0,0,0,72,53,1,0,0,0,72,54,1,0,0,0,72,55,1,0,0,0,72,56,1,
-        0,0,0,72,57,1,0,0,0,72,58,1,0,0,0,72,59,1,0,0,0,72,60,1,0,0,0,72,
-        61,1,0,0,0,72,62,1,0,0,0,72,63,1,0,0,0,72,64,1,0,0,0,72,65,1,0,0,
-        0,72,66,1,0,0,0,72,67,1,0,0,0,72,68,1,0,0,0,72,69,1,0,0,0,72,70,
-        1,0,0,0,72,71,1,0,0,0,73,3,1,0,0,0,74,75,5,25,0,0,75,76,5,26,0,0,
-        76,77,5,27,0,0,77,78,5,6,0,0,78,79,5,55,0,0,79,87,5,1,0,0,80,81,
-        5,25,0,0,81,82,5,26,0,0,82,83,5,27,0,0,83,84,5,7,0,0,84,85,5,55,
-        0,0,85,87,5,1,0,0,86,74,1,0,0,0,86,80,1,0,0,0,87,5,1,0,0,0,88,89,
-        5,8,0,0,89,90,5,26,0,0,90,91,5,55,0,0,91,92,5,40,0,0,92,93,5,26,
-        0,0,93,94,5,55,0,0,94,95,5,41,0,0,95,96,5,58,0,0,96,97,5,39,0,0,
-        97,98,5,55,0,0,98,99,5,1,0,0,99,7,1,0,0,0,100,101,5,9,0,0,101,102,
-        5,28,0,0,102,103,5,43,0,0,103,104,5,55,0,0,104,105,5,39,0,0,105,
-        106,5,55,0,0,106,107,5,1,0,0,107,9,1,0,0,0,108,109,5,10,0,0,109,
-        110,5,31,0,0,110,111,5,55,0,0,111,112,5,41,0,0,112,113,5,55,0,0,
-        113,114,5,41,0,0,114,115,5,49,0,0,115,116,5,38,0,0,116,117,5,39,
-        0,0,117,118,5,55,0,0,118,119,5,1,0,0,119,11,1,0,0,0,120,121,5,11,
-        0,0,121,122,5,30,0,0,122,123,5,55,0,0,123,124,5,39,0,0,124,125,5,
-        55,0,0,125,126,5,1,0,0,126,13,1,0,0,0,127,128,5,12,0,0,128,129,5,
-        29,0,0,129,130,5,32,0,0,130,131,5,46,0,0,131,132,5,30,0,0,132,133,
-        5,2,0,0,133,134,5,55,0,0,134,135,5,3,0,0,135,136,5,39,0,0,136,137,
-        5,32,0,0,137,138,5,1,0,0,138,15,1,0,0,0,139,140,5,13,0,0,140,141,
-        5,29,0,0,141,142,5,42,0,0,142,143,5,30,0,0,143,144,5,2,0,0,144,145,
-        5,55,0,0,145,146,5,3,0,0,146,147,5,1,0,0,147,17,1,0,0,0,148,149,
-        5,14,0,0,149,150,5,30,0,0,150,151,5,55,0,0,151,152,5,1,0,0,152,19,
-        1,0,0,0,153,154,5,11,0,0,154,155,5,7,0,0,155,156,5,26,0,0,156,157,
-        5,39,0,0,157,158,5,55,0,0,158,159,5,1,0,0,159,21,1,0,0,0,160,161,
-        5,15,0,0,161,162,5,35,0,0,162,163,5,45,0,0,163,164,5,33,0,0,164,
-        165,5,54,0,0,165,166,5,39,0,0,166,167,5,54,0,0,167,168,5,1,0,0,168,
-        23,1,0,0,0,169,170,5,16,0,0,170,171,5,59,0,0,171,172,5,47,0,0,172,
-        173,5,30,0,0,173,174,5,2,0,0,174,175,5,55,0,0,175,176,5,3,0,0,176,
-        177,5,42,0,0,177,178,5,55,0,0,178,179,5,1,0,0,179,25,1,0,0,0,180,
-        181,5,17,0,0,181,182,5,31,0,0,182,187,5,55,0,0,183,184,5,4,0,0,184,
-        186,5,55,0,0,185,183,1,0,0,0,186,189,1,0,0,0,187,185,1,0,0,0,187,
-        188,1,0,0,0,188,190,1,0,0,0,189,187,1,0,0,0,190,191,5,39,0,0,191,
-        196,5,55,0,0,192,193,5,4,0,0,193,195,5,55,0,0,194,192,1,0,0,0,195,
-        198,1,0,0,0,196,194,1,0,0,0,196,197,1,0,0,0,197,199,1,0,0,0,198,
-        196,1,0,0,0,199,200,5,1,0,0,200,27,1,0,0,0,201,202,5,18,0,0,202,
-        203,5,42,0,0,203,204,5,55,0,0,204,205,5,41,0,0,205,206,5,51,0,0,
-        206,207,5,36,0,0,207,208,5,37,0,0,208,209,5,55,0,0,209,210,5,1,0,
-        0,210,29,1,0,0,0,211,212,5,19,0,0,212,213,5,33,0,0,213,214,5,44,
-        0,0,214,215,5,55,0,0,215,216,5,5,0,0,216,217,5,54,0,0,217,218,5,
-        1,0,0,218,31,1,0,0,0,219,220,5,20,0,0,220,221,5,47,0,0,221,222,5,
-        55,0,0,222,223,5,37,0,0,223,224,5,30,0,0,224,225,5,2,0,0,225,226,
-        5,55,0,0,226,227,5,3,0,0,227,228,5,1,0,0,228,33,1,0,0,0,229,230,
-        5,21,0,0,230,231,5,36,0,0,231,232,5,55,0,0,232,233,5,40,0,0,233,
-        234,5,55,0,0,234,235,5,37,0,0,235,236,5,30,0,0,236,237,5,2,0,0,237,
-        238,5,55,0,0,238,239,5,3,0,0,239,240,5,1,0,0,240,35,1,0,0,0,241,
-        242,5,10,0,0,242,243,5,35,0,0,243,244,5,44,0,0,244,245,5,55,0,0,
-        245,246,5,5,0,0,246,247,5,54,0,0,247,248,5,1,0,0,248,37,1,0,0,0,
-        249,250,5,22,0,0,250,251,5,60,0,0,251,252,5,33,0,0,252,253,5,50,
-        0,0,253,254,5,45,0,0,254,255,5,30,0,0,255,256,5,2,0,0,256,257,5,
-        55,0,0,257,258,5,3,0,0,258,259,5,1,0,0,259,39,1,0,0,0,260,261,5,
-        23,0,0,261,262,5,29,0,0,262,263,5,50,0,0,263,264,5,45,0,0,264,265,
-        5,30,0,0,265,266,5,2,0,0,266,267,5,55,0,0,267,268,5,3,0,0,268,269,
-        5,41,0,0,269,270,5,49,0,0,270,271,5,61,0,0,271,272,5,39,0,0,272,
-        273,5,62,0,0,273,274,5,63,0,0,274,275,5,1,0,0,275,41,1,0,0,0,276,
-        277,5,8,0,0,277,278,5,31,0,0,278,279,5,55,0,0,279,280,5,41,0,0,280,
-        281,5,55,0,0,281,282,5,41,0,0,282,283,5,49,0,0,283,284,5,38,0,0,
-        284,285,5,39,0,0,285,286,5,55,0,0,286,287,5,1,0,0,287,43,1,0,0,0,
-        288,289,5,24,0,0,289,290,5,29,0,0,290,291,5,37,0,0,291,292,5,30,
-        0,0,292,293,5,2,0,0,293,294,5,55,0,0,294,295,5,3,0,0,295,296,5,42,
-        0,0,296,297,5,53,0,0,297,298,5,40,0,0,298,299,5,54,0,0,299,300,5,
-        1,0,0,300,45,1,0,0,0,5,49,72,86,187,196
+        7,20,2,21,7,21,2,22,7,22,2,23,7,23,2,24,7,24,2,25,7,25,2,26,7,26,
+        2,27,7,27,2,28,7,28,2,29,7,29,2,30,7,30,2,31,7,31,2,32,7,32,1,0,
+        1,0,1,0,1,1,4,1,71,8,1,11,1,12,1,72,1,2,1,2,1,2,1,2,1,2,1,2,1,2,
+        1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,3,2,
+        97,8,2,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,
+        5,1,5,1,6,1,6,1,7,1,7,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,
+        8,1,9,1,9,1,9,1,9,1,9,1,9,1,9,1,9,1,10,1,10,1,10,1,10,1,10,1,10,
+        1,10,1,10,1,10,1,10,1,10,1,10,1,11,1,11,1,11,1,11,1,11,1,11,1,11,
+        1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,13,
+        1,13,1,14,1,14,1,14,1,14,1,14,1,14,1,14,1,14,1,14,1,15,1,15,1,15,
+        1,15,1,15,1,16,1,16,1,16,1,16,1,16,1,16,1,16,1,17,1,17,1,18,1,18,
+        1,18,1,18,1,18,1,18,1,18,1,18,1,18,1,19,1,19,1,19,1,19,1,19,1,19,
+        1,19,1,19,1,19,1,19,1,19,1,20,1,20,1,21,1,21,1,21,1,21,1,21,5,21,
+        221,8,21,10,21,12,21,224,9,21,1,21,1,21,1,21,1,21,5,21,230,8,21,
+        10,21,12,21,233,9,21,1,21,1,21,1,22,1,22,1,22,1,22,1,22,1,22,1,22,
+        1,22,1,22,1,22,1,23,1,23,1,23,1,23,1,23,1,23,1,23,1,23,1,24,1,24,
+        1,25,1,25,1,25,1,25,1,25,1,25,1,25,1,25,1,25,1,25,1,26,1,26,1,26,
+        1,26,1,26,1,26,1,26,1,26,1,26,1,26,1,26,1,26,1,27,1,27,1,28,1,28,
+        1,28,1,28,1,28,1,28,1,28,1,28,1,29,1,29,1,29,1,29,1,29,1,29,1,29,
+        1,29,1,29,1,29,1,29,1,30,1,30,1,30,1,30,1,30,1,30,1,30,1,30,1,30,
+        1,30,1,30,1,30,1,30,1,30,1,30,1,30,1,31,1,31,1,31,1,31,1,31,1,31,
+        1,31,1,31,1,31,1,31,1,31,1,31,1,32,1,32,1,32,1,32,1,32,1,32,1,32,
+        1,32,1,32,1,32,1,32,1,32,1,32,1,32,0,0,33,0,2,4,6,8,10,12,14,16,
+        18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,54,56,58,60,
+        62,64,0,2,1,0,4,6,1,0,60,61,331,0,66,1,0,0,0,2,70,1,0,0,0,4,96,1,
+        0,0,0,6,98,1,0,0,0,8,105,1,0,0,0,10,112,1,0,0,0,12,114,1,0,0,0,14,
+        116,1,0,0,0,16,118,1,0,0,0,18,129,1,0,0,0,20,137,1,0,0,0,22,149,
+        1,0,0,0,24,156,1,0,0,0,26,168,1,0,0,0,28,170,1,0,0,0,30,179,1,0,
+        0,0,32,184,1,0,0,0,34,191,1,0,0,0,36,193,1,0,0,0,38,202,1,0,0,0,
+        40,213,1,0,0,0,42,215,1,0,0,0,44,236,1,0,0,0,46,246,1,0,0,0,48,254,
+        1,0,0,0,50,256,1,0,0,0,52,266,1,0,0,0,54,278,1,0,0,0,56,280,1,0,
+        0,0,58,288,1,0,0,0,60,299,1,0,0,0,62,315,1,0,0,0,64,327,1,0,0,0,
+        66,67,3,2,1,0,67,68,5,0,0,1,68,1,1,0,0,0,69,71,3,4,2,0,70,69,1,0,
+        0,0,71,72,1,0,0,0,72,70,1,0,0,0,72,73,1,0,0,0,73,3,1,0,0,0,74,97,
+        3,8,4,0,75,97,3,6,3,0,76,97,3,16,8,0,77,97,3,18,9,0,78,97,3,20,10,
+        0,79,97,3,22,11,0,80,97,3,24,12,0,81,97,3,28,14,0,82,97,3,30,15,
+        0,83,97,3,32,16,0,84,97,3,36,18,0,85,97,3,38,19,0,86,97,3,42,21,
+        0,87,97,3,44,22,0,88,97,3,46,23,0,89,97,3,50,25,0,90,97,3,52,26,
+        0,91,97,3,56,28,0,92,97,3,58,29,0,93,97,3,60,30,0,94,97,3,62,31,
+        0,95,97,3,64,32,0,96,74,1,0,0,0,96,75,1,0,0,0,96,76,1,0,0,0,96,77,
+        1,0,0,0,96,78,1,0,0,0,96,79,1,0,0,0,96,80,1,0,0,0,96,81,1,0,0,0,
+        96,82,1,0,0,0,96,83,1,0,0,0,96,84,1,0,0,0,96,85,1,0,0,0,96,86,1,
+        0,0,0,96,87,1,0,0,0,96,88,1,0,0,0,96,89,1,0,0,0,96,90,1,0,0,0,96,
+        91,1,0,0,0,96,92,1,0,0,0,96,93,1,0,0,0,96,94,1,0,0,0,96,95,1,0,0,
+        0,97,5,1,0,0,0,98,99,5,30,0,0,99,100,5,31,0,0,100,101,5,32,0,0,101,
+        102,5,10,0,0,102,103,3,10,5,0,103,104,5,1,0,0,104,7,1,0,0,0,105,
+        106,5,30,0,0,106,107,5,31,0,0,107,108,5,32,0,0,108,109,5,9,0,0,109,
+        110,3,10,5,0,110,111,5,1,0,0,111,9,1,0,0,0,112,113,5,61,0,0,113,
+        11,1,0,0,0,114,115,5,61,0,0,115,13,1,0,0,0,116,117,5,61,0,0,117,
+        15,1,0,0,0,118,119,5,13,0,0,119,120,5,31,0,0,120,121,3,10,5,0,121,
+        122,5,45,0,0,122,123,3,10,5,0,123,124,5,46,0,0,124,125,5,12,0,0,
+        125,126,5,44,0,0,126,127,3,10,5,0,127,128,5,1,0,0,128,17,1,0,0,0,
+        129,130,5,14,0,0,130,131,5,33,0,0,131,132,5,48,0,0,132,133,3,10,
+        5,0,133,134,5,44,0,0,134,135,3,10,5,0,135,136,5,1,0,0,136,19,1,0,
+        0,0,137,138,5,15,0,0,138,139,5,36,0,0,139,140,3,12,6,0,140,141,5,
+        46,0,0,141,142,3,12,6,0,142,143,5,46,0,0,143,144,5,54,0,0,144,145,
+        5,43,0,0,145,146,5,44,0,0,146,147,3,14,7,0,147,148,5,1,0,0,148,21,
+        1,0,0,0,149,150,5,16,0,0,150,151,5,35,0,0,151,152,3,12,6,0,152,153,
+        5,44,0,0,153,154,3,12,6,0,154,155,5,1,0,0,155,23,1,0,0,0,156,157,
+        5,17,0,0,157,158,5,34,0,0,158,159,5,37,0,0,159,160,5,51,0,0,160,
+        161,5,35,0,0,161,162,5,2,0,0,162,163,3,12,6,0,163,164,5,3,0,0,164,
+        165,5,44,0,0,165,166,3,26,13,0,166,167,5,1,0,0,167,25,1,0,0,0,168,
+        169,5,37,0,0,169,27,1,0,0,0,170,171,5,18,0,0,171,172,5,34,0,0,172,
+        173,5,47,0,0,173,174,5,35,0,0,174,175,5,2,0,0,175,176,3,12,6,0,176,
+        177,5,3,0,0,177,178,5,1,0,0,178,29,1,0,0,0,179,180,5,19,0,0,180,
+        181,5,35,0,0,181,182,3,12,6,0,182,183,5,1,0,0,183,31,1,0,0,0,184,
+        185,5,16,0,0,185,186,5,10,0,0,186,187,5,31,0,0,187,188,5,44,0,0,
+        188,189,3,34,17,0,189,190,5,1,0,0,190,33,1,0,0,0,191,192,5,61,0,
+        0,192,35,1,0,0,0,193,194,5,20,0,0,194,195,5,40,0,0,195,196,5,50,
+        0,0,196,197,5,38,0,0,197,198,5,60,0,0,198,199,5,44,0,0,199,200,5,
+        60,0,0,200,201,5,1,0,0,201,37,1,0,0,0,202,203,5,21,0,0,203,204,5,
+        11,0,0,204,205,5,52,0,0,205,206,5,35,0,0,206,207,5,2,0,0,207,208,
+        3,12,6,0,208,209,5,3,0,0,209,210,5,47,0,0,210,211,3,40,20,0,211,
+        212,5,1,0,0,212,39,1,0,0,0,213,214,7,0,0,0,214,41,1,0,0,0,215,216,
+        5,22,0,0,216,217,5,36,0,0,217,222,5,61,0,0,218,219,5,7,0,0,219,221,
+        5,61,0,0,220,218,1,0,0,0,221,224,1,0,0,0,222,220,1,0,0,0,222,223,
+        1,0,0,0,223,225,1,0,0,0,224,222,1,0,0,0,225,226,5,44,0,0,226,231,
+        5,61,0,0,227,228,5,7,0,0,228,230,5,61,0,0,229,227,1,0,0,0,230,233,
+        1,0,0,0,231,229,1,0,0,0,231,232,1,0,0,0,232,234,1,0,0,0,233,231,
+        1,0,0,0,234,235,5,1,0,0,235,43,1,0,0,0,236,237,5,23,0,0,237,238,
+        5,47,0,0,238,239,3,12,6,0,239,240,5,46,0,0,240,241,5,56,0,0,241,
+        242,5,41,0,0,242,243,5,42,0,0,243,244,3,12,6,0,244,245,5,1,0,0,245,
+        45,1,0,0,0,246,247,5,24,0,0,247,248,5,38,0,0,248,249,5,49,0,0,249,
+        250,3,12,6,0,250,251,5,8,0,0,251,252,3,48,24,0,252,253,5,1,0,0,253,
+        47,1,0,0,0,254,255,5,60,0,0,255,49,1,0,0,0,256,257,5,25,0,0,257,
+        258,5,52,0,0,258,259,5,61,0,0,259,260,5,42,0,0,260,261,5,35,0,0,
+        261,262,5,2,0,0,262,263,3,12,6,0,263,264,5,3,0,0,264,265,5,1,0,0,
+        265,51,1,0,0,0,266,267,5,26,0,0,267,268,5,41,0,0,268,269,3,54,27,
+        0,269,270,5,45,0,0,270,271,3,54,27,0,271,272,5,42,0,0,272,273,5,
+        35,0,0,273,274,5,2,0,0,274,275,3,12,6,0,275,276,5,3,0,0,276,277,
+        5,1,0,0,277,53,1,0,0,0,278,279,7,1,0,0,279,55,1,0,0,0,280,281,5,
+        15,0,0,281,282,5,40,0,0,282,283,5,49,0,0,283,284,3,12,6,0,284,285,
+        5,8,0,0,285,286,3,48,24,0,286,287,5,1,0,0,287,57,1,0,0,0,288,289,
+        5,27,0,0,289,290,5,59,0,0,290,291,5,38,0,0,291,292,5,55,0,0,292,
+        293,5,50,0,0,293,294,5,35,0,0,294,295,5,2,0,0,295,296,3,12,6,0,296,
+        297,5,3,0,0,297,298,5,1,0,0,298,59,1,0,0,0,299,300,5,28,0,0,300,
+        301,5,34,0,0,301,302,5,55,0,0,302,303,5,50,0,0,303,304,5,35,0,0,
+        304,305,5,2,0,0,305,306,3,12,6,0,306,307,5,3,0,0,307,308,5,46,0,
+        0,308,309,5,54,0,0,309,310,5,64,0,0,310,311,5,44,0,0,311,312,5,65,
+        0,0,312,313,5,66,0,0,313,314,5,1,0,0,314,61,1,0,0,0,315,316,5,13,
+        0,0,316,317,5,36,0,0,317,318,3,12,6,0,318,319,5,46,0,0,319,320,3,
+        12,6,0,320,321,5,46,0,0,321,322,5,54,0,0,322,323,5,43,0,0,323,324,
+        5,44,0,0,324,325,3,14,7,0,325,326,5,1,0,0,326,63,1,0,0,0,327,328,
+        5,29,0,0,328,329,5,34,0,0,329,330,5,42,0,0,330,331,5,35,0,0,331,
+        332,5,2,0,0,332,333,3,12,6,0,333,334,5,3,0,0,334,335,5,47,0,0,335,
+        336,5,58,0,0,336,337,5,45,0,0,337,338,3,48,24,0,338,339,5,1,0,0,
+        339,65,1,0,0,0,4,72,96,222,231
     ]
 
 class ExampleDSLParser ( Parser ):
@@ -120,8 +132,9 @@ class ExampleDSLParser ( Parser ):
 
     sharedContextCache = PredictionContextCache()
 
-    literalNames = [ "<INVALID>", "';'", "'('", "')'", "','", "'>'", "'input'", 
-                     "'output'", "'Combine'", "'Convert'", "'Add'", "'Rename'", 
+    literalNames = [ "<INVALID>", "';'", "'('", "')'", "'day'", "'month'", 
+                     "'year'", "','", "'>'", "'input'", "'output'", "'report'", 
+                     "'write'", "'Combine'", "'Convert'", "'Add'", "'Rename'", 
                      "'Change'", "'Sort'", "'Delete'", "'Apply'", "'Generate'", 
                      "'Reorder'", "'Group'", "'Filter'", "'Search'", "'Replace'", 
                      "'Remove'", "'Split'", "'Resize'", "'Set'", "'file'", 
@@ -129,51 +142,66 @@ class ExampleDSLParser ( Parser ):
                      "'type'", "'rows'", "'row'", "'condition'", "'values'", 
                      "'in'", "'result'", "'to'", "'with'", "'and'", "'by'", 
                      "'from'", "'where'", "'on'", "'of'", "'for'", "'as'", 
-                     "'save'", "'based'", "'sum'", "'new'", "'multiplying'" ]
+                     "'save'", "'based'", "'sum'", "'new'", "'multiplying'", 
+                     "'duplicate'" ]
 
     symbolicNames = [ "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "<INVALID>", "INPUT", "OUTPUT", "COMBINE", 
-                      "CONVERT", "ADD", "RENAME", "CHANGE", "SORT", "DELETE", 
-                      "APPLY", "GENERATE", "REORDER", "GROUP", "FILTER", 
-                      "SEARCH", "REPLACE", "REMOVE", "SPLIT", "RESIZE", 
-                      "SET", "FILE", "PATH", "FORMAT", "DATA", "COLUMN", 
-                      "COLUMNS", "TYPE", "ROWS", "ROW", "CONDITION", "VALUES", 
-                      "IN", "RESULT", "TO", "WITH", "AND", "BY", "FROM", 
-                      "WHERE", "ON", "OF", "FOR", "AS", "SAVE", "BASED", 
-                      "SUM", "NEW", "MULTIPLYING", "NUMBER", "STRING", "ID", 
-                      "WS", "WRITE", "REPORT", "DUPLICATE", "RESULTS", "SEPARATE", 
+                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
+                      "<INVALID>", "INPUT", "OUTPUT", "REPORT", "WRITE", 
+                      "COMBINE", "CONVERT", "ADD", "RENAME", "CHANGE", "SORT", 
+                      "DELETE", "APPLY", "GENERATE", "REORDER", "GROUP", 
+                      "FILTER", "SEARCH", "REPLACE", "REMOVE", "SPLIT", 
+                      "RESIZE", "SET", "FILE", "PATH", "FORMAT", "DATA", 
+                      "COLUMN", "COLUMNS", "TYPE", "ROWS", "ROW", "CONDITION", 
+                      "VALUES", "IN", "RESULT", "TO", "WITH", "AND", "BY", 
+                      "FROM", "WHERE", "ON", "OF", "FOR", "AS", "SAVE", 
+                      "BASED", "SUM", "NEW", "MULTIPLYING", "DUPLICATE", 
+                      "NUMBER", "STRING", "ID", "WS", "RESULTS", "SEPARATE", 
                       "FILES" ]
 
-    RULE_program = 0
-    RULE_statement = 1
-    RULE_setFilePathStatement = 2
-    RULE_combineStatement = 3
-    RULE_convertStatement = 4
-    RULE_addColumnsStatement = 5
-    RULE_renameColumnStatement = 6
-    RULE_changeDataTypeStatement = 7
-    RULE_sortDataStatement = 8
-    RULE_deleteColumnStatement = 9
-    RULE_renameFileStatement = 10
-    RULE_applyConditionStatement = 11
-    RULE_generateReportStatement = 12
-    RULE_reorderColumnsStatement = 13
-    RULE_groupByStatement = 14
-    RULE_filterRowsStatement = 15
-    RULE_searchTextStatement = 16
-    RULE_replaceValuesStatement = 17
-    RULE_addConditionStatement = 18
-    RULE_removeDuplicatesStatement = 19
-    RULE_splitDataStatement = 20
-    RULE_combineColumnsStatement = 21
-    RULE_resizeDataStatement = 22
+    RULE_start = 0
+    RULE_program = 1
+    RULE_statement = 2
+    RULE_setFileOutputPathStatement = 3
+    RULE_setFileInputPathStatement = 4
+    RULE_path = 5
+    RULE_column = 6
+    RULE_result = 7
+    RULE_combineStatement = 8
+    RULE_convertStatement = 9
+    RULE_addColumnsStatement = 10
+    RULE_renameColumnStatement = 11
+    RULE_changeDataTypeStatement = 12
+    RULE_type = 13
+    RULE_sortDataStatement = 14
+    RULE_deleteColumnStatement = 15
+    RULE_renameFileStatement = 16
+    RULE_file_name = 17
+    RULE_applyConditionStatement = 18
+    RULE_generateReportStatement = 19
+    RULE_period = 20
+    RULE_reorderColumnsStatement = 21
+    RULE_groupByStatement = 22
+    RULE_filterRowsStatement = 23
+    RULE_value = 24
+    RULE_searchTextStatement = 25
+    RULE_replaceValuesStatement = 26
+    RULE_values = 27
+    RULE_addConditionStatement = 28
+    RULE_removeDuplicatesStatement = 29
+    RULE_splitDataStatement = 30
+    RULE_combineColumnsStatement = 31
+    RULE_resizeDataStatement = 32
 
-    ruleNames =  [ "program", "statement", "setFilePathStatement", "combineStatement", 
-                   "convertStatement", "addColumnsStatement", "renameColumnStatement", 
-                   "changeDataTypeStatement", "sortDataStatement", "deleteColumnStatement", 
-                   "renameFileStatement", "applyConditionStatement", "generateReportStatement", 
-                   "reorderColumnsStatement", "groupByStatement", "filterRowsStatement", 
-                   "searchTextStatement", "replaceValuesStatement", "addConditionStatement", 
+    ruleNames =  [ "start", "program", "statement", "setFileOutputPathStatement", 
+                   "setFileInputPathStatement", "path", "column", "result", 
+                   "combineStatement", "convertStatement", "addColumnsStatement", 
+                   "renameColumnStatement", "changeDataTypeStatement", "type", 
+                   "sortDataStatement", "deleteColumnStatement", "renameFileStatement", 
+                   "file_name", "applyConditionStatement", "generateReportStatement", 
+                   "period", "reorderColumnsStatement", "groupByStatement", 
+                   "filterRowsStatement", "value", "searchTextStatement", 
+                   "replaceValuesStatement", "values", "addConditionStatement", 
                    "removeDuplicatesStatement", "splitDataStatement", "combineColumnsStatement", 
                    "resizeDataStatement" ]
 
@@ -183,64 +211,67 @@ class ExampleDSLParser ( Parser ):
     T__2=3
     T__3=4
     T__4=5
-    INPUT=6
-    OUTPUT=7
-    COMBINE=8
-    CONVERT=9
-    ADD=10
-    RENAME=11
-    CHANGE=12
-    SORT=13
-    DELETE=14
-    APPLY=15
-    GENERATE=16
-    REORDER=17
-    GROUP=18
-    FILTER=19
-    SEARCH=20
-    REPLACE=21
-    REMOVE=22
-    SPLIT=23
-    RESIZE=24
-    SET=25
-    FILE=26
-    PATH=27
-    FORMAT=28
-    DATA=29
-    COLUMN=30
-    COLUMNS=31
-    TYPE=32
-    ROWS=33
-    ROW=34
-    CONDITION=35
-    VALUES=36
-    IN=37
-    RESULT=38
-    TO=39
-    WITH=40
-    AND=41
-    BY=42
-    FROM=43
-    WHERE=44
-    ON=45
-    OF=46
-    FOR=47
-    AS=48
-    SAVE=49
-    BASED=50
-    SUM=51
-    NEW=52
-    MULTIPLYING=53
-    NUMBER=54
-    STRING=55
-    ID=56
-    WS=57
-    WRITE=58
-    REPORT=59
-    DUPLICATE=60
-    RESULTS=61
-    SEPARATE=62
-    FILES=63
+    T__5=6
+    T__6=7
+    T__7=8
+    INPUT=9
+    OUTPUT=10
+    REPORT=11
+    WRITE=12
+    COMBINE=13
+    CONVERT=14
+    ADD=15
+    RENAME=16
+    CHANGE=17
+    SORT=18
+    DELETE=19
+    APPLY=20
+    GENERATE=21
+    REORDER=22
+    GROUP=23
+    FILTER=24
+    SEARCH=25
+    REPLACE=26
+    REMOVE=27
+    SPLIT=28
+    RESIZE=29
+    SET=30
+    FILE=31
+    PATH=32
+    FORMAT=33
+    DATA=34
+    COLUMN=35
+    COLUMNS=36
+    TYPE=37
+    ROWS=38
+    ROW=39
+    CONDITION=40
+    VALUES=41
+    IN=42
+    RESULT=43
+    TO=44
+    WITH=45
+    AND=46
+    BY=47
+    FROM=48
+    WHERE=49
+    ON=50
+    OF=51
+    FOR=52
+    AS=53
+    SAVE=54
+    BASED=55
+    SUM=56
+    NEW=57
+    MULTIPLYING=58
+    DUPLICATE=59
+    NUMBER=60
+    STRING=61
+    ID=62
+    WS=63
+    RESULTS=64
+    SEPARATE=65
+    FILES=66
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
@@ -249,6 +280,59 @@ class ExampleDSLParser ( Parser ):
         self._predicates = None
 
 
+
+
+    class StartContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def program(self):
+            return self.getTypedRuleContext(ExampleDSLParser.ProgramContext,0)
+
+
+        def EOF(self):
+            return self.getToken(ExampleDSLParser.EOF, 0)
+
+        def getRuleIndex(self):
+            return ExampleDSLParser.RULE_start
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterStart" ):
+                listener.enterStart(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitStart" ):
+                listener.exitStart(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitStart" ):
+                return visitor.visitStart(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def start(self):
+
+        localctx = ExampleDSLParser.StartContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 0, self.RULE_start)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 66
+            self.program()
+            self.state = 67
+            self.match(ExampleDSLParser.EOF)
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
 
 
     class ProgramContext(ParserRuleContext):
@@ -288,20 +372,20 @@ class ExampleDSLParser ( Parser ):
     def program(self):
 
         localctx = ExampleDSLParser.ProgramContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 0, self.RULE_program)
+        self.enterRule(localctx, 2, self.RULE_program)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 47 
+            self.state = 70 
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
-                self.state = 46
+                self.state = 69
                 self.statement()
-                self.state = 49 
+                self.state = 72 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & 67108608) != 0)):
+                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & 2147475456) != 0)):
                     break
 
         except RecognitionException as re:
@@ -320,8 +404,12 @@ class ExampleDSLParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def setFilePathStatement(self):
-            return self.getTypedRuleContext(ExampleDSLParser.SetFilePathStatementContext,0)
+        def setFileInputPathStatement(self):
+            return self.getTypedRuleContext(ExampleDSLParser.SetFileInputPathStatementContext,0)
+
+
+        def setFileOutputPathStatement(self):
+            return self.getTypedRuleContext(ExampleDSLParser.SetFileOutputPathStatementContext,0)
 
 
         def combineStatement(self):
@@ -427,134 +515,140 @@ class ExampleDSLParser ( Parser ):
     def statement(self):
 
         localctx = ExampleDSLParser.StatementContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 2, self.RULE_statement)
+        self.enterRule(localctx, 4, self.RULE_statement)
         try:
-            self.state = 72
+            self.state = 96
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,1,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 51
-                self.setFilePathStatement()
+                self.state = 74
+                self.setFileInputPathStatement()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 52
-                self.combineStatement()
+                self.state = 75
+                self.setFileOutputPathStatement()
                 pass
 
             elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 53
-                self.convertStatement()
+                self.state = 76
+                self.combineStatement()
                 pass
 
             elif la_ == 4:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 54
-                self.addColumnsStatement()
+                self.state = 77
+                self.convertStatement()
                 pass
 
             elif la_ == 5:
                 self.enterOuterAlt(localctx, 5)
-                self.state = 55
-                self.renameColumnStatement()
+                self.state = 78
+                self.addColumnsStatement()
                 pass
 
             elif la_ == 6:
                 self.enterOuterAlt(localctx, 6)
-                self.state = 56
-                self.changeDataTypeStatement()
+                self.state = 79
+                self.renameColumnStatement()
                 pass
 
             elif la_ == 7:
                 self.enterOuterAlt(localctx, 7)
-                self.state = 57
-                self.sortDataStatement()
+                self.state = 80
+                self.changeDataTypeStatement()
                 pass
 
             elif la_ == 8:
                 self.enterOuterAlt(localctx, 8)
-                self.state = 58
-                self.deleteColumnStatement()
+                self.state = 81
+                self.sortDataStatement()
                 pass
 
             elif la_ == 9:
                 self.enterOuterAlt(localctx, 9)
-                self.state = 59
-                self.renameFileStatement()
+                self.state = 82
+                self.deleteColumnStatement()
                 pass
 
             elif la_ == 10:
                 self.enterOuterAlt(localctx, 10)
-                self.state = 60
-                self.applyConditionStatement()
+                self.state = 83
+                self.renameFileStatement()
                 pass
 
             elif la_ == 11:
                 self.enterOuterAlt(localctx, 11)
-                self.state = 61
-                self.generateReportStatement()
+                self.state = 84
+                self.applyConditionStatement()
                 pass
 
             elif la_ == 12:
                 self.enterOuterAlt(localctx, 12)
-                self.state = 62
-                self.reorderColumnsStatement()
+                self.state = 85
+                self.generateReportStatement()
                 pass
 
             elif la_ == 13:
                 self.enterOuterAlt(localctx, 13)
-                self.state = 63
-                self.groupByStatement()
+                self.state = 86
+                self.reorderColumnsStatement()
                 pass
 
             elif la_ == 14:
                 self.enterOuterAlt(localctx, 14)
-                self.state = 64
-                self.filterRowsStatement()
+                self.state = 87
+                self.groupByStatement()
                 pass
 
             elif la_ == 15:
                 self.enterOuterAlt(localctx, 15)
-                self.state = 65
-                self.searchTextStatement()
+                self.state = 88
+                self.filterRowsStatement()
                 pass
 
             elif la_ == 16:
                 self.enterOuterAlt(localctx, 16)
-                self.state = 66
-                self.replaceValuesStatement()
+                self.state = 89
+                self.searchTextStatement()
                 pass
 
             elif la_ == 17:
                 self.enterOuterAlt(localctx, 17)
-                self.state = 67
-                self.addConditionStatement()
+                self.state = 90
+                self.replaceValuesStatement()
                 pass
 
             elif la_ == 18:
                 self.enterOuterAlt(localctx, 18)
-                self.state = 68
-                self.removeDuplicatesStatement()
+                self.state = 91
+                self.addConditionStatement()
                 pass
 
             elif la_ == 19:
                 self.enterOuterAlt(localctx, 19)
-                self.state = 69
-                self.splitDataStatement()
+                self.state = 92
+                self.removeDuplicatesStatement()
                 pass
 
             elif la_ == 20:
                 self.enterOuterAlt(localctx, 20)
-                self.state = 70
-                self.combineColumnsStatement()
+                self.state = 93
+                self.splitDataStatement()
                 pass
 
             elif la_ == 21:
                 self.enterOuterAlt(localctx, 21)
-                self.state = 71
+                self.state = 94
+                self.combineColumnsStatement()
+                pass
+
+            elif la_ == 22:
+                self.enterOuterAlt(localctx, 22)
+                self.state = 95
                 self.resizeDataStatement()
                 pass
 
@@ -568,7 +662,77 @@ class ExampleDSLParser ( Parser ):
         return localctx
 
 
-    class SetFilePathStatementContext(ParserRuleContext):
+    class SetFileOutputPathStatementContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def SET(self):
+            return self.getToken(ExampleDSLParser.SET, 0)
+
+        def FILE(self):
+            return self.getToken(ExampleDSLParser.FILE, 0)
+
+        def PATH(self):
+            return self.getToken(ExampleDSLParser.PATH, 0)
+
+        def OUTPUT(self):
+            return self.getToken(ExampleDSLParser.OUTPUT, 0)
+
+        def path(self):
+            return self.getTypedRuleContext(ExampleDSLParser.PathContext,0)
+
+
+        def getRuleIndex(self):
+            return ExampleDSLParser.RULE_setFileOutputPathStatement
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSetFileOutputPathStatement" ):
+                listener.enterSetFileOutputPathStatement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSetFileOutputPathStatement" ):
+                listener.exitSetFileOutputPathStatement(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitSetFileOutputPathStatement" ):
+                return visitor.visitSetFileOutputPathStatement(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def setFileOutputPathStatement(self):
+
+        localctx = ExampleDSLParser.SetFileOutputPathStatementContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 6, self.RULE_setFileOutputPathStatement)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 98
+            self.match(ExampleDSLParser.SET)
+            self.state = 99
+            self.match(ExampleDSLParser.FILE)
+            self.state = 100
+            self.match(ExampleDSLParser.PATH)
+            self.state = 101
+            self.match(ExampleDSLParser.OUTPUT)
+            self.state = 102
+            self.path()
+            self.state = 103
+            self.match(ExampleDSLParser.T__0)
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class SetFileInputPathStatementContext(ParserRuleContext):
         __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -587,73 +751,189 @@ class ExampleDSLParser ( Parser ):
         def INPUT(self):
             return self.getToken(ExampleDSLParser.INPUT, 0)
 
-        def STRING(self):
-            return self.getToken(ExampleDSLParser.STRING, 0)
+        def path(self):
+            return self.getTypedRuleContext(ExampleDSLParser.PathContext,0)
 
-        def OUTPUT(self):
-            return self.getToken(ExampleDSLParser.OUTPUT, 0)
 
         def getRuleIndex(self):
-            return ExampleDSLParser.RULE_setFilePathStatement
+            return ExampleDSLParser.RULE_setFileInputPathStatement
 
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterSetFilePathStatement" ):
-                listener.enterSetFilePathStatement(self)
+            if hasattr( listener, "enterSetFileInputPathStatement" ):
+                listener.enterSetFileInputPathStatement(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitSetFilePathStatement" ):
-                listener.exitSetFilePathStatement(self)
+            if hasattr( listener, "exitSetFileInputPathStatement" ):
+                listener.exitSetFileInputPathStatement(self)
 
         def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitSetFilePathStatement" ):
-                return visitor.visitSetFilePathStatement(self)
+            if hasattr( visitor, "visitSetFileInputPathStatement" ):
+                return visitor.visitSetFileInputPathStatement(self)
             else:
                 return visitor.visitChildren(self)
 
 
 
 
-    def setFilePathStatement(self):
+    def setFileInputPathStatement(self):
 
-        localctx = ExampleDSLParser.SetFilePathStatementContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 4, self.RULE_setFilePathStatement)
+        localctx = ExampleDSLParser.SetFileInputPathStatementContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 8, self.RULE_setFileInputPathStatement)
         try:
-            self.state = 86
-            self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,2,self._ctx)
-            if la_ == 1:
-                self.enterOuterAlt(localctx, 1)
-                self.state = 74
-                self.match(ExampleDSLParser.SET)
-                self.state = 75
-                self.match(ExampleDSLParser.FILE)
-                self.state = 76
-                self.match(ExampleDSLParser.PATH)
-                self.state = 77
-                self.match(ExampleDSLParser.INPUT)
-                self.state = 78
-                self.match(ExampleDSLParser.STRING)
-                self.state = 79
-                self.match(ExampleDSLParser.T__0)
-                pass
-
-            elif la_ == 2:
-                self.enterOuterAlt(localctx, 2)
-                self.state = 80
-                self.match(ExampleDSLParser.SET)
-                self.state = 81
-                self.match(ExampleDSLParser.FILE)
-                self.state = 82
-                self.match(ExampleDSLParser.PATH)
-                self.state = 83
-                self.match(ExampleDSLParser.OUTPUT)
-                self.state = 84
-                self.match(ExampleDSLParser.STRING)
-                self.state = 85
-                self.match(ExampleDSLParser.T__0)
-                pass
+            self.enterOuterAlt(localctx, 1)
+            self.state = 105
+            self.match(ExampleDSLParser.SET)
+            self.state = 106
+            self.match(ExampleDSLParser.FILE)
+            self.state = 107
+            self.match(ExampleDSLParser.PATH)
+            self.state = 108
+            self.match(ExampleDSLParser.INPUT)
+            self.state = 109
+            self.path()
+            self.state = 110
+            self.match(ExampleDSLParser.T__0)
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
 
 
+    class PathContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def STRING(self):
+            return self.getToken(ExampleDSLParser.STRING, 0)
+
+        def getRuleIndex(self):
+            return ExampleDSLParser.RULE_path
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPath" ):
+                listener.enterPath(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPath" ):
+                listener.exitPath(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitPath" ):
+                return visitor.visitPath(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def path(self):
+
+        localctx = ExampleDSLParser.PathContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 10, self.RULE_path)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 112
+            self.match(ExampleDSLParser.STRING)
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class ColumnContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def STRING(self):
+            return self.getToken(ExampleDSLParser.STRING, 0)
+
+        def getRuleIndex(self):
+            return ExampleDSLParser.RULE_column
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterColumn" ):
+                listener.enterColumn(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitColumn" ):
+                listener.exitColumn(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitColumn" ):
+                return visitor.visitColumn(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def column(self):
+
+        localctx = ExampleDSLParser.ColumnContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 12, self.RULE_column)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 114
+            self.match(ExampleDSLParser.STRING)
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class ResultContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def STRING(self):
+            return self.getToken(ExampleDSLParser.STRING, 0)
+
+        def getRuleIndex(self):
+            return ExampleDSLParser.RULE_result
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterResult" ):
+                listener.enterResult(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitResult" ):
+                listener.exitResult(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitResult" ):
+                return visitor.visitResult(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def result(self):
+
+        localctx = ExampleDSLParser.ResultContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 14, self.RULE_result)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 116
+            self.match(ExampleDSLParser.STRING)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -673,17 +953,15 @@ class ExampleDSLParser ( Parser ):
         def COMBINE(self):
             return self.getToken(ExampleDSLParser.COMBINE, 0)
 
-        def FILE(self, i:int=None):
-            if i is None:
-                return self.getTokens(ExampleDSLParser.FILE)
-            else:
-                return self.getToken(ExampleDSLParser.FILE, i)
+        def FILE(self):
+            return self.getToken(ExampleDSLParser.FILE, 0)
 
-        def STRING(self, i:int=None):
+        def path(self, i:int=None):
             if i is None:
-                return self.getTokens(ExampleDSLParser.STRING)
+                return self.getTypedRuleContexts(ExampleDSLParser.PathContext)
             else:
-                return self.getToken(ExampleDSLParser.STRING, i)
+                return self.getTypedRuleContext(ExampleDSLParser.PathContext,i)
+
 
         def WITH(self):
             return self.getToken(ExampleDSLParser.WITH, 0)
@@ -720,30 +998,28 @@ class ExampleDSLParser ( Parser ):
     def combineStatement(self):
 
         localctx = ExampleDSLParser.CombineStatementContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 6, self.RULE_combineStatement)
+        self.enterRule(localctx, 16, self.RULE_combineStatement)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 88
+            self.state = 118
             self.match(ExampleDSLParser.COMBINE)
-            self.state = 89
+            self.state = 119
             self.match(ExampleDSLParser.FILE)
-            self.state = 90
-            self.match(ExampleDSLParser.STRING)
-            self.state = 91
+            self.state = 120
+            self.path()
+            self.state = 121
             self.match(ExampleDSLParser.WITH)
-            self.state = 92
-            self.match(ExampleDSLParser.FILE)
-            self.state = 93
-            self.match(ExampleDSLParser.STRING)
-            self.state = 94
+            self.state = 122
+            self.path()
+            self.state = 123
             self.match(ExampleDSLParser.AND)
-            self.state = 95
+            self.state = 124
             self.match(ExampleDSLParser.WRITE)
-            self.state = 96
+            self.state = 125
             self.match(ExampleDSLParser.TO)
-            self.state = 97
-            self.match(ExampleDSLParser.STRING)
-            self.state = 98
+            self.state = 126
+            self.path()
+            self.state = 127
             self.match(ExampleDSLParser.T__0)
         except RecognitionException as re:
             localctx.exception = re
@@ -770,11 +1046,12 @@ class ExampleDSLParser ( Parser ):
         def FROM(self):
             return self.getToken(ExampleDSLParser.FROM, 0)
 
-        def STRING(self, i:int=None):
+        def path(self, i:int=None):
             if i is None:
-                return self.getTokens(ExampleDSLParser.STRING)
+                return self.getTypedRuleContexts(ExampleDSLParser.PathContext)
             else:
-                return self.getToken(ExampleDSLParser.STRING, i)
+                return self.getTypedRuleContext(ExampleDSLParser.PathContext,i)
+
 
         def TO(self):
             return self.getToken(ExampleDSLParser.TO, 0)
@@ -802,22 +1079,22 @@ class ExampleDSLParser ( Parser ):
     def convertStatement(self):
 
         localctx = ExampleDSLParser.ConvertStatementContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 8, self.RULE_convertStatement)
+        self.enterRule(localctx, 18, self.RULE_convertStatement)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 100
+            self.state = 129
             self.match(ExampleDSLParser.CONVERT)
-            self.state = 101
+            self.state = 130
             self.match(ExampleDSLParser.FORMAT)
-            self.state = 102
+            self.state = 131
             self.match(ExampleDSLParser.FROM)
-            self.state = 103
-            self.match(ExampleDSLParser.STRING)
-            self.state = 104
+            self.state = 132
+            self.path()
+            self.state = 133
             self.match(ExampleDSLParser.TO)
-            self.state = 105
-            self.match(ExampleDSLParser.STRING)
-            self.state = 106
+            self.state = 134
+            self.path()
+            self.state = 135
             self.match(ExampleDSLParser.T__0)
         except RecognitionException as re:
             localctx.exception = re
@@ -841,11 +1118,12 @@ class ExampleDSLParser ( Parser ):
         def COLUMNS(self):
             return self.getToken(ExampleDSLParser.COLUMNS, 0)
 
-        def STRING(self, i:int=None):
+        def column(self, i:int=None):
             if i is None:
-                return self.getTokens(ExampleDSLParser.STRING)
+                return self.getTypedRuleContexts(ExampleDSLParser.ColumnContext)
             else:
-                return self.getToken(ExampleDSLParser.STRING, i)
+                return self.getTypedRuleContext(ExampleDSLParser.ColumnContext,i)
+
 
         def AND(self, i:int=None):
             if i is None:
@@ -861,6 +1139,10 @@ class ExampleDSLParser ( Parser ):
 
         def TO(self):
             return self.getToken(ExampleDSLParser.TO, 0)
+
+        def result(self):
+            return self.getTypedRuleContext(ExampleDSLParser.ResultContext,0)
+
 
         def getRuleIndex(self):
             return ExampleDSLParser.RULE_addColumnsStatement
@@ -885,30 +1167,30 @@ class ExampleDSLParser ( Parser ):
     def addColumnsStatement(self):
 
         localctx = ExampleDSLParser.AddColumnsStatementContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 10, self.RULE_addColumnsStatement)
+        self.enterRule(localctx, 20, self.RULE_addColumnsStatement)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 108
+            self.state = 137
             self.match(ExampleDSLParser.ADD)
-            self.state = 109
+            self.state = 138
             self.match(ExampleDSLParser.COLUMNS)
-            self.state = 110
-            self.match(ExampleDSLParser.STRING)
-            self.state = 111
+            self.state = 139
+            self.column()
+            self.state = 140
             self.match(ExampleDSLParser.AND)
-            self.state = 112
-            self.match(ExampleDSLParser.STRING)
-            self.state = 113
+            self.state = 141
+            self.column()
+            self.state = 142
             self.match(ExampleDSLParser.AND)
-            self.state = 114
+            self.state = 143
             self.match(ExampleDSLParser.SAVE)
-            self.state = 115
+            self.state = 144
             self.match(ExampleDSLParser.RESULT)
-            self.state = 116
+            self.state = 145
             self.match(ExampleDSLParser.TO)
-            self.state = 117
-            self.match(ExampleDSLParser.STRING)
-            self.state = 118
+            self.state = 146
+            self.result()
+            self.state = 147
             self.match(ExampleDSLParser.T__0)
         except RecognitionException as re:
             localctx.exception = re
@@ -932,11 +1214,12 @@ class ExampleDSLParser ( Parser ):
         def COLUMN(self):
             return self.getToken(ExampleDSLParser.COLUMN, 0)
 
-        def STRING(self, i:int=None):
+        def column(self, i:int=None):
             if i is None:
-                return self.getTokens(ExampleDSLParser.STRING)
+                return self.getTypedRuleContexts(ExampleDSLParser.ColumnContext)
             else:
-                return self.getToken(ExampleDSLParser.STRING, i)
+                return self.getTypedRuleContext(ExampleDSLParser.ColumnContext,i)
+
 
         def TO(self):
             return self.getToken(ExampleDSLParser.TO, 0)
@@ -964,20 +1247,20 @@ class ExampleDSLParser ( Parser ):
     def renameColumnStatement(self):
 
         localctx = ExampleDSLParser.RenameColumnStatementContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 12, self.RULE_renameColumnStatement)
+        self.enterRule(localctx, 22, self.RULE_renameColumnStatement)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 120
+            self.state = 149
             self.match(ExampleDSLParser.RENAME)
-            self.state = 121
+            self.state = 150
             self.match(ExampleDSLParser.COLUMN)
-            self.state = 122
-            self.match(ExampleDSLParser.STRING)
-            self.state = 123
+            self.state = 151
+            self.column()
+            self.state = 152
             self.match(ExampleDSLParser.TO)
-            self.state = 124
-            self.match(ExampleDSLParser.STRING)
-            self.state = 125
+            self.state = 153
+            self.column()
+            self.state = 154
             self.match(ExampleDSLParser.T__0)
         except RecognitionException as re:
             localctx.exception = re
@@ -1001,11 +1284,8 @@ class ExampleDSLParser ( Parser ):
         def DATA(self):
             return self.getToken(ExampleDSLParser.DATA, 0)
 
-        def TYPE(self, i:int=None):
-            if i is None:
-                return self.getTokens(ExampleDSLParser.TYPE)
-            else:
-                return self.getToken(ExampleDSLParser.TYPE, i)
+        def TYPE(self):
+            return self.getToken(ExampleDSLParser.TYPE, 0)
 
         def OF(self):
             return self.getToken(ExampleDSLParser.OF, 0)
@@ -1013,11 +1293,16 @@ class ExampleDSLParser ( Parser ):
         def COLUMN(self):
             return self.getToken(ExampleDSLParser.COLUMN, 0)
 
-        def STRING(self):
-            return self.getToken(ExampleDSLParser.STRING, 0)
+        def column(self):
+            return self.getTypedRuleContext(ExampleDSLParser.ColumnContext,0)
+
 
         def TO(self):
             return self.getToken(ExampleDSLParser.TO, 0)
+
+        def type_(self):
+            return self.getTypedRuleContext(ExampleDSLParser.TypeContext,0)
+
 
         def getRuleIndex(self):
             return ExampleDSLParser.RULE_changeDataTypeStatement
@@ -1042,31 +1327,78 @@ class ExampleDSLParser ( Parser ):
     def changeDataTypeStatement(self):
 
         localctx = ExampleDSLParser.ChangeDataTypeStatementContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 14, self.RULE_changeDataTypeStatement)
+        self.enterRule(localctx, 24, self.RULE_changeDataTypeStatement)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 127
+            self.state = 156
             self.match(ExampleDSLParser.CHANGE)
-            self.state = 128
+            self.state = 157
             self.match(ExampleDSLParser.DATA)
-            self.state = 129
+            self.state = 158
             self.match(ExampleDSLParser.TYPE)
-            self.state = 130
+            self.state = 159
             self.match(ExampleDSLParser.OF)
-            self.state = 131
+            self.state = 160
             self.match(ExampleDSLParser.COLUMN)
-            self.state = 132
+            self.state = 161
             self.match(ExampleDSLParser.T__1)
-            self.state = 133
-            self.match(ExampleDSLParser.STRING)
-            self.state = 134
+            self.state = 162
+            self.column()
+            self.state = 163
             self.match(ExampleDSLParser.T__2)
-            self.state = 135
+            self.state = 164
             self.match(ExampleDSLParser.TO)
-            self.state = 136
-            self.match(ExampleDSLParser.TYPE)
-            self.state = 137
+            self.state = 165
+            self.type_()
+            self.state = 166
             self.match(ExampleDSLParser.T__0)
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class TypeContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def TYPE(self):
+            return self.getToken(ExampleDSLParser.TYPE, 0)
+
+        def getRuleIndex(self):
+            return ExampleDSLParser.RULE_type
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterType" ):
+                listener.enterType(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitType" ):
+                listener.exitType(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitType" ):
+                return visitor.visitType(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def type_(self):
+
+        localctx = ExampleDSLParser.TypeContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 26, self.RULE_type)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 168
+            self.match(ExampleDSLParser.TYPE)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1095,8 +1427,9 @@ class ExampleDSLParser ( Parser ):
         def COLUMN(self):
             return self.getToken(ExampleDSLParser.COLUMN, 0)
 
-        def STRING(self):
-            return self.getToken(ExampleDSLParser.STRING, 0)
+        def column(self):
+            return self.getTypedRuleContext(ExampleDSLParser.ColumnContext,0)
+
 
         def getRuleIndex(self):
             return ExampleDSLParser.RULE_sortDataStatement
@@ -1121,24 +1454,24 @@ class ExampleDSLParser ( Parser ):
     def sortDataStatement(self):
 
         localctx = ExampleDSLParser.SortDataStatementContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 16, self.RULE_sortDataStatement)
+        self.enterRule(localctx, 28, self.RULE_sortDataStatement)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 139
+            self.state = 170
             self.match(ExampleDSLParser.SORT)
-            self.state = 140
+            self.state = 171
             self.match(ExampleDSLParser.DATA)
-            self.state = 141
+            self.state = 172
             self.match(ExampleDSLParser.BY)
-            self.state = 142
+            self.state = 173
             self.match(ExampleDSLParser.COLUMN)
-            self.state = 143
+            self.state = 174
             self.match(ExampleDSLParser.T__1)
-            self.state = 144
-            self.match(ExampleDSLParser.STRING)
-            self.state = 145
+            self.state = 175
+            self.column()
+            self.state = 176
             self.match(ExampleDSLParser.T__2)
-            self.state = 146
+            self.state = 177
             self.match(ExampleDSLParser.T__0)
         except RecognitionException as re:
             localctx.exception = re
@@ -1162,8 +1495,9 @@ class ExampleDSLParser ( Parser ):
         def COLUMN(self):
             return self.getToken(ExampleDSLParser.COLUMN, 0)
 
-        def STRING(self):
-            return self.getToken(ExampleDSLParser.STRING, 0)
+        def column(self):
+            return self.getTypedRuleContext(ExampleDSLParser.ColumnContext,0)
+
 
         def getRuleIndex(self):
             return ExampleDSLParser.RULE_deleteColumnStatement
@@ -1188,16 +1522,16 @@ class ExampleDSLParser ( Parser ):
     def deleteColumnStatement(self):
 
         localctx = ExampleDSLParser.DeleteColumnStatementContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 18, self.RULE_deleteColumnStatement)
+        self.enterRule(localctx, 30, self.RULE_deleteColumnStatement)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 148
+            self.state = 179
             self.match(ExampleDSLParser.DELETE)
-            self.state = 149
+            self.state = 180
             self.match(ExampleDSLParser.COLUMN)
-            self.state = 150
-            self.match(ExampleDSLParser.STRING)
-            self.state = 151
+            self.state = 181
+            self.column()
+            self.state = 182
             self.match(ExampleDSLParser.T__0)
         except RecognitionException as re:
             localctx.exception = re
@@ -1227,8 +1561,9 @@ class ExampleDSLParser ( Parser ):
         def TO(self):
             return self.getToken(ExampleDSLParser.TO, 0)
 
-        def STRING(self):
-            return self.getToken(ExampleDSLParser.STRING, 0)
+        def file_name(self):
+            return self.getTypedRuleContext(ExampleDSLParser.File_nameContext,0)
+
 
         def getRuleIndex(self):
             return ExampleDSLParser.RULE_renameFileStatement
@@ -1253,21 +1588,68 @@ class ExampleDSLParser ( Parser ):
     def renameFileStatement(self):
 
         localctx = ExampleDSLParser.RenameFileStatementContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 20, self.RULE_renameFileStatement)
+        self.enterRule(localctx, 32, self.RULE_renameFileStatement)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 153
+            self.state = 184
             self.match(ExampleDSLParser.RENAME)
-            self.state = 154
+            self.state = 185
             self.match(ExampleDSLParser.OUTPUT)
-            self.state = 155
+            self.state = 186
             self.match(ExampleDSLParser.FILE)
-            self.state = 156
+            self.state = 187
             self.match(ExampleDSLParser.TO)
-            self.state = 157
-            self.match(ExampleDSLParser.STRING)
-            self.state = 158
+            self.state = 188
+            self.file_name()
+            self.state = 189
             self.match(ExampleDSLParser.T__0)
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class File_nameContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def STRING(self):
+            return self.getToken(ExampleDSLParser.STRING, 0)
+
+        def getRuleIndex(self):
+            return ExampleDSLParser.RULE_file_name
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFile_name" ):
+                listener.enterFile_name(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFile_name" ):
+                listener.exitFile_name(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitFile_name" ):
+                return visitor.visitFile_name(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def file_name(self):
+
+        localctx = ExampleDSLParser.File_nameContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 34, self.RULE_file_name)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 191
+            self.match(ExampleDSLParser.STRING)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1283,6 +1665,8 @@ class ExampleDSLParser ( Parser ):
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
+            self.from_ = None # Token
+            self.to = None # Token
 
         def APPLY(self):
             return self.getToken(ExampleDSLParser.APPLY, 0)
@@ -1296,14 +1680,14 @@ class ExampleDSLParser ( Parser ):
         def ROWS(self):
             return self.getToken(ExampleDSLParser.ROWS, 0)
 
+        def TO(self):
+            return self.getToken(ExampleDSLParser.TO, 0)
+
         def NUMBER(self, i:int=None):
             if i is None:
                 return self.getTokens(ExampleDSLParser.NUMBER)
             else:
                 return self.getToken(ExampleDSLParser.NUMBER, i)
-
-        def TO(self):
-            return self.getToken(ExampleDSLParser.TO, 0)
 
         def getRuleIndex(self):
             return ExampleDSLParser.RULE_applyConditionStatement
@@ -1328,24 +1712,24 @@ class ExampleDSLParser ( Parser ):
     def applyConditionStatement(self):
 
         localctx = ExampleDSLParser.ApplyConditionStatementContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 22, self.RULE_applyConditionStatement)
+        self.enterRule(localctx, 36, self.RULE_applyConditionStatement)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 160
+            self.state = 193
             self.match(ExampleDSLParser.APPLY)
-            self.state = 161
+            self.state = 194
             self.match(ExampleDSLParser.CONDITION)
-            self.state = 162
+            self.state = 195
             self.match(ExampleDSLParser.ON)
-            self.state = 163
+            self.state = 196
             self.match(ExampleDSLParser.ROWS)
-            self.state = 164
-            self.match(ExampleDSLParser.NUMBER)
-            self.state = 165
+            self.state = 197
+            localctx.from_ = self.match(ExampleDSLParser.NUMBER)
+            self.state = 198
             self.match(ExampleDSLParser.TO)
-            self.state = 166
-            self.match(ExampleDSLParser.NUMBER)
-            self.state = 167
+            self.state = 199
+            localctx.to = self.match(ExampleDSLParser.NUMBER)
+            self.state = 200
             self.match(ExampleDSLParser.T__0)
         except RecognitionException as re:
             localctx.exception = re
@@ -1375,14 +1759,16 @@ class ExampleDSLParser ( Parser ):
         def COLUMN(self):
             return self.getToken(ExampleDSLParser.COLUMN, 0)
 
-        def STRING(self, i:int=None):
-            if i is None:
-                return self.getTokens(ExampleDSLParser.STRING)
-            else:
-                return self.getToken(ExampleDSLParser.STRING, i)
+        def column(self):
+            return self.getTypedRuleContext(ExampleDSLParser.ColumnContext,0)
+
 
         def BY(self):
             return self.getToken(ExampleDSLParser.BY, 0)
+
+        def period(self):
+            return self.getTypedRuleContext(ExampleDSLParser.PeriodContext,0)
+
 
         def getRuleIndex(self):
             return ExampleDSLParser.RULE_generateReportStatement
@@ -1407,29 +1793,80 @@ class ExampleDSLParser ( Parser ):
     def generateReportStatement(self):
 
         localctx = ExampleDSLParser.GenerateReportStatementContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 24, self.RULE_generateReportStatement)
+        self.enterRule(localctx, 38, self.RULE_generateReportStatement)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 169
+            self.state = 202
             self.match(ExampleDSLParser.GENERATE)
-            self.state = 170
+            self.state = 203
             self.match(ExampleDSLParser.REPORT)
-            self.state = 171
+            self.state = 204
             self.match(ExampleDSLParser.FOR)
-            self.state = 172
+            self.state = 205
             self.match(ExampleDSLParser.COLUMN)
-            self.state = 173
+            self.state = 206
             self.match(ExampleDSLParser.T__1)
-            self.state = 174
-            self.match(ExampleDSLParser.STRING)
-            self.state = 175
+            self.state = 207
+            self.column()
+            self.state = 208
             self.match(ExampleDSLParser.T__2)
-            self.state = 176
+            self.state = 209
             self.match(ExampleDSLParser.BY)
-            self.state = 177
-            self.match(ExampleDSLParser.STRING)
-            self.state = 178
+            self.state = 210
+            self.period()
+            self.state = 211
             self.match(ExampleDSLParser.T__0)
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class PeriodContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+
+        def getRuleIndex(self):
+            return ExampleDSLParser.RULE_period
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPeriod" ):
+                listener.enterPeriod(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPeriod" ):
+                listener.exitPeriod(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitPeriod" ):
+                return visitor.visitPeriod(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def period(self):
+
+        localctx = ExampleDSLParser.PeriodContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 40, self.RULE_period)
+        self._la = 0 # Token type
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 213
+            _la = self._input.LA(1)
+            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 112) != 0)):
+                self._errHandler.recoverInline(self)
+            else:
+                self._errHandler.reportMatch(self)
+                self.consume()
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1445,6 +1882,9 @@ class ExampleDSLParser ( Parser ):
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
+            self._STRING = None # Token
+            self.columns = list() # of Tokens
+            self.newOrder = list() # of Tokens
 
         def REORDER(self):
             return self.getToken(ExampleDSLParser.REORDER, 0)
@@ -1452,14 +1892,14 @@ class ExampleDSLParser ( Parser ):
         def COLUMNS(self):
             return self.getToken(ExampleDSLParser.COLUMNS, 0)
 
+        def TO(self):
+            return self.getToken(ExampleDSLParser.TO, 0)
+
         def STRING(self, i:int=None):
             if i is None:
                 return self.getTokens(ExampleDSLParser.STRING)
             else:
                 return self.getToken(ExampleDSLParser.STRING, i)
-
-        def TO(self):
-            return self.getToken(ExampleDSLParser.TO, 0)
 
         def getRuleIndex(self):
             return ExampleDSLParser.RULE_reorderColumnsStatement
@@ -1484,45 +1924,49 @@ class ExampleDSLParser ( Parser ):
     def reorderColumnsStatement(self):
 
         localctx = ExampleDSLParser.ReorderColumnsStatementContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 26, self.RULE_reorderColumnsStatement)
+        self.enterRule(localctx, 42, self.RULE_reorderColumnsStatement)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 180
+            self.state = 215
             self.match(ExampleDSLParser.REORDER)
-            self.state = 181
+            self.state = 216
             self.match(ExampleDSLParser.COLUMNS)
-            self.state = 182
-            self.match(ExampleDSLParser.STRING)
-            self.state = 187
+            self.state = 217
+            localctx._STRING = self.match(ExampleDSLParser.STRING)
+            localctx.columns.append(localctx._STRING)
+            self.state = 222
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==4:
-                self.state = 183
-                self.match(ExampleDSLParser.T__3)
-                self.state = 184
-                self.match(ExampleDSLParser.STRING)
-                self.state = 189
+            while _la==7:
+                self.state = 218
+                self.match(ExampleDSLParser.T__6)
+                self.state = 219
+                localctx._STRING = self.match(ExampleDSLParser.STRING)
+                localctx.columns.append(localctx._STRING)
+                self.state = 224
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 190
+            self.state = 225
             self.match(ExampleDSLParser.TO)
-            self.state = 191
-            self.match(ExampleDSLParser.STRING)
-            self.state = 196
+            self.state = 226
+            localctx._STRING = self.match(ExampleDSLParser.STRING)
+            localctx.newOrder.append(localctx._STRING)
+            self.state = 231
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==4:
-                self.state = 192
-                self.match(ExampleDSLParser.T__3)
-                self.state = 193
-                self.match(ExampleDSLParser.STRING)
-                self.state = 198
+            while _la==7:
+                self.state = 227
+                self.match(ExampleDSLParser.T__6)
+                self.state = 228
+                localctx._STRING = self.match(ExampleDSLParser.STRING)
+                localctx.newOrder.append(localctx._STRING)
+                self.state = 233
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 199
+            self.state = 234
             self.match(ExampleDSLParser.T__0)
         except RecognitionException as re:
             localctx.exception = re
@@ -1546,11 +1990,12 @@ class ExampleDSLParser ( Parser ):
         def BY(self):
             return self.getToken(ExampleDSLParser.BY, 0)
 
-        def STRING(self, i:int=None):
+        def column(self, i:int=None):
             if i is None:
-                return self.getTokens(ExampleDSLParser.STRING)
+                return self.getTypedRuleContexts(ExampleDSLParser.ColumnContext)
             else:
-                return self.getToken(ExampleDSLParser.STRING, i)
+                return self.getTypedRuleContext(ExampleDSLParser.ColumnContext,i)
+
 
         def AND(self):
             return self.getToken(ExampleDSLParser.AND, 0)
@@ -1587,26 +2032,26 @@ class ExampleDSLParser ( Parser ):
     def groupByStatement(self):
 
         localctx = ExampleDSLParser.GroupByStatementContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 28, self.RULE_groupByStatement)
+        self.enterRule(localctx, 44, self.RULE_groupByStatement)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 201
+            self.state = 236
             self.match(ExampleDSLParser.GROUP)
-            self.state = 202
+            self.state = 237
             self.match(ExampleDSLParser.BY)
-            self.state = 203
-            self.match(ExampleDSLParser.STRING)
-            self.state = 204
+            self.state = 238
+            self.column()
+            self.state = 239
             self.match(ExampleDSLParser.AND)
-            self.state = 205
+            self.state = 240
             self.match(ExampleDSLParser.SUM)
-            self.state = 206
+            self.state = 241
             self.match(ExampleDSLParser.VALUES)
-            self.state = 207
+            self.state = 242
             self.match(ExampleDSLParser.IN)
-            self.state = 208
-            self.match(ExampleDSLParser.STRING)
-            self.state = 209
+            self.state = 243
+            self.column()
+            self.state = 244
             self.match(ExampleDSLParser.T__0)
         except RecognitionException as re:
             localctx.exception = re
@@ -1633,11 +2078,13 @@ class ExampleDSLParser ( Parser ):
         def WHERE(self):
             return self.getToken(ExampleDSLParser.WHERE, 0)
 
-        def STRING(self):
-            return self.getToken(ExampleDSLParser.STRING, 0)
+        def column(self):
+            return self.getTypedRuleContext(ExampleDSLParser.ColumnContext,0)
 
-        def NUMBER(self):
-            return self.getToken(ExampleDSLParser.NUMBER, 0)
+
+        def value(self):
+            return self.getTypedRuleContext(ExampleDSLParser.ValueContext,0)
+
 
         def getRuleIndex(self):
             return ExampleDSLParser.RULE_filterRowsStatement
@@ -1662,23 +2109,70 @@ class ExampleDSLParser ( Parser ):
     def filterRowsStatement(self):
 
         localctx = ExampleDSLParser.FilterRowsStatementContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 30, self.RULE_filterRowsStatement)
+        self.enterRule(localctx, 46, self.RULE_filterRowsStatement)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 211
+            self.state = 246
             self.match(ExampleDSLParser.FILTER)
-            self.state = 212
+            self.state = 247
             self.match(ExampleDSLParser.ROWS)
-            self.state = 213
+            self.state = 248
             self.match(ExampleDSLParser.WHERE)
-            self.state = 214
-            self.match(ExampleDSLParser.STRING)
-            self.state = 215
-            self.match(ExampleDSLParser.T__4)
-            self.state = 216
-            self.match(ExampleDSLParser.NUMBER)
-            self.state = 217
+            self.state = 249
+            self.column()
+            self.state = 250
+            self.match(ExampleDSLParser.T__7)
+            self.state = 251
+            self.value()
+            self.state = 252
             self.match(ExampleDSLParser.T__0)
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class ValueContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def NUMBER(self):
+            return self.getToken(ExampleDSLParser.NUMBER, 0)
+
+        def getRuleIndex(self):
+            return ExampleDSLParser.RULE_value
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterValue" ):
+                listener.enterValue(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitValue" ):
+                listener.exitValue(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitValue" ):
+                return visitor.visitValue(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def value(self):
+
+        localctx = ExampleDSLParser.ValueContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 48, self.RULE_value)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 254
+            self.match(ExampleDSLParser.NUMBER)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1694,6 +2188,7 @@ class ExampleDSLParser ( Parser ):
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
+            self.text = None # Token
 
         def SEARCH(self):
             return self.getToken(ExampleDSLParser.SEARCH, 0)
@@ -1701,17 +2196,18 @@ class ExampleDSLParser ( Parser ):
         def FOR(self):
             return self.getToken(ExampleDSLParser.FOR, 0)
 
-        def STRING(self, i:int=None):
-            if i is None:
-                return self.getTokens(ExampleDSLParser.STRING)
-            else:
-                return self.getToken(ExampleDSLParser.STRING, i)
-
         def IN(self):
             return self.getToken(ExampleDSLParser.IN, 0)
 
         def COLUMN(self):
             return self.getToken(ExampleDSLParser.COLUMN, 0)
+
+        def column(self):
+            return self.getTypedRuleContext(ExampleDSLParser.ColumnContext,0)
+
+
+        def STRING(self):
+            return self.getToken(ExampleDSLParser.STRING, 0)
 
         def getRuleIndex(self):
             return ExampleDSLParser.RULE_searchTextStatement
@@ -1736,26 +2232,26 @@ class ExampleDSLParser ( Parser ):
     def searchTextStatement(self):
 
         localctx = ExampleDSLParser.SearchTextStatementContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 32, self.RULE_searchTextStatement)
+        self.enterRule(localctx, 50, self.RULE_searchTextStatement)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 219
+            self.state = 256
             self.match(ExampleDSLParser.SEARCH)
-            self.state = 220
+            self.state = 257
             self.match(ExampleDSLParser.FOR)
-            self.state = 221
-            self.match(ExampleDSLParser.STRING)
-            self.state = 222
+            self.state = 258
+            localctx.text = self.match(ExampleDSLParser.STRING)
+            self.state = 259
             self.match(ExampleDSLParser.IN)
-            self.state = 223
+            self.state = 260
             self.match(ExampleDSLParser.COLUMN)
-            self.state = 224
+            self.state = 261
             self.match(ExampleDSLParser.T__1)
-            self.state = 225
-            self.match(ExampleDSLParser.STRING)
-            self.state = 226
+            self.state = 262
+            self.column()
+            self.state = 263
             self.match(ExampleDSLParser.T__2)
-            self.state = 227
+            self.state = 264
             self.match(ExampleDSLParser.T__0)
         except RecognitionException as re:
             localctx.exception = re
@@ -1779,11 +2275,12 @@ class ExampleDSLParser ( Parser ):
         def VALUES(self):
             return self.getToken(ExampleDSLParser.VALUES, 0)
 
-        def STRING(self, i:int=None):
+        def values(self, i:int=None):
             if i is None:
-                return self.getTokens(ExampleDSLParser.STRING)
+                return self.getTypedRuleContexts(ExampleDSLParser.ValuesContext)
             else:
-                return self.getToken(ExampleDSLParser.STRING, i)
+                return self.getTypedRuleContext(ExampleDSLParser.ValuesContext,i)
+
 
         def WITH(self):
             return self.getToken(ExampleDSLParser.WITH, 0)
@@ -1793,6 +2290,10 @@ class ExampleDSLParser ( Parser ):
 
         def COLUMN(self):
             return self.getToken(ExampleDSLParser.COLUMN, 0)
+
+        def column(self):
+            return self.getTypedRuleContext(ExampleDSLParser.ColumnContext,0)
+
 
         def getRuleIndex(self):
             return ExampleDSLParser.RULE_replaceValuesStatement
@@ -1817,31 +2318,87 @@ class ExampleDSLParser ( Parser ):
     def replaceValuesStatement(self):
 
         localctx = ExampleDSLParser.ReplaceValuesStatementContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 34, self.RULE_replaceValuesStatement)
+        self.enterRule(localctx, 52, self.RULE_replaceValuesStatement)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 229
+            self.state = 266
             self.match(ExampleDSLParser.REPLACE)
-            self.state = 230
+            self.state = 267
             self.match(ExampleDSLParser.VALUES)
-            self.state = 231
-            self.match(ExampleDSLParser.STRING)
-            self.state = 232
+            self.state = 268
+            self.values()
+            self.state = 269
             self.match(ExampleDSLParser.WITH)
-            self.state = 233
-            self.match(ExampleDSLParser.STRING)
-            self.state = 234
+            self.state = 270
+            self.values()
+            self.state = 271
             self.match(ExampleDSLParser.IN)
-            self.state = 235
+            self.state = 272
             self.match(ExampleDSLParser.COLUMN)
-            self.state = 236
+            self.state = 273
             self.match(ExampleDSLParser.T__1)
-            self.state = 237
-            self.match(ExampleDSLParser.STRING)
-            self.state = 238
+            self.state = 274
+            self.column()
+            self.state = 275
             self.match(ExampleDSLParser.T__2)
-            self.state = 239
+            self.state = 276
             self.match(ExampleDSLParser.T__0)
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class ValuesContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def NUMBER(self):
+            return self.getToken(ExampleDSLParser.NUMBER, 0)
+
+        def STRING(self):
+            return self.getToken(ExampleDSLParser.STRING, 0)
+
+        def getRuleIndex(self):
+            return ExampleDSLParser.RULE_values
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterValues" ):
+                listener.enterValues(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitValues" ):
+                listener.exitValues(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitValues" ):
+                return visitor.visitValues(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def values(self):
+
+        localctx = ExampleDSLParser.ValuesContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 54, self.RULE_values)
+        self._la = 0 # Token type
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 278
+            _la = self._input.LA(1)
+            if not(_la==60 or _la==61):
+                self._errHandler.recoverInline(self)
+            else:
+                self._errHandler.reportMatch(self)
+                self.consume()
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1867,11 +2424,13 @@ class ExampleDSLParser ( Parser ):
         def WHERE(self):
             return self.getToken(ExampleDSLParser.WHERE, 0)
 
-        def STRING(self):
-            return self.getToken(ExampleDSLParser.STRING, 0)
+        def column(self):
+            return self.getTypedRuleContext(ExampleDSLParser.ColumnContext,0)
 
-        def NUMBER(self):
-            return self.getToken(ExampleDSLParser.NUMBER, 0)
+
+        def value(self):
+            return self.getTypedRuleContext(ExampleDSLParser.ValueContext,0)
+
 
         def getRuleIndex(self):
             return ExampleDSLParser.RULE_addConditionStatement
@@ -1896,22 +2455,22 @@ class ExampleDSLParser ( Parser ):
     def addConditionStatement(self):
 
         localctx = ExampleDSLParser.AddConditionStatementContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 36, self.RULE_addConditionStatement)
+        self.enterRule(localctx, 56, self.RULE_addConditionStatement)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 241
+            self.state = 280
             self.match(ExampleDSLParser.ADD)
-            self.state = 242
+            self.state = 281
             self.match(ExampleDSLParser.CONDITION)
-            self.state = 243
+            self.state = 282
             self.match(ExampleDSLParser.WHERE)
-            self.state = 244
-            self.match(ExampleDSLParser.STRING)
-            self.state = 245
-            self.match(ExampleDSLParser.T__4)
-            self.state = 246
-            self.match(ExampleDSLParser.NUMBER)
-            self.state = 247
+            self.state = 283
+            self.column()
+            self.state = 284
+            self.match(ExampleDSLParser.T__7)
+            self.state = 285
+            self.value()
+            self.state = 286
             self.match(ExampleDSLParser.T__0)
         except RecognitionException as re:
             localctx.exception = re
@@ -1947,8 +2506,9 @@ class ExampleDSLParser ( Parser ):
         def COLUMN(self):
             return self.getToken(ExampleDSLParser.COLUMN, 0)
 
-        def STRING(self):
-            return self.getToken(ExampleDSLParser.STRING, 0)
+        def column(self):
+            return self.getTypedRuleContext(ExampleDSLParser.ColumnContext,0)
+
 
         def getRuleIndex(self):
             return ExampleDSLParser.RULE_removeDuplicatesStatement
@@ -1973,28 +2533,28 @@ class ExampleDSLParser ( Parser ):
     def removeDuplicatesStatement(self):
 
         localctx = ExampleDSLParser.RemoveDuplicatesStatementContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 38, self.RULE_removeDuplicatesStatement)
+        self.enterRule(localctx, 58, self.RULE_removeDuplicatesStatement)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 249
+            self.state = 288
             self.match(ExampleDSLParser.REMOVE)
-            self.state = 250
+            self.state = 289
             self.match(ExampleDSLParser.DUPLICATE)
-            self.state = 251
+            self.state = 290
             self.match(ExampleDSLParser.ROWS)
-            self.state = 252
+            self.state = 291
             self.match(ExampleDSLParser.BASED)
-            self.state = 253
+            self.state = 292
             self.match(ExampleDSLParser.ON)
-            self.state = 254
+            self.state = 293
             self.match(ExampleDSLParser.COLUMN)
-            self.state = 255
+            self.state = 294
             self.match(ExampleDSLParser.T__1)
-            self.state = 256
-            self.match(ExampleDSLParser.STRING)
-            self.state = 257
+            self.state = 295
+            self.column()
+            self.state = 296
             self.match(ExampleDSLParser.T__2)
-            self.state = 258
+            self.state = 297
             self.match(ExampleDSLParser.T__0)
         except RecognitionException as re:
             localctx.exception = re
@@ -2027,8 +2587,9 @@ class ExampleDSLParser ( Parser ):
         def COLUMN(self):
             return self.getToken(ExampleDSLParser.COLUMN, 0)
 
-        def STRING(self):
-            return self.getToken(ExampleDSLParser.STRING, 0)
+        def column(self):
+            return self.getTypedRuleContext(ExampleDSLParser.ColumnContext,0)
+
 
         def AND(self):
             return self.getToken(ExampleDSLParser.AND, 0)
@@ -2071,38 +2632,38 @@ class ExampleDSLParser ( Parser ):
     def splitDataStatement(self):
 
         localctx = ExampleDSLParser.SplitDataStatementContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 40, self.RULE_splitDataStatement)
+        self.enterRule(localctx, 60, self.RULE_splitDataStatement)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 260
+            self.state = 299
             self.match(ExampleDSLParser.SPLIT)
-            self.state = 261
+            self.state = 300
             self.match(ExampleDSLParser.DATA)
-            self.state = 262
+            self.state = 301
             self.match(ExampleDSLParser.BASED)
-            self.state = 263
+            self.state = 302
             self.match(ExampleDSLParser.ON)
-            self.state = 264
+            self.state = 303
             self.match(ExampleDSLParser.COLUMN)
-            self.state = 265
+            self.state = 304
             self.match(ExampleDSLParser.T__1)
-            self.state = 266
-            self.match(ExampleDSLParser.STRING)
-            self.state = 267
+            self.state = 305
+            self.column()
+            self.state = 306
             self.match(ExampleDSLParser.T__2)
-            self.state = 268
+            self.state = 307
             self.match(ExampleDSLParser.AND)
-            self.state = 269
+            self.state = 308
             self.match(ExampleDSLParser.SAVE)
-            self.state = 270
+            self.state = 309
             self.match(ExampleDSLParser.RESULTS)
-            self.state = 271
+            self.state = 310
             self.match(ExampleDSLParser.TO)
-            self.state = 272
+            self.state = 311
             self.match(ExampleDSLParser.SEPARATE)
-            self.state = 273
+            self.state = 312
             self.match(ExampleDSLParser.FILES)
-            self.state = 274
+            self.state = 313
             self.match(ExampleDSLParser.T__0)
         except RecognitionException as re:
             localctx.exception = re
@@ -2126,11 +2687,12 @@ class ExampleDSLParser ( Parser ):
         def COLUMNS(self):
             return self.getToken(ExampleDSLParser.COLUMNS, 0)
 
-        def STRING(self, i:int=None):
+        def column(self, i:int=None):
             if i is None:
-                return self.getTokens(ExampleDSLParser.STRING)
+                return self.getTypedRuleContexts(ExampleDSLParser.ColumnContext)
             else:
-                return self.getToken(ExampleDSLParser.STRING, i)
+                return self.getTypedRuleContext(ExampleDSLParser.ColumnContext,i)
+
 
         def AND(self, i:int=None):
             if i is None:
@@ -2146,6 +2708,10 @@ class ExampleDSLParser ( Parser ):
 
         def TO(self):
             return self.getToken(ExampleDSLParser.TO, 0)
+
+        def result(self):
+            return self.getTypedRuleContext(ExampleDSLParser.ResultContext,0)
+
 
         def getRuleIndex(self):
             return ExampleDSLParser.RULE_combineColumnsStatement
@@ -2170,30 +2736,30 @@ class ExampleDSLParser ( Parser ):
     def combineColumnsStatement(self):
 
         localctx = ExampleDSLParser.CombineColumnsStatementContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 42, self.RULE_combineColumnsStatement)
+        self.enterRule(localctx, 62, self.RULE_combineColumnsStatement)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 276
+            self.state = 315
             self.match(ExampleDSLParser.COMBINE)
-            self.state = 277
+            self.state = 316
             self.match(ExampleDSLParser.COLUMNS)
-            self.state = 278
-            self.match(ExampleDSLParser.STRING)
-            self.state = 279
+            self.state = 317
+            self.column()
+            self.state = 318
             self.match(ExampleDSLParser.AND)
-            self.state = 280
-            self.match(ExampleDSLParser.STRING)
-            self.state = 281
+            self.state = 319
+            self.column()
+            self.state = 320
             self.match(ExampleDSLParser.AND)
-            self.state = 282
+            self.state = 321
             self.match(ExampleDSLParser.SAVE)
-            self.state = 283
+            self.state = 322
             self.match(ExampleDSLParser.RESULT)
-            self.state = 284
+            self.state = 323
             self.match(ExampleDSLParser.TO)
-            self.state = 285
-            self.match(ExampleDSLParser.STRING)
-            self.state = 286
+            self.state = 324
+            self.result()
+            self.state = 325
             self.match(ExampleDSLParser.T__0)
         except RecognitionException as re:
             localctx.exception = re
@@ -2223,8 +2789,9 @@ class ExampleDSLParser ( Parser ):
         def COLUMN(self):
             return self.getToken(ExampleDSLParser.COLUMN, 0)
 
-        def STRING(self):
-            return self.getToken(ExampleDSLParser.STRING, 0)
+        def column(self):
+            return self.getTypedRuleContext(ExampleDSLParser.ColumnContext,0)
+
 
         def BY(self):
             return self.getToken(ExampleDSLParser.BY, 0)
@@ -2235,8 +2802,9 @@ class ExampleDSLParser ( Parser ):
         def WITH(self):
             return self.getToken(ExampleDSLParser.WITH, 0)
 
-        def NUMBER(self):
-            return self.getToken(ExampleDSLParser.NUMBER, 0)
+        def value(self):
+            return self.getTypedRuleContext(ExampleDSLParser.ValueContext,0)
+
 
         def getRuleIndex(self):
             return ExampleDSLParser.RULE_resizeDataStatement
@@ -2261,32 +2829,32 @@ class ExampleDSLParser ( Parser ):
     def resizeDataStatement(self):
 
         localctx = ExampleDSLParser.ResizeDataStatementContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 44, self.RULE_resizeDataStatement)
+        self.enterRule(localctx, 64, self.RULE_resizeDataStatement)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 288
+            self.state = 327
             self.match(ExampleDSLParser.RESIZE)
-            self.state = 289
+            self.state = 328
             self.match(ExampleDSLParser.DATA)
-            self.state = 290
+            self.state = 329
             self.match(ExampleDSLParser.IN)
-            self.state = 291
+            self.state = 330
             self.match(ExampleDSLParser.COLUMN)
-            self.state = 292
+            self.state = 331
             self.match(ExampleDSLParser.T__1)
-            self.state = 293
-            self.match(ExampleDSLParser.STRING)
-            self.state = 294
+            self.state = 332
+            self.column()
+            self.state = 333
             self.match(ExampleDSLParser.T__2)
-            self.state = 295
+            self.state = 334
             self.match(ExampleDSLParser.BY)
-            self.state = 296
+            self.state = 335
             self.match(ExampleDSLParser.MULTIPLYING)
-            self.state = 297
+            self.state = 336
             self.match(ExampleDSLParser.WITH)
-            self.state = 298
-            self.match(ExampleDSLParser.NUMBER)
-            self.state = 299
+            self.state = 337
+            self.value()
+            self.state = 338
             self.match(ExampleDSLParser.T__0)
         except RecognitionException as re:
             localctx.exception = re

@@ -1,3 +1,7 @@
 Set file path input "input.csv";
 Set file path output "output.csv";
-Combine columns "first_name" and "last_name" and save result to "full_name";
+Combine file "file1.csv" with "file2.csv" and write to "output.csv";
+Convert format from "input.csv" to "output.xls";
+Convert format from "input.xls" to "output.csv";
+Add columns "sales" and "expenses" and save result to "profit";
+Rename column "age" to "customer_age";

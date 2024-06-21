@@ -6,12 +6,13 @@ Using the defined ANTLR grammar, you can write the following commands in your DS
 
 ### Commands to set the file path
 1. **Set the path of the input file:**
- dsl
- Set input file path "input.csv";
+```dsl
+ Set file path input "input.csv";
  ```
-2. **Set the path of the output file:**
 
- Set output file path "output.csv";
+2. **Set the path of the output file:**
+ ```dsl
+ Set file path output "output.csv";
  ```
 
 ### Commands to combine files

@@ -1,18 +1,23 @@
+from my_dsl.Erorrs.InputError import *
+
+
 class CustomExampleDSLCodeGenerator:
     def __init__(self):
-        self.non_operands = ['program', 'initiate_game',
-                             'bomb_location', 'output',
-                             'bomb_placements', 'begin_scope_operator',
-                             'end_scope_operator', 'hint_status']
+        self.non_operands = [
+            'program', 'set_file_input_path', 'set_file_output_path', 'combine', 'convert', 'add_columns',
+            'rename_column',
+            'change_data_type', 'sort_data', 'delete_column', 'rename_file', 'apply_condition',
+            'generate_report', 'reorder_columns', 'group_by', 'filter_rows', 'search_text',
+            'replace_values', 'add_condition', 'remove_duplicates', 'split_data',
+            'combine_columns', 'resize_data'
+        ]
         self.operand_stack = []
         self.code_stack = []
-        self.hint = False
+        self.set_input = False
+        self.set_output = False
 
     def is_operand(self, item):
-        if item in self.non_operands:
-            return False
-        else:
-            return True
+        return item not in self.non_operands
 
     def generate_code(self, post_order_array):
         for item in post_order_array:
@@ -31,99 +36,231 @@ class CustomExampleDSLCodeGenerator:
         if item == "program":
             self.generate_program()
 
-        elif item == "output":
-            self.set_output_type()
+        elif item == "set_file_input_path":
+            self.set_file_path(file_type='input')
 
-        elif item == "initiate_game":
-            self.generate_initiate_game()
+        elif item == "set_file_output_path":
+            self.set_file_path(file_type='output')
 
-        elif item == "bomb_location":
-            self.generate_bomb()
+        elif item == "combine":
+            self.combine_files()
 
-        elif item == "bomb_placements":
-            self.generate_bomb_placements()
+        elif item == "convert":
+            self.convert_format()
 
-        elif item == 'hint_status':
-            hint = self.operand_stack.pop()
-            if hint == 'True':
-                self.hint = True
-            else:
-                self.hint = False
+        elif item == "add_columns":
+            self.add_columns()
 
-        elif item == "begin_scope_operator":
-            self.generate_begin_scope_operator()
+        elif item == "rename_column":
+            self.rename_column()
 
-        elif item == "end_scope_operator":
-            self.generate_end_scope_operator()
+        elif item == "change_data_type":
+            self.change_data_type()
 
+        elif item == "sort_data":
+            self.sort_data()
+
+        elif item == "delete_column":
+            self.delete_column()
+
+        elif item == "rename_file":
+            self.rename_file()
+
+        elif item == "apply_condition":
+            self.apply_condition()
+
+        elif item == "generate_report":
+            self.generate_report()
+
+        elif item == "reorder_columns":
+            self.reorder_columns()
+
+        elif item == "group_by":
+            self.group_by()
+
+        elif item == "filter_rows":
+            self.filter_rows()
+
+        elif item == "search_text":
+            self.search_text()
+
+        elif item == "replace_values":
+            self.replace_values()
+
+        elif item == "add_condition":
+            self.add_condition()
+
+        elif item == "remove_duplicates":
+            self.remove_duplicates()
+
+        elif item == "split_data":
+            self.split_data()
+
+        elif item == "combine_columns":
+            self.combine_columns()
+
+        elif item == "resize_data":
+            self.resize_data()
+
+    # check =True
     def generate_program(self):
-        placements_code = self.code_stack.pop()
-        initiate_code = self.code_stack.pop()
-        output_type = 'console'
-        if len(self.code_stack) > 0:
-            temp_code = self.code_stack.pop()
-            if temp_code.startswith('##COMPILER_PARAM:::output_type:::'):
-                output_type = temp_code.replace('##COMPILER_PARAM:::output_type:::', '')
+        result_code = '\n'.join(self.code_stack)
+        result_code = 'import pandas as pd\n' + result_code
+        self.code_stack = [result_code]
+
+    # check =True
+    def set_file_path(self, file_type):
+        file_path = self.operand_stack.pop()
+        if file_type == "input":
+            file_path = file_path.replace('"', '')
+            if file_path.endswith('.xls'):
+                code_string = f'input_df = pd.read_excel("{file_path}")\n'
             else:
-                self.code_stack.append(temp_code)
-
-        if output_type == 'console':
-            pro = ("def count_bombs_around(bombs, x, y):\n" +
-                   "\tcount = 0\n" +
-                   "\tfor i in range(max(0, x - 1), min(len(bombs), x + 2)):\n" +
-                   "\t\tfor j in range(max(0, y - 1), min(len(bombs[0]), y + 2)):\n" +
-                   "\t\t\tif bombs[i][j]:\n" +
-                   "\t\t\t\tcount += 1\n" +
-                   "\treturn count\n\n" +
-                   "def print_board_with_hint(bombs, hint=False):\n" +
-                   "\tfor i in range(len(bombs)):\n" +
-                   "\t\tfor j in range(len(bombs[0])):\n" +
-                   "\t\t\tif hint and not bombs[i][j]:\n" +
-                   "\t\t\t\tbombs_around = count_bombs_around(bombs, i, j)\n" +
-                   "\t\t\t\tif bombs_around == 0:\n" +
-                   "\t\t\t\t\tbombs_around = '#'\n" +
-                   "\t\t\t\tprint(bombs_around, end='')\n" +
-                   "\t\t\telif not bombs[i][j]:\n" +
-                   "\t\t\t\tprint('#', end='')\n" +
-                   "\t\t\telse:\n" +
-                   "\t\t\t\tprint('*', end='')\n" +
-                   "\t\tprint()\n")
-            program_code = (pro + initiate_code + placements_code)
-            program_code += f"""print_board_with_hint(bombs, hint={str(self.hint)})"""
-            self.code_stack.append(program_code)
-
-    def generate_initiate_game(self):
-        height = int(self.operand_stack.pop())
-        width = int(self.operand_stack.pop())
-        code_string = f"bombs = [[False for y in range({height})] for x in range({width})]\n"
+                code_string = f'input_df = pd.read_csv("{file_path}")\n'
+            self.set_input = True
+        else:
+            code_string = f'output_df={file_path}\n'
+            self.set_output = True
         self.code_stack.append(code_string)
 
-    def generate_bomb(self):
-        y = int(self.operand_stack.pop())
-        x = int(self.operand_stack.pop())
-        code_string = f"bombs[{x - 1}][{y - 1}] = True\n"
+    # check =True
+    def combine_files(self):
+        output_path = self.operand_stack.pop()
+        file2 = self.operand_stack.pop()
+        file1 = self.operand_stack.pop()
+        code_string = (f'df1 = pd.read_csv({file1})\n'
+                       f'df2 = pd.read_csv({file2})\n'
+                       f'df_combined = pd.concat([df1, df2])\n'
+                       f'df_combined.to_csv({output_path}, index=False)\n')
         self.code_stack.append(code_string)
 
-    def set_output_type(self):
-        self.code_stack.append(f"##COMPILER_PARAM:::output_type:::{self.operand_stack.pop()}")
+    # check =True
+    def convert_format(self):
+        output_path = self.operand_stack.pop()
+        output_path = output_path.replace('"', '')
+        input_path = self.operand_stack.pop()
+        if output_path.endswith('.xls'):
+            code_string = (f'df = pd.read_csv({input_path})\n'
+                           f'df.to_excel("{output_path}", index=False)\n')
+        else:
+            code_string = (f'df = pd.read_excel({input_path})\n'
+                           f'df.to_csv("{output_path}", index=False)\n')
+        self.code_stack.append(code_string)
 
-    def generate_bomb_placements(self):
-        temp_block_stack = []
-        current_code = self.code_stack.pop()
-        if current_code != '##COMPILER_PARAM:::scope:::end_scope_operator':
-            self.code_stack.append(current_code)
-            return
-        while current_code != '##COMPILER_PARAM:::scope:::begin_scope_operator':
-            current_code = self.code_stack.pop()
-            temp_block_stack.append(current_code)
-        temp_block_stack.pop()
-        result = ''
-        while len(temp_block_stack) != 0:
-            result = result + temp_block_stack.pop()
-        self.code_stack.append(result)
+    # check =True
+    def add_columns(self):
+        if not self.set_input:
+            raise InputFileNotFound()
+        if not self.set_output:
+            raise OutputFileNotFound()
+        result_col = self.operand_stack.pop()
+        col2 = self.operand_stack.pop()
+        col1 = self.operand_stack.pop()
+        code_string = f'input_df[{result_col}] = input_df[{col1}] + input_df[{col2}]\n' \
+                      f'input_df.to_csv( output_df , index=False)\n'
+        self.code_stack.append(code_string)
 
-    def generate_begin_scope_operator(self):
-        self.code_stack.append("##COMPILER_PARAM:::scope:::begin_scope_operator")
+    # check =True
+    def rename_column(self):
+        if not self.set_input:
+            raise InputFileNotFound()
+        if not self.set_output:
+            raise OutputFileNotFound()
+        new_name = self.operand_stack.pop()
+        old_name = self.operand_stack.pop()
+        code_string = f'input_df = input_df.rename(columns={{{old_name}: {new_name}}})\n' \
+                      f'input_df.to_csv( output_df , index=False)\n'
+        self.code_stack.append(code_string)
 
-    def generate_end_scope_operator(self):
-        self.code_stack.append("##COMPILER_PARAM:::scope:::end_scope_operator")
+    def change_data_type(self):
+        data_type = self.operand_stack.pop()
+        col_name = self.operand_stack.pop()
+        code_string = f'df[{col_name}] = df[{col_name}].astype({data_type})\n'
+        self.code_stack.append(code_string)
+
+    def sort_data(self):
+        col_name = self.operand_stack.pop()
+        code_string = f'df = df.sort_values(by={col_name})\n'
+        self.code_stack.append(code_string)
+
+    def delete_column(self):
+        col_name = self.operand_stack.pop()
+        code_string = f'df = df.drop(columns=[{col_name}])\n'
+        self.code_stack.append(code_string)
+
+    def rename_file(self):
+        new_name = self.operand_stack.pop()
+        code_string = f'import os\nos.rename("output.csv", "{new_name}")\n'
+        self.code_stack.append(code_string)
+
+    def apply_condition(self):
+        end = int(self.operand_stack.pop())
+        start = int(self.operand_stack.pop())
+        code_string = f'df = df.iloc[{start - 1}:{end}]\n'
+        self.code_stack.append(code_string)
+
+    def generate_report(self):
+        col_name = self.operand_stack.pop()
+        code_string = (f'report = df.groupby(df["{col_name}"].dt.to_period("M")).size()\n'
+                       f'print(report)\n')
+        self.code_stack.append(code_string)
+
+    def reorder_columns(self):
+        columns = self.operand_stack.pop().split(", ")
+        code_string = f'df = df[{columns}]\n'
+        self.code_stack.append(code_string)
+
+    def group_by(self):
+        agg_func = self.operand_stack.pop()
+        col_name = self.operand_stack.pop()
+        group_by_col = self.operand_stack.pop()
+        code_string = (f'grouped = df.groupby("{group_by_col}").{agg_func}("{col_name}")\n'
+                       f'print(grouped)\n')
+        self.code_stack.append(code_string)
+
+    def filter_rows(self):
+        condition = self.operand_stack.pop()
+        code_string = f'df = df.query("{condition}")\n'
+        self.code_stack.append(code_string)
+
+    def search_text(self):
+        col_name = self.operand_stack.pop()
+        keyword = self.operand_stack.pop()
+        code_string = f'results = df[df["{col_name}"].str.contains("{keyword}")]\nprint(results)\n'
+        self.code_stack.append(code_string)
+
+    def replace_values(self):
+        new_value = self.operand_stack.pop()
+        old_value = self.operand_stack.pop()
+        col_name = self.operand_stack.pop()
+        code_string = f'df["{col_name}"] = df["{col_name}"].replace("{old_value}", "{new_value}")\n'
+        self.code_stack.append(code_string)
+
+    def add_condition(self):
+        condition = self.operand_stack.pop()
+        code_string = f'df = df.query("{condition}")\n'
+        self.code_stack.append(code_string)
+
+    def remove_duplicates(self):
+        col_name = self.operand_stack.pop()
+        code_string = f'df = df.drop_duplicates(subset=["{col_name}"])\n'
+        self.code_stack.append(code_string)
+
+    def split_data(self):
+        col_name = self.operand_stack.pop()
+        # code_string = (f'for key, grp in df.groupby("{col_name}"):\n'
+        #                f'    grp.to_csv(f"{col_name}_{key}.csv", index=False)\n')
+        # self.code_stack.append(code_string)
+
+    def combine_columns(self):
+        result_col = self.operand_stack.pop()
+        col2 = self.operand_stack.pop()
+        col1 = self.operand_stack.pop()
+        code_string = f'df["{result_col}"] = df["{col1}"] + " " + df["{col2}"]\n'
+        self.code_stack.append(code_string)
+
+    def resize_data(self):
+        factor = float(self.operand_stack.pop())
+        col_name = self.operand_stack.pop()
+        code_string = f'df["{col_name}"] = df["{col_name}"] * {factor}\n'
+        self.code_stack.append(code_string)

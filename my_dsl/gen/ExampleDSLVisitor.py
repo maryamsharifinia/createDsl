@@ -1,4 +1,4 @@
-# Generated from E:/uni file/compiler/hw5/my_dsl/grammar/ExampleDSL.g4 by ANTLR 4.13.1
+# Generated from E:/uni file/compiler/createDsl/my_dsl/grammar/ExampleDSL.g4 by ANTLR 4.13.1
 from antlr4 import *
 if "." in __name__:
     from .ExampleDSLParser import ExampleDSLParser
@@ -8,6 +8,11 @@ else:
 # This class defines a complete generic visitor for a parse tree produced by ExampleDSLParser.
 
 class ExampleDSLVisitor(ParseTreeVisitor):
+
+    # Visit a parse tree produced by ExampleDSLParser#start.
+    def visitStart(self, ctx:ExampleDSLParser.StartContext):
+        return self.visitChildren(ctx)
+
 
     # Visit a parse tree produced by ExampleDSLParser#program.
     def visitProgram(self, ctx:ExampleDSLParser.ProgramContext):
@@ -19,8 +24,28 @@ class ExampleDSLVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by ExampleDSLParser#setFilePathStatement.
-    def visitSetFilePathStatement(self, ctx:ExampleDSLParser.SetFilePathStatementContext):
+    # Visit a parse tree produced by ExampleDSLParser#setFileOutputPathStatement.
+    def visitSetFileOutputPathStatement(self, ctx:ExampleDSLParser.SetFileOutputPathStatementContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ExampleDSLParser#setFileInputPathStatement.
+    def visitSetFileInputPathStatement(self, ctx:ExampleDSLParser.SetFileInputPathStatementContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ExampleDSLParser#path.
+    def visitPath(self, ctx:ExampleDSLParser.PathContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ExampleDSLParser#column.
+    def visitColumn(self, ctx:ExampleDSLParser.ColumnContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ExampleDSLParser#result.
+    def visitResult(self, ctx:ExampleDSLParser.ResultContext):
         return self.visitChildren(ctx)
 
 
@@ -49,6 +74,11 @@ class ExampleDSLVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by ExampleDSLParser#type.
+    def visitType(self, ctx:ExampleDSLParser.TypeContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by ExampleDSLParser#sortDataStatement.
     def visitSortDataStatement(self, ctx:ExampleDSLParser.SortDataStatementContext):
         return self.visitChildren(ctx)
@@ -64,6 +94,11 @@ class ExampleDSLVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by ExampleDSLParser#file_name.
+    def visitFile_name(self, ctx:ExampleDSLParser.File_nameContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by ExampleDSLParser#applyConditionStatement.
     def visitApplyConditionStatement(self, ctx:ExampleDSLParser.ApplyConditionStatementContext):
         return self.visitChildren(ctx)
@@ -71,6 +106,11 @@ class ExampleDSLVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by ExampleDSLParser#generateReportStatement.
     def visitGenerateReportStatement(self, ctx:ExampleDSLParser.GenerateReportStatementContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ExampleDSLParser#period.
+    def visitPeriod(self, ctx:ExampleDSLParser.PeriodContext):
         return self.visitChildren(ctx)
 
 
@@ -89,6 +129,11 @@ class ExampleDSLVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by ExampleDSLParser#value.
+    def visitValue(self, ctx:ExampleDSLParser.ValueContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by ExampleDSLParser#searchTextStatement.
     def visitSearchTextStatement(self, ctx:ExampleDSLParser.SearchTextStatementContext):
         return self.visitChildren(ctx)
@@ -96,6 +141,11 @@ class ExampleDSLVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by ExampleDSLParser#replaceValuesStatement.
     def visitReplaceValuesStatement(self, ctx:ExampleDSLParser.ReplaceValuesStatementContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ExampleDSLParser#values.
+    def visitValues(self, ctx:ExampleDSLParser.ValuesContext):
         return self.visitChildren(ctx)
 
 
