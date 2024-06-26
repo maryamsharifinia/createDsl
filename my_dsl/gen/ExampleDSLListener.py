@@ -1,4 +1,4 @@
-# Generated from E:/uni file/compiler/createDsl/my_dsl/grammar/ExampleDSL.g4 by ANTLR 4.13.1
+# Generated from F:/University/compiler/pych/compiler/my_dsl/grammar/ExampleDSL.g4 by ANTLR 4.13.1
 from antlr4 import *
 if "." in __name__:
     from .ExampleDSLParser import ExampleDSLParser
@@ -35,21 +35,21 @@ class ExampleDSLListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by ExampleDSLParser#setFileOutputPathStatement.
-    def enterSetFileOutputPathStatement(self, ctx:ExampleDSLParser.SetFileOutputPathStatementContext):
+    # Enter a parse tree produced by ExampleDSLParser#importFileStatement.
+    def enterImportFileStatement(self, ctx:ExampleDSLParser.ImportFileStatementContext):
         pass
 
-    # Exit a parse tree produced by ExampleDSLParser#setFileOutputPathStatement.
-    def exitSetFileOutputPathStatement(self, ctx:ExampleDSLParser.SetFileOutputPathStatementContext):
+    # Exit a parse tree produced by ExampleDSLParser#importFileStatement.
+    def exitImportFileStatement(self, ctx:ExampleDSLParser.ImportFileStatementContext):
         pass
 
 
-    # Enter a parse tree produced by ExampleDSLParser#setFileInputPathStatement.
-    def enterSetFileInputPathStatement(self, ctx:ExampleDSLParser.SetFileInputPathStatementContext):
+    # Enter a parse tree produced by ExampleDSLParser#exportFileStatement.
+    def enterExportFileStatement(self, ctx:ExampleDSLParser.ExportFileStatementContext):
         pass
 
-    # Exit a parse tree produced by ExampleDSLParser#setFileInputPathStatement.
-    def exitSetFileInputPathStatement(self, ctx:ExampleDSLParser.SetFileInputPathStatementContext):
+    # Exit a parse tree produced by ExampleDSLParser#exportFileStatement.
+    def exitExportFileStatement(self, ctx:ExampleDSLParser.ExportFileStatementContext):
         pass
 
 
@@ -302,6 +302,15 @@ class ExampleDSLListener(ParseTreeListener):
 
     # Exit a parse tree produced by ExampleDSLParser#resizeDataStatement.
     def exitResizeDataStatement(self, ctx:ExampleDSLParser.ResizeDataStatementContext):
+        pass
+
+
+    # Enter a parse tree produced by ExampleDSLParser#id.
+    def enterId(self, ctx:ExampleDSLParser.IdContext):
+        pass
+
+    # Exit a parse tree produced by ExampleDSLParser#id.
+    def exitId(self, ctx:ExampleDSLParser.IdContext):
         pass
 
 

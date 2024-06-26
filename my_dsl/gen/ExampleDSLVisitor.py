@@ -1,4 +1,4 @@
-# Generated from E:/uni file/compiler/createDsl/my_dsl/grammar/ExampleDSL.g4 by ANTLR 4.13.1
+# Generated from F:/University/compiler/pych/compiler/my_dsl/grammar/ExampleDSL.g4 by ANTLR 4.13.1
 from antlr4 import *
 if "." in __name__:
     from .ExampleDSLParser import ExampleDSLParser
@@ -24,13 +24,13 @@ class ExampleDSLVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by ExampleDSLParser#setFileOutputPathStatement.
-    def visitSetFileOutputPathStatement(self, ctx:ExampleDSLParser.SetFileOutputPathStatementContext):
+    # Visit a parse tree produced by ExampleDSLParser#importFileStatement.
+    def visitImportFileStatement(self, ctx:ExampleDSLParser.ImportFileStatementContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by ExampleDSLParser#setFileInputPathStatement.
-    def visitSetFileInputPathStatement(self, ctx:ExampleDSLParser.SetFileInputPathStatementContext):
+    # Visit a parse tree produced by ExampleDSLParser#exportFileStatement.
+    def visitExportFileStatement(self, ctx:ExampleDSLParser.ExportFileStatementContext):
         return self.visitChildren(ctx)
 
 
@@ -171,6 +171,11 @@ class ExampleDSLVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by ExampleDSLParser#resizeDataStatement.
     def visitResizeDataStatement(self, ctx:ExampleDSLParser.ResizeDataStatementContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ExampleDSLParser#id.
+    def visitId(self, ctx:ExampleDSLParser.IdContext):
         return self.visitChildren(ctx)
 
 

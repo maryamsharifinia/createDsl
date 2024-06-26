@@ -2,9 +2,9 @@ from my_dsl.Erorrs.InputError import *
 
 
 class CustomExampleDSLCodeGenerator:
-    def __init__(self):
+    def __init__(self, variables):
         self.non_operands = [
-            'program', 'set_file_input_path', 'set_file_output_path', 'combine', 'convert', 'add_columns',
+            'program', 'import_file', 'export_file', 'combine', 'convert', 'add_columns',
             'rename_column',
             'change_data_type', 'sort_data', 'delete_column', 'rename_file', 'apply_condition',
             'generate_report', 'reorder_columns', 'group_by', 'filter_rows', 'search_text',
@@ -13,6 +13,7 @@ class CustomExampleDSLCodeGenerator:
         ]
         self.operand_stack = []
         self.code_stack = []
+        self.variables = variables
         self.set_input = False
         self.set_output = False
 
@@ -20,6 +21,7 @@ class CustomExampleDSLCodeGenerator:
         return item not in self.non_operands
 
     def generate_code(self, post_order_array):
+        #print(self.variables)
         for item in post_order_array:
             if not self.is_operand(item["label"]):
                 self.generate_code_based_on_non_operand(item["label"])
@@ -36,11 +38,11 @@ class CustomExampleDSLCodeGenerator:
         if item == "program":
             self.generate_program()
 
-        elif item == "set_file_input_path":
-            self.set_file_path(file_type='input')
+        elif item == "import_file":
+            self.import_file()
 
-        elif item == "set_file_output_path":
-            self.set_file_path(file_type='output')
+        elif item == "export_file":
+            self.export_file()
 
         elif item == "combine":
             self.combine_files()
@@ -108,19 +110,25 @@ class CustomExampleDSLCodeGenerator:
         result_code = 'import pandas as pd\n' + result_code
         self.code_stack = [result_code]
 
-    # check =True
-    def set_file_path(self, file_type):
-        file_path = self.operand_stack.pop()
-        if file_type == "input":
-            file_path = file_path.replace('"', '')
-            if file_path.endswith('.xls'):
-                code_string = f'input_df = pd.read_excel("{file_path}")\n'
-            else:
-                code_string = f'input_df = pd.read_csv("{file_path}")\n'
-            self.set_input = True
+    def import_file(self):
+        var = self.operand_stack.pop()
+        file_path = self.operand_stack.pop()[1:-1]
+        if file_path.endswith('.xls'):
+            code_string = f'{var} = pd.read_excel("{file_path}")\n'
         else:
+            code_string = f'{var} = pd.read_csv("{file_path}")\n'
+
+        self.code_stack.append(code_string)
+        """
             code_string = f'output_df={file_path}\n'
-            self.set_output = True
+        self.code_stack.append(code_string)
+        """
+
+    def export_file(self):
+        print(self.operand_stack)
+        target_file = self.operand_stack.pop()
+        target_var = self.operand_stack.pop()
+        code_string = f'{target_var}.to_csv({target_file}, index=False)\n'
         self.code_stack.append(code_string)
 
     # check =True
@@ -156,20 +164,23 @@ class CustomExampleDSLCodeGenerator:
         result_col = self.operand_stack.pop()
         col2 = self.operand_stack.pop()
         col1 = self.operand_stack.pop()
-        code_string = f'input_df[{result_col}] = input_df[{col1}] + input_df[{col2}]\n' \
-                      f'input_df.to_csv( output_df , index=False)\n'
+        code_string = f'temp_df[{result_col}] = temp_df[{col1}] + temp_df[{col2}]\n' \
+                      f'temp_df.to_csv( output_df , index=False)\n'
         self.code_stack.append(code_string)
 
     # check =True
     def rename_column(self):
+        """
         if not self.set_input:
             raise InputFileNotFound()
         if not self.set_output:
             raise OutputFileNotFound()
+        """
+        #print(self.operand_stack)
+        target_var = self.operand_stack.pop()
         new_name = self.operand_stack.pop()
         old_name = self.operand_stack.pop()
-        code_string = f'input_df = input_df.rename(columns={{{old_name}: {new_name}}})\n' \
-                      f'input_df.to_csv( output_df , index=False)\n'
+        code_string = f'{target_var} = {target_var}.rename(columns={{{old_name}: {new_name}}})\n'
         self.code_stack.append(code_string)
 
     def change_data_type(self):

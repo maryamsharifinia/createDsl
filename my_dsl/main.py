@@ -22,7 +22,7 @@ def main(arguments):
 	post_order_ast_traverser = PostOrderASTTraverser()
 	post_order_ast_traverser.node_attributes = ['label', 'text', 'number']
 	traversal = post_order_ast_traverser.traverse_ast(ast.root)
-	code_generator = CustomExampleDSLCodeGenerator()
+	code_generator = CustomExampleDSLCodeGenerator(ast_builder_listener.variables)
 	generated_code = code_generator.generate_code(traversal)
 	with open(arguments.output, 'w') as output_file:
 		output_file.write(generated_code)

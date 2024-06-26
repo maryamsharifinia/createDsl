@@ -2,10 +2,14 @@ from my_dsl.default_codes.ast import AST
 from my_dsl.default_codes.make_ast_subtree import make_ast_subtree
 from my_dsl.gen.ExampleDSLListener import ExampleDSLListener
 
+
 class CustomExampleDSLListener(ExampleDSLListener):
     def __init__(self, rule_names):
+
+        self.variables = {}
         self.overridden_rules = [
             'program',
+            "importFileStatement",
             "setFileInputPathStatement",
             "setFileOutputPathStatement",
             "combineStatement",
@@ -28,6 +32,7 @@ class CustomExampleDSLListener(ExampleDSLListener):
             "splitDataStatement",
             "combineColumnsStatement",
             "resizeDataStatement",
+            "exportFileStatement",
         ]
         self.rule_names = rule_names
         self.ast = AST()
@@ -39,6 +44,17 @@ class CustomExampleDSLListener(ExampleDSLListener):
 
     def exitProgram(self, ctx):
         make_ast_subtree(self.ast, ctx, "program", keep_node=True)
+
+    def exitImportFileStatement(self, ctx):
+        self.variables[str(ctx.getChild(3).getChild(0))] = str(ctx.getChild(1).getChild(0))
+        make_ast_subtree(self.ast, ctx, "import_file", keep_node=True)
+
+    def exitExportFileStatement(self, ctx):
+        if str(ctx.getChild(1).getText()) in self.variables:
+            print("No Error in exporting")
+        else:
+            print("Error in exporting!!!")
+        make_ast_subtree(self.ast, ctx, "export_file", keep_node=True)
 
     def exitSetFileInputPathStatement(self, ctx):
         make_ast_subtree(self.ast, ctx, "set_file_input_path", keep_node=True)

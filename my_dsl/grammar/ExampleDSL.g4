@@ -3,8 +3,8 @@ grammar ExampleDSL;
 start: program EOF;
 program:statement+;
 statement
-    : setFileInputPathStatement
-    | setFileOutputPathStatement
+    : importFileStatement
+    | exportFileStatement
     | combineStatement
     | convertStatement
     | addColumnsStatement
@@ -27,42 +27,42 @@ statement
     | resizeDataStatement
     ;
 
-setFileOutputPathStatement
-    :  SET FILE PATH OUTPUT path ';';
+importFileStatement
+    : IMPORT path AS id ';';
 
-setFileInputPathStatement
-    : SET FILE PATH INPUT path ';';
+exportFileStatement
+    : EXPORT id TO path ';';
 
-path: STRING;
+path : STRING;
 column : STRING;
 result : STRING;
 combineStatement
-    : COMBINE FILE path WITH path AND WRITE TO path';'
+    : COMBINE FILE (path|id) WITH (path|id) AND WRITE TO (path|id)';'
     ;
 convertStatement
-    : CONVERT FORMAT FROM path TO path ';'
+    : CONVERT FORMAT FROM (path|id) TO (path|id) ';'
     ;
 
 addColumnsStatement
-    : ADD COLUMNS column AND column AND SAVE RESULT TO result';'
+    : ADD COLUMNS column AND column AND SAVE RESULT TO (path|id)';'
     ;
 
 renameColumnStatement
-    : RENAME COLUMN column TO column ';'
+    : RENAME COLUMN column TO column IN (path|id)';'
     ;
 
 changeDataTypeStatement
-    : CHANGE DATA TYPE OF COLUMN '(' column')' TO type ';'
+    : CHANGE DATA TYPE OF COLUMN '(' column')' TO type IN (path|id)';'
     ;
 
 type:TYPE;
 
 sortDataStatement
-    : SORT DATA BY COLUMN '(' column')' ';'
+    : SORT DATA BY COLUMN '(' column')' IN (path|id)';'
     ;
 
 deleteColumnStatement
-    : DELETE COLUMN column ';'
+    : DELETE COLUMN column IN (path|id)';'
     ;
 
 renameFileStatement
@@ -70,11 +70,11 @@ renameFileStatement
     ;
 file_name:STRING;
 applyConditionStatement
-    : APPLY CONDITION ON ROWS from=NUMBER TO to=NUMBER ';'
+    : APPLY CONDITION ON ROWS from=NUMBER TO to=NUMBER IN (path|id)';'
     ;
 
 generateReportStatement
-    : GENERATE REPORT FOR COLUMN '(' column ')' BY period ';'
+    : GENERATE REPORT FOR COLUMN '(' column ')' BY period IN (path|id)';'
     ;
 
 period:'day'|'month'| 'year';
@@ -119,6 +119,9 @@ resizeDataStatement
     : RESIZE DATA IN COLUMN '(' column ')' BY MULTIPLYING WITH value ';'
     ;
 
+id returns[value_attr = str(), type_attr = str()]: ID;
+EXPORT: 'export';
+IMPORT: 'import';
 INPUT: 'input';
 OUTPUT: 'output';
 REPORT:'report';

@@ -29,8 +29,8 @@ def make_ast_subtree(ast, tree_node_ctx, node_value, keep_node=False):
             children.append(ast.make_node("begin_scope_operator", children=[]))
 
         for i in range(0, raw_children_count):
+            #print(child)
             child = tree_node_ctx.getChild(i)
-
             if hasattr(child, "ast_value"):
                 children.append(child.ast_value)
 
