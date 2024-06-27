@@ -1,4 +1,4 @@
-from my_dsl.Erorrs.InputError import *
+from Erorrs.InputError import *
 
 
 class CustomExampleDSLCodeGenerator:
@@ -184,48 +184,70 @@ class CustomExampleDSLCodeGenerator:
         self.code_stack.append(code_string)
 
     def change_data_type(self):
+        target_var = self.operand_stack.pop()
         data_type = self.operand_stack.pop()
         col_name = self.operand_stack.pop()
-        code_string = f'df[{col_name}] = df[{col_name}].astype({data_type})\n'
+        code_string = f'{target_var}[{col_name}] = {target_var}[{col_name}].astype({data_type})\n'
         self.code_stack.append(code_string)
 
     def sort_data(self):
+        target_var = self.operand_stack.pop()
         col_name = self.operand_stack.pop()
-        code_string = f'df = df.sort_values(by={col_name})\n'
+        code_string = f'{target_var} = {target_var}.sort_values(by={col_name})\n'
         self.code_stack.append(code_string)
 
     def delete_column(self):
+        target_var = self.operand_stack.pop()
         col_name = self.operand_stack.pop()
-        code_string = f'df = df.drop(columns=[{col_name}])\n'
+        code_string = f'{target_var} = {target_var}.drop(columns=[{col_name}])\n'
         self.code_stack.append(code_string)
 
     def rename_file(self):
         new_name = self.operand_stack.pop()
-        code_string = f'import os\nos.rename("output.csv", "{new_name}")\n'
+        code_string = f'import os\nos.rename("output.csv", {new_name})\n'
         self.code_stack.append(code_string)
 
     def apply_condition(self):
+        target_var = self.operand_stack.pop()
         end = int(self.operand_stack.pop())
         start = int(self.operand_stack.pop())
-        code_string = f'df = df.iloc[{start - 1}:{end}]\n'
+        code_string = f'{target_var} = {target_var}.iloc[{start - 1}:{end}]\n'
         self.code_stack.append(code_string)
 
     def generate_report(self):
-        col_name = self.operand_stack.pop()
-        code_string = (f'report = df.groupby(df["{col_name}"].dt.to_period("M")).size()\n'
-                       f'print(report)\n')
+        target_var = self.operand_stack.pop()
+        date_granularity = self.operand_stack.pop()
+        col_name = self.operand_stack.pop().lower()  # 'day', 'month', 'year', etc.
+
+        if date_granularity == "day":
+            code_string = (f'{target_var}[{col_name}] = pd.to_datetime({target_var}[{col_name}], errors="coerce")\n'
+                           f'report = {target_var}.groupby({target_var}[{col_name}].dt.date).size()\n')
+        elif date_granularity == "month":
+            code_string = (f'{target_var}[{col_name}] = pd.to_datetime({target_var}[{col_name}], errors="coerce")\n'
+                           f'report = {target_var}.groupby({target_var}[{col_name}].dt.to_period("M")).size()\n')
+        elif date_granularity == "year":
+            code_string = (f'{target_var}[{col_name}] = pd.to_datetime({target_var}[{col_name}], errors="coerce")\n'
+                           f'report = {target_var}.groupby({target_var}[{col_name}].dt.to_period("Y")).size()\n')
+        else:
+            code_string = f'report = {target_var}.groupby({col_name}).size()\n'
+
+        code_string += f'print(report)\n'
         self.code_stack.append(code_string)
 
     def reorder_columns(self):
+        target_var = self.operand_stack.pop()
         columns = self.operand_stack.pop().split(", ")
-        code_string = f'df = df[{columns}]\n'
+        code_string = f'{target_var} = {target_var}[{columns}]\n'
         self.code_stack.append(code_string)
 
     def group_by(self):
-        agg_func = self.operand_stack.pop()
+        target_var = self.operand_stack.pop()
         col_name = self.operand_stack.pop()
+        print(target_var)
+        print(col_name)
         group_by_col = self.operand_stack.pop()
-        code_string = (f'grouped = df.groupby("{group_by_col}").{agg_func}("{col_name}")\n'
+        print(group_by_col)
+        code_string = (f'grouped = {target_var}.groupby("{group_by_col}").sum({col_name})\n'
                        f'print(grouped)\n')
         self.code_stack.append(code_string)
 
@@ -237,14 +259,14 @@ class CustomExampleDSLCodeGenerator:
     def search_text(self):
         col_name = self.operand_stack.pop()
         keyword = self.operand_stack.pop()
-        code_string = f'results = df[df["{col_name}"].str.contains("{keyword}")]\nprint(results)\n'
+        code_string = f'results = df[df[{col_name}].str.contains("{keyword}")]\nprint(results)\n'
         self.code_stack.append(code_string)
 
     def replace_values(self):
         new_value = self.operand_stack.pop()
         old_value = self.operand_stack.pop()
         col_name = self.operand_stack.pop()
-        code_string = f'df["{col_name}"] = df["{col_name}"].replace("{old_value}", "{new_value}")\n'
+        code_string = f'df[{col_name}] = df[{col_name}].replace("{old_value}", "{new_value}")\n'
         self.code_stack.append(code_string)
 
     def add_condition(self):
@@ -254,14 +276,18 @@ class CustomExampleDSLCodeGenerator:
 
     def remove_duplicates(self):
         col_name = self.operand_stack.pop()
-        code_string = f'df = df.drop_duplicates(subset=["{col_name}"])\n'
+        code_string = f'df = df.drop_duplicates(subset=[{col_name}])\n'
         self.code_stack.append(code_string)
 
     def split_data(self):
-        col_name = self.operand_stack.pop()
-        # code_string = (f'for key, grp in df.groupby("{col_name}"):\n'
+        # col_name = self.operand_stack.pop()
+        # code_string = (f'for key, grp in df.groupby({col_name}):\n'
         #                f'    grp.to_csv(f"{col_name}_{key}.csv", index=False)\n')
         # self.code_stack.append(code_string)
+        col_name = self.operand_stack.pop()
+        code_string = (f'for key, grp in df.groupby({col_name}):\n'
+                       f'    grp.to_csv(f"{col_name}_{key}.csv", index=False)\n')
+        self.code_stack.append(code_string)
 
     def combine_columns(self):
         result_col = self.operand_stack.pop()
@@ -273,5 +299,5 @@ class CustomExampleDSLCodeGenerator:
     def resize_data(self):
         factor = float(self.operand_stack.pop())
         col_name = self.operand_stack.pop()
-        code_string = f'df["{col_name}"] = df["{col_name}"] * {factor}\n'
+        code_string = f'df[{col_name}] = df[{col_name}] * {factor}\n'
         self.code_stack.append(code_string)

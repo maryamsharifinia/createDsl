@@ -1,3 +1,9 @@
 import "input.csv" as inp5;
 Rename column "prodYear" to "prod" in inp5;
-export inp5 to "abcd_out.csv";
+Change data type of column ("prod") to float in inp5;
+Sort data by column ("price") in inp5;
+Delete column "name" in inp5;
+Generate report for column ("date") by year in inp5;
+export inp5 to "output.csv";
+Rename output file to "final_output.csv";
+

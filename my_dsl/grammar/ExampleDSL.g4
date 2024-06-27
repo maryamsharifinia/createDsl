@@ -84,7 +84,7 @@ reorderColumnsStatement
     ;
 
 groupByStatement
-    : GROUP BY column AND SUM VALUES IN column ';'
+    : GROUP BY column AND SUM VALUES IN column IN (path|id)';'
     ;
 
 filterRowsStatement
@@ -150,7 +150,7 @@ FORMAT: 'format';
 DATA: 'data';
 COLUMN: 'column';
 COLUMNS: 'columns';
-TYPE: 'type';
+TYPE: 'float'| 'str' | 'int'| 'bool'| 'date' | 'type';
 ROWS: 'rows';
 ROW: 'row';
 CONDITION: 'condition';

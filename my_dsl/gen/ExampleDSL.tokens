@@ -104,7 +104,6 @@ FILES=68
 'data'=36
 'column'=37
 'columns'=38
-'type'=39
 'rows'=40
 'row'=41
 'condition'=42

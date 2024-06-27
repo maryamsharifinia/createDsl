@@ -11,3 +11,4 @@ class InputFileNotFound(UserInputError):
 class OutputFileNotFound(UserInputError):
     def __init__(self):
         super(OutputFileNotFound, self).__init__(message="output file not found ")
+
