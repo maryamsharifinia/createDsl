@@ -1,6 +1,7 @@
 from my_dsl.default_codes.ast import AST
 from my_dsl.default_codes.make_ast_subtree import make_ast_subtree
 from my_dsl.gen.ExampleDSLListener import ExampleDSLListener
+from my_dsl.gen.ExampleDSLParser import ExampleDSLParser
 
 
 class CustomExampleDSLListener(ExampleDSLListener):
@@ -9,6 +10,7 @@ class CustomExampleDSLListener(ExampleDSLListener):
         self.variables = {}
         self.overridden_rules = [
             'program',
+            "asStatement",
             "importFileStatement",
             "setFileInputPathStatement",
             "setFileOutputPathStatement",
@@ -46,10 +48,16 @@ class CustomExampleDSLListener(ExampleDSLListener):
         make_ast_subtree(self.ast, ctx, "program", keep_node=True)
 
     def exitImportFileStatement(self, ctx):
-        self.variables[str(ctx.getChild(3).getChild(0))] = str(ctx.getChild(1).getChild(0))
+        #print(str(ctx.getChild(2).getChild(0)))
+        self.variables[str(ctx.getChild(2).getChild(0))] = [str(ctx.getChild(1).getChild(0)), "FILE"]
         make_ast_subtree(self.ast, ctx, "import_file", keep_node=True)
 
+    def exitAsStatement(self, ctx: ExampleDSLParser.AsStatementContext):
+        self.variables[str(ctx.getChild(1).getText())] = ["statement", "statement"]
+        make_ast_subtree(self.ast, ctx, "as", keep_node=True)
+
     def exitExportFileStatement(self, ctx):
+
         if str(ctx.getChild(1).getText()) in self.variables:
             print("No Error in exporting")
         else:

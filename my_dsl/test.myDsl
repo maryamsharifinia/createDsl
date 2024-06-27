@@ -1,3 +1,5 @@
 import "input.csv" as inp5;
-Rename column "prodYear" to "prod" in inp5;
-export inp5 to "abcd_out.csv";
+Rename column "prodYear","No." to "prod",   "index"    in inp5 as inpNew;
+Rename column "prodYear" to "prod2" in inp5;
+export inpNew to "abcd_out.csv";
+export inp5 to "abcd2.csv";

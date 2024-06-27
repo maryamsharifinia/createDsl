@@ -28,59 +28,64 @@ statement
     ;
 
 importFileStatement
-    : IMPORT path AS id ';';
+    : IMPORT path asStatement ';';
 
 exportFileStatement
     : EXPORT id TO path ';';
 
+
+asStatement: AS id;
 path : STRING;
 column : STRING;
 result : STRING;
+
 combineStatement
-    : COMBINE FILE (path|id) WITH (path|id) AND WRITE TO (path|id)';'
+    : COMBINE FILE (path|id) WITH (path|id) asStatement';'
     ;
+
 convertStatement
     : CONVERT FORMAT FROM (path|id) TO (path|id) ';'
     ;
 
 addColumnsStatement
-    : ADD COLUMNS column AND column AND SAVE RESULT TO (path|id)';'
+    : ADD COLUMNS (column(',' column)*) IN (path|id) (asStatement)?';'
     ;
 
 renameColumnStatement
-    : RENAME COLUMN column TO column IN (path|id)';'
+    : RENAME COLUMN (column(',' column)*) TO (column(',' column)*) IN (path|id) (asStatement)?';'
     ;
 
 changeDataTypeStatement
-    : CHANGE DATA TYPE OF COLUMN '(' column')' TO type IN (path|id)';'
+    : CHANGE DATA TYPE OF COLUMN (column(',' column)*) TO (type(',' type)*) IN (path|id) (asStatement)?';'
     ;
 
 type:TYPE;
 
 sortDataStatement
-    : SORT DATA BY COLUMN '(' column')' IN (path|id)';'
+    : SORT DATA BY COLUMN column IN (path|id) (asStatement)?';'
     ;
 
 deleteColumnStatement
-    : DELETE COLUMN column IN (path|id)';'
+    : DELETE COLUMN (column(',' column)*) IN (path|id) (asStatement)?';'
     ;
 
 renameFileStatement
     : RENAME OUTPUT FILE TO file_name ';'
     ;
 file_name:STRING;
+
 applyConditionStatement
     : APPLY CONDITION ON ROWS from=NUMBER TO to=NUMBER IN (path|id)';'
     ;
 
 generateReportStatement
-    : GENERATE REPORT FOR COLUMN '(' column ')' BY period IN (path|id)';'
+    : GENERATE REPORT FOR COLUMN column BY period IN (path|id)';'
     ;
 
 period:'day'|'month'| 'year';
 
 reorderColumnsStatement
-    : REORDER COLUMNS columns+=STRING (',' columns+=STRING)* TO newOrder+=STRING (',' newOrder+=STRING)* ';'
+    : REORDER COLUMNS (column(',' column)*) TO (column(',' column)*) IN (path|id) (asStatement)?';'
     ;
 
 groupByStatement
