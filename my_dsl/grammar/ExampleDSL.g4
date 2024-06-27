@@ -80,7 +80,7 @@ generateReportStatement
 period:'day'|'month'| 'year';
 
 reorderColumnsStatement
-    : REORDER COLUMNS columns+=STRING (',' columns+=STRING)* TO newOrder+=STRING (',' newOrder+=STRING)* ';'
+    : REORDER COLUMNS columns+=STRING (',' columns+=STRING)* TO newOrder+=STRING (',' newOrder+=STRING)*';'
     ;
 
 groupByStatement
@@ -157,6 +157,8 @@ CONDITION: 'condition';
 VALUES: 'values';
 IN: 'in';
 RESULT: 'result';
+SEPARATE: 'separate';
+FILES: 'files';
 TO: 'to';
 WITH: 'with';
 AND: 'and';
