@@ -9,6 +9,7 @@ from codes.custom_example_dsl_code_generator import CustomExampleDSLCodeGenerato
 
 
 def main(arguments):
+	"test"
 	stream = FileStream(arguments.input, encoding='utf8')
 	lexer = ExampleDSLLexer(stream)
 	token_stream = CommonTokenStream(lexer)
