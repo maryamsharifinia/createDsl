@@ -57,7 +57,7 @@ renameColumnStatement
     ;
 
 changeDataTypeStatement
-    : CHANGE DATA TYPE OF COLUMN (column(',' column)*) TO (type(',' type)*) IN (path|id) (asStatement)?';'
+    : CHANGE DATA TYPE OF COLUMN (column(',' column)*) TO type IN (path|id) (asStatement)?';'
     ;
 
 type:TYPE;
@@ -90,7 +90,7 @@ reorderColumnsStatement
     ;
 
 groupByStatement
-    : GROUP BY column AND SUM VALUES IN column ';'
+    : GROUP BY column AND SUM VALUES TO column IN (path|id)';'
     ;
 
 filterRowsStatement
@@ -156,7 +156,7 @@ FORMAT: 'format';
 DATA: 'data';
 COLUMN: 'column';
 COLUMNS: 'columns';
-TYPE: 'type';
+TYPE: 'float'| 'str' | 'int'| 'bool'| 'date' | 'type';
 ROWS: 'rows';
 ROW: 'row';
 CONDITION: 'condition';

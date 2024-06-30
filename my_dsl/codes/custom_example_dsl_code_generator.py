@@ -163,16 +163,6 @@ class CustomExampleDSLCodeGenerator:
 
     # check =True
     def combine_files(self):
-        """
-        output_path = self.operand_stack.pop()
-        file2 = self.operand_stack.pop()
-        file1 = self.operand_stack.pop()
-        code_string = (f'df1 = pd.read_csv({file1})\n'
-                       f'df2 = pd.read_csv({file2})\n'
-                       f'df_combined = pd.concat([df1, df2])\n'
-                       f'df_combined.to_csv({output_path}, index=False)\n')
-        self.code_stack.append(code_string)
-        """
         self.operand_stack.pop()
         code_files = []
         for i in range(len(self.operand_stack)):
@@ -282,10 +272,29 @@ class CustomExampleDSLCodeGenerator:
             print("Error!!!")
 
     def change_data_type(self):
-        data_type = self.operand_stack.pop()
-        col_name = self.operand_stack.pop()
-        code_string = f'df[{col_name}] = df[{col_name}].astype({data_type})\n'
+        #print(self.operand_stack)
+
+        temp_or_targetvar = self.operand_stack.pop()
+        code_string = ""
+        as_code = ""
+
+        if self.is_as_called(temp_or_targetvar):
+            temp_or_targetvar = self.operand_stack.pop()
+            as_code = self.code_stack.pop()
+            code_string += f"{as_code} = {temp_or_targetvar}.copy()\n{as_code}"
+        else:
+            code_string += f"{temp_or_targetvar}"
+
+        dtype = self.operand_stack.pop()
+
+        cols = []
+        while len(self.operand_stack) > 0:
+            cols.append(self.operand_stack.pop())
+
+        code_string += "[[" + ", ".join(cols) + f"]].astype({dtype})"
+
         self.code_stack.append(code_string)
+
 
     def sort_data(self):
         col_name = self.operand_stack.pop()

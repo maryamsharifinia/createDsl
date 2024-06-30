@@ -1,15 +1,6 @@
 import "input.csv" as inp1;
 Rename column "prodYear","No." to "prod",   "index"    in inp1 as inpNew1;
 
-export inpNew1 to "rename.csv";
+Change data type of column "prod", "sales" to float in inpNew1 as inpdatatype;
 
-import "input.csv" as inp2;
-Combine "input.csv" , inp2 as inp2;
-Combine "input.csv" , "input.csv" , inp2 as inp3;
-
-Add columns "sales","price","price" in inp1 as inp4;
-
-export inp4 to "add_col.csv";
-
-export inp2 to "combine.csv";
-export inp3 to "combine2.csv";
+export inpdatatype to "data_type.csv";
