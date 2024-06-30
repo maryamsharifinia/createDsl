@@ -4,7 +4,7 @@ from my_dsl.Erorrs.InputError import *
 class CustomExampleDSLCodeGenerator:
     def __init__(self, variables):
         self.non_operands = [
-            'program', 'import_file', 'as', 'export_file', 'combine', 'convert', 'add_columns',
+            'program', 'import_file', 'as', 'to','export_file', 'combine', 'convert', 'add_columns',
             'rename_column',
             'change_data_type', 'sort_data', 'delete_column', 'rename_file', 'apply_condition',
             'generate_report', 'reorder_columns', 'group_by', 'filter_rows', 'search_text',
@@ -40,6 +40,9 @@ class CustomExampleDSLCodeGenerator:
 
         elif item == "as":
             self.as_statement()
+
+        elif item == "to":
+            self.to_statement()
 
         elif item == "import_file":
             self.import_file()
@@ -115,15 +118,29 @@ class CustomExampleDSLCodeGenerator:
 
     def as_statement(self):
         target_val = self.operand_stack.pop()
-        code_string = f'{target_val} = '
+        code_string = f'{target_val}'
         self.code_stack.append(code_string)
         self.push_as_called()
+
+    def to_statement(self):
+        target_col_name = self.operand_stack.pop()
+        code_string = f'[{target_col_name}]'
+        self.code_stack.append(code_string)
+        self.push_to_called()
 
     def push_as_called(self):
         self.operand_stack.append("asCalled__")
 
+    def push_to_called(self):
+        self.operand_stack.append("toCalled__")
+
     def is_as_called(self, item):
         if item == "asCalled__":
+            return True
+        return False
+
+    def is_to_called(self, item):
+        if item == "toCalled__":
             return True
         return False
 
@@ -135,7 +152,7 @@ class CustomExampleDSLCodeGenerator:
         else:
             code_string = f'pd.read_csv("{file_path}")\n'
 
-        self.code_stack.append(self.code_stack.pop() + code_string)
+        self.code_stack.append(self.code_stack.pop() + " = " + code_string)
 
     def export_file(self):
         #print(self.operand_stack)
@@ -146,6 +163,7 @@ class CustomExampleDSLCodeGenerator:
 
     # check =True
     def combine_files(self):
+        """
         output_path = self.operand_stack.pop()
         file2 = self.operand_stack.pop()
         file1 = self.operand_stack.pop()
@@ -153,6 +171,19 @@ class CustomExampleDSLCodeGenerator:
                        f'df2 = pd.read_csv({file2})\n'
                        f'df_combined = pd.concat([df1, df2])\n'
                        f'df_combined.to_csv({output_path}, index=False)\n')
+        self.code_stack.append(code_string)
+        """
+        self.operand_stack.pop()
+        code_files = []
+        for i in range(len(self.operand_stack)):
+            file = self.operand_stack.pop()
+            if file[1:-1].endswith(".csv"):
+                code_files.append(f"pd.read_csv({file})")
+            else:
+                code_files.append(file)
+        as_code = self.code_stack.pop()
+        code_string = ", ".join(code_files[::-1])
+        code_string = as_code + " = " + "pd.concat([" + code_string + "])\n"
         self.code_stack.append(code_string)
 
     # check =True
@@ -170,16 +201,45 @@ class CustomExampleDSLCodeGenerator:
 
     # check =True
     def add_columns(self):
-        if not self.set_input:
-            raise InputFileNotFound()
-        if not self.set_output:
-            raise OutputFileNotFound()
+        """
         result_col = self.operand_stack.pop()
         col2 = self.operand_stack.pop()
         col1 = self.operand_stack.pop()
         code_string = f'temp_df[{result_col}] = temp_df[{col1}] + temp_df[{col2}]\n' \
                       f'temp_df.to_csv( output_df , index=False)\n'
         self.code_stack.append(code_string)
+        """
+        #print(self.operand_stack)
+        print(self.variables)
+        temp_or_targetvar = self.operand_stack.pop()
+        code_string = ""
+        as_code = ""
+        to_code = ""
+
+        if self.is_as_called(temp_or_targetvar):
+            temp_or_targetvar = self.operand_stack.pop()
+            as_code = self.code_stack.pop()
+            code_string += f"{as_code} = {temp_or_targetvar}.copy()\n"
+        else:
+            code_string += f"{temp_or_targetvar}"
+
+        temp_or_col = self.operand_stack.pop()
+
+        if self.is_to_called(temp_or_col):
+            to_code = self.code_stack.pop()
+        else:
+            to_code = f"['addCol{self.variables[temp_or_targetvar][2]}']"
+            self.variables[temp_or_targetvar][2] += 1
+            self.operand_stack.append(temp_or_col)
+
+        col_code = []
+        while len(self.operand_stack) > 0:
+            col = self.operand_stack.pop()
+            col_code.append(f"{temp_or_targetvar}[{col}]")
+
+        code_string += as_code + to_code + " = " + " + ".join(col_code)
+
+        self.code_stack.append(code_string + "\n")
 
     # check =True
     def rename_column(self):
@@ -197,8 +257,9 @@ class CustomExampleDSLCodeGenerator:
             temp_or_targetvar = self.operand_stack.pop()
             as_code = self.code_stack.pop()
         else:
-            code_string += f"{temp_or_targetvar} = "
+            code_string += f"{temp_or_targetvar}"
 
+        code_string = as_code+code_string + " = "
 
         total_size = len(self.operand_stack)
         if total_size % 2 == 0:
@@ -215,7 +276,7 @@ class CustomExampleDSLCodeGenerator:
 
             code_string += "})\n"
 
-            self.code_stack.append(as_code + code_string)
+            self.code_stack.append(code_string)
 
         else:
             print("Error!!!")

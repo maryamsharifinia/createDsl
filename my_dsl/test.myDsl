@@ -1,5 +1,15 @@
-import "input.csv" as inp5;
-Rename column "prodYear","No." to "prod",   "index"    in inp5 as inpNew;
-Rename column "prodYear" to "prod2" in inp5;
-export inpNew to "abcd_out.csv";
-export inp5 to "abcd2.csv";
+import "input.csv" as inp1;
+Rename column "prodYear","No." to "prod",   "index"    in inp1 as inpNew1;
+
+export inpNew1 to "rename.csv";
+
+import "input.csv" as inp2;
+Combine "input.csv" , inp2 as inp2;
+Combine "input.csv" , "input.csv" , inp2 as inp3;
+
+Add columns "sales","price","price" in inp1 as inp4;
+
+export inp4 to "add_col.csv";
+
+export inp2 to "combine.csv";
+export inp3 to "combine2.csv";

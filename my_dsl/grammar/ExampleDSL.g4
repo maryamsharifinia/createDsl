@@ -35,12 +35,13 @@ exportFileStatement
 
 
 asStatement: AS id;
+toStatement: TO column;
 path : STRING;
 column : STRING;
 result : STRING;
 
 combineStatement
-    : COMBINE FILE (path|id) WITH (path|id) asStatement';'
+    : COMBINE (((path|id) ',' (path|id))(',' (path|id))*) asStatement';'
     ;
 
 convertStatement
@@ -48,7 +49,7 @@ convertStatement
     ;
 
 addColumnsStatement
-    : ADD COLUMNS (column(',' column)*) IN (path|id) (asStatement)?';'
+    : ADD COLUMNS (column(',' column)*) (toStatement)? IN (path|id) (asStatement)?';'
     ;
 
 renameColumnStatement

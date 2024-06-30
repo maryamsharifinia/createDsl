@@ -11,6 +11,7 @@ class CustomExampleDSLListener(ExampleDSLListener):
         self.overridden_rules = [
             'program',
             "asStatement",
+            "toStatement",
             "importFileStatement",
             "setFileInputPathStatement",
             "setFileOutputPathStatement",
@@ -48,27 +49,27 @@ class CustomExampleDSLListener(ExampleDSLListener):
         make_ast_subtree(self.ast, ctx, "program", keep_node=True)
 
     def exitImportFileStatement(self, ctx):
-        #print(str(ctx.getChild(2).getChild(0)))
-        self.variables[str(ctx.getChild(2).getChild(0))] = [str(ctx.getChild(1).getChild(0)), "FILE"]
+        self.variables[str(ctx.getChild(2).getChild(1).getText())] = [ctx.getChild(1).getText(), "FILE", 0]
         make_ast_subtree(self.ast, ctx, "import_file", keep_node=True)
 
     def exitAsStatement(self, ctx: ExampleDSLParser.AsStatementContext):
-        self.variables[str(ctx.getChild(1).getText())] = ["statement", "statement"]
+        add_column_num = 0
+        if str(ctx.getChild(1).getText()) in self.variables:
+            add_column_num = self.variables[str(ctx.getChild(1).getText())][2]
+
+        self.variables[str(ctx.getChild(1).getText())] = ["statement", "statement", add_column_num]
         make_ast_subtree(self.ast, ctx, "as", keep_node=True)
+
+    def exitToStatement(self, ctx: ExampleDSLParser.AsStatementContext):
+        make_ast_subtree(self.ast, ctx, "to", keep_node=True)
 
     def exitExportFileStatement(self, ctx):
 
         if str(ctx.getChild(1).getText()) in self.variables:
             print("No Error in exporting")
         else:
-            print("Error in exporting!!!")
+            print(f"Error in exporting!!! no variable named {str(ctx.getChild(1).getText())} !!!")
         make_ast_subtree(self.ast, ctx, "export_file", keep_node=True)
-
-    def exitSetFileInputPathStatement(self, ctx):
-        make_ast_subtree(self.ast, ctx, "set_file_input_path", keep_node=True)
-
-    def exitSetFileOutputPathStatement(self, ctx):
-        make_ast_subtree(self.ast, ctx, "set_file_output_path", keep_node=True)
 
     def exitCombineStatement(self, ctx):
         make_ast_subtree(self.ast, ctx, "combine", keep_node=True)
