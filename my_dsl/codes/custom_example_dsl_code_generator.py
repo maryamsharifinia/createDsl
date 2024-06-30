@@ -200,7 +200,7 @@ class CustomExampleDSLCodeGenerator:
         self.code_stack.append(code_string)
         """
         #print(self.operand_stack)
-        print(self.variables)
+        #print(self.variables)
         temp_or_targetvar = self.operand_stack.pop()
         code_string = ""
         as_code = ""
