@@ -307,17 +307,19 @@ class CustomExampleDSLCodeGenerator:
 
         self.code_stack.append(code_string)
 
-
+    #ALISHO
     def sort_data(self):
         col_name = self.operand_stack.pop()
         code_string = f'df = df.sort_values(by={col_name})\n'
         self.code_stack.append(code_string)
 
+    #ALISHO
     def delete_column(self):
         col_name = self.operand_stack.pop()
         code_string = f'df = df.drop(columns=[{col_name}])\n'
         self.code_stack.append(code_string)
 
+    #ALISHO
     def rename_file(self):
         new_name = self.operand_stack.pop()
         code_string = f'import os\nos.rename("output.csv", "{new_name}")\n'
@@ -329,6 +331,7 @@ class CustomExampleDSLCodeGenerator:
         code_string = f'df = df.iloc[{start - 1}:{end}]\n'
         self.code_stack.append(code_string)
 
+    #ALISHO
     def generate_report(self):
         col_name = self.operand_stack.pop()
         code_string = (f'report = df.groupby(df["{col_name}"].dt.to_period("M")).size()\n'
