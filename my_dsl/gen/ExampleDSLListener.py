@@ -251,6 +251,24 @@ class ExampleDSLListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by ExampleDSLParser#text.
+    def enterText(self, ctx:ExampleDSLParser.TextContext):
+        pass
+
+    # Exit a parse tree produced by ExampleDSLParser#text.
+    def exitText(self, ctx:ExampleDSLParser.TextContext):
+        pass
+
+
+    # Enter a parse tree produced by ExampleDSLParser#comparison_operator.
+    def enterComparison_operator(self, ctx:ExampleDSLParser.Comparison_operatorContext):
+        pass
+
+    # Exit a parse tree produced by ExampleDSLParser#comparison_operator.
+    def exitComparison_operator(self, ctx:ExampleDSLParser.Comparison_operatorContext):
+        pass
+
+
     # Enter a parse tree produced by ExampleDSLParser#searchTextStatement.
     def enterSearchTextStatement(self, ctx:ExampleDSLParser.SearchTextStatementContext):
         pass

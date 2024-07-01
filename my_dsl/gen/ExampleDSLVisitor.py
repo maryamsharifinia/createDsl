@@ -144,6 +144,16 @@ class ExampleDSLVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by ExampleDSLParser#text.
+    def visitText(self, ctx:ExampleDSLParser.TextContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ExampleDSLParser#comparison_operator.
+    def visitComparison_operator(self, ctx:ExampleDSLParser.Comparison_operatorContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by ExampleDSLParser#searchTextStatement.
     def visitSearchTextStatement(self, ctx:ExampleDSLParser.SearchTextStatementContext):
         return self.visitChildren(ctx)

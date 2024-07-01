@@ -94,11 +94,13 @@ groupByStatement
     ;
 
 filterRowsStatement
-    : FILTER ROWS WHERE column '>' value IN (path|id) (asStatement)?';'
+    : FILTER ROWS WHERE column comparison_operator value IN (path|id) (asStatement)?';'
     ;
 value : NUMBER;
+text:STRING;
+comparison_operator : COMPARISON_OPERATOR;
 searchTextStatement
-    : SEARCH FOR text=STRING IN COLUMN '(' column ')' ';'
+    : SEARCH FOR text IN COLUMN '(' column ')' IN (path|id) (asStatement)?';'
     ;
 
 replaceValuesStatement
@@ -133,6 +135,7 @@ OUTPUT: 'output';
 REPORT:'report';
 WRITE: 'write';
 COMBINE: 'Combine';
+COMPARISON_OPERATOR : '>'|'<'|'>='|'<='|'=='|'!=';
 CONVERT: 'Convert';
 ADD: 'Add';
 RENAME: 'Rename';

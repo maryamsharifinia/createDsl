@@ -431,23 +431,33 @@ class CustomExampleDSLCodeGenerator:
         self.code_stack.append(code_string)
 
     def filter_rows(self):
-        print("filter row is here::::",self.operand_stack)
-        print("filter row code stack",self.code_stack)
+        print("Filtering rows...",self.operand_stack)
+        print("Filtering rows...",self.code_stack)
         first_var = self.operand_stack.pop()
         second_var = first_var
         if self.is_as_called(first_var):
             first_var = self.operand_stack.pop()
             second_var = self.code_stack.pop()
         value = self.operand_stack.pop()
+        operator = self.operand_stack.pop()
         column = self.operand_stack.pop()
-        code_string = f'{second_var} = {first_var}[{first_var}[{column}]>{value}]\n'
+        code_string = f'{second_var} = {first_var}[{first_var}[{column}]{operator}{value}]\n'
         print(code_string)
         self.code_stack.append(code_string)
 
     def search_text(self):
-        col_name = self.operand_stack.pop()
+        print("search col is here::::", self.operand_stack)
+        print("search col code stack", self.code_stack)
+        first_var = self.operand_stack.pop()
+        second_var = first_var
+        if self.is_as_called(first_var):
+            first_var = self.operand_stack.pop()
+            second_var = self.code_stack.pop()
+        column = self.operand_stack.pop()
         keyword = self.operand_stack.pop()
-        code_string = f'results = df[df["{col_name}"].str.contains("{keyword}")]\nprint(results)\n'
+        code_string = f'{second_var} = {first_var}[{first_var}[{column}].str.contains({keyword}, case=False, na=False)]\n'
+        print(code_string)
+
         self.code_stack.append(code_string)
 
     def replace_values(self):

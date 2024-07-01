@@ -5,3 +5,4 @@ No.,name,brand,price,sales,prodYear,date,addCol1,all
 4,G-class,Benz,120000,1000,2017,2015-05-12,3017,3017
 5,test,Cadillac,20000,10,1990,2002-07-14,2000,2000
 6,test6,Cadillac6,20,10,1990,2002-07-14,2000,2000
+7,test7,BMW,123456,10,1990,2002-07-14,2000,2000
