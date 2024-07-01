@@ -2,8 +2,8 @@ from antlr4 import *
 import argparse
 from codes.custom_example_dsl_listener import CustomExampleDSLListener
 from default_codes.ast_to_networkx_graph import show_ast
-from my_dsl.gen.ExampleDSLLexer import ExampleDSLLexer
-from my_dsl.gen.ExampleDSLParser import ExampleDSLParser
+from gen.ExampleDSLLexer import ExampleDSLLexer
+from gen.ExampleDSLParser import ExampleDSLParser
 from default_codes.post_order_ast_traverser import PostOrderASTTraverser
 from codes.custom_example_dsl_code_generator import CustomExampleDSLCodeGenerator
 
