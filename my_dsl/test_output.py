@@ -1,6 +1,14 @@
 import pandas as pd
 inp1 = pd.read_csv("input.csv")
 
+
+
+sheet_id = "1Qdz1B7Ky4y7DYk-F3Z1gIOdL6BMV5DqJwDXSzQazm_o"
+local_path = "test1.csv"
+csv_export_url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv"
+df = pd.read_csv(csv_export_url)
+df.to_csv(local_path, index=False)
+
 inpNew1 = inp1.rename(columns={"No.": "index", "prodYear": "prod", })
 
 addcol = inp1.copy()
@@ -24,6 +32,8 @@ print(report)
 grouped = inp1.groupby(["brand", "price"]).size().reset_index(name="counts")
 
 reorder = inp1[["No.", "brand", "price", "sales", "prodYear", "date", "No.", "price", "brand", "sales", "prodYear", "date"]]
+
+inp1.to_csv("output.csv", index=False)
 
 reorder.to_csv("reorder.csv", index=False)
 

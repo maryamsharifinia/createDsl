@@ -9,7 +9,7 @@ class CustomExampleDSLCodeGenerator:
             'change_data_type', 'sort_data', 'delete_column', 'rename_file', 'apply_condition',
             'generate_report', 'reorder_columns', 'group_by', 'filter_rows', 'search_text',
             'replace_values', 'add_condition', 'remove_duplicates', 'split_data',
-            'combine_columns', 'resize_data'
+            'combine_columns', 'resize_data', 'update_from_sheet',
         ]
         self.operand_stack = []
         self.code_stack = []
@@ -112,6 +112,9 @@ class CustomExampleDSLCodeGenerator:
 
         elif item == "resize_data":
             self.resize_data()
+
+        elif item == "update_from_sheet":
+            self.update_from_sheet()
 
     #############################################ok############################################
     def generate_program(self):
@@ -475,4 +478,19 @@ class CustomExampleDSLCodeGenerator:
         factor = float(self.operand_stack.pop())
         col_name = self.operand_stack.pop()
         code_string = f'df["{col_name}"] = df["{col_name}"] * {factor}\n'
+        self.code_stack.append(code_string)
+
+
+    #YASIN
+    def update_from_sheet(self):
+        sheetID = self.operand_stack.pop()
+        path= self.operand_stack.pop()
+        code_string = f"""
+
+sheet_id = {sheetID}
+local_path = {path}
+csv_export_url = f"https://docs.google.com/spreadsheets/d/{{sheet_id}}/export?format=csv"
+df = pd.read_csv(csv_export_url)
+df.to_csv(local_path, index=False)
+"""
         self.code_stack.append(code_string)

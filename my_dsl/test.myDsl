@@ -1,4 +1,5 @@
 import "input.csv" as inp1;
+update "test1.csv" from "1Qdz1B7Ky4y7DYk-F3Z1gIOdL6BMV5DqJwDXSzQazm_o";
 Rename column "prodYear","No." to "prod",   "index"    in inp1 as inpNew1;
 
 Add columns "prodYear", "sales" in inp1 as addcol;
@@ -12,7 +13,7 @@ Delete column "name" in inp1;
 Generate report for column "date" by year in inp1;
 Group by "brand" and sum values to "price" in inp1 as grouped;
 Reorder columns "No.", "brand", "price", "sales", "prodYear", "date" to "No.", "price", "brand", "sales", "prodYear", "date" in inp1 as reorder;
-Apply function
+
 
 export inp1 to "output.csv";
 export reorder to "reorder.csv";
