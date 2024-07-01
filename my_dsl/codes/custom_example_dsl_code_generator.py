@@ -479,8 +479,8 @@ class CustomExampleDSLCodeGenerator:
         self.code_stack.append(code_string)
 
     def remove_duplicates(self):
-        # print("replace_values...", self.operand_stack)
-        # print("replace_values...", self.code_stack)
+        # print("remove_duplicates...", self.operand_stack)
+        # print("remove_duplicates...", self.code_stack)
         first_var = self.operand_stack.pop()
         second_var = first_var
         if self.is_as_called(first_var):
@@ -492,10 +492,28 @@ class CustomExampleDSLCodeGenerator:
 
 
     def split_data(self):
-        col_name = self.operand_stack.pop()
-        # code_string = (f'for key, grp in df.groupby("{col_name}"):\n'
-        #                f'    grp.to_csv(f"{col_name}_{key}.csv", index=False)\n')
-        # self.code_stack.append(code_string)
+        # print("split_data...", self.operand_stack)
+        # print("split_data...", self.code_stack)
+        first_var = self.operand_stack.pop()
+        code_string = ""
+        if self.is_as_called(first_var):
+            first_var = self.operand_stack.pop()
+            second_var = self.code_stack.pop()
+        else:
+            second_var = "temp_var"
+        column = self.operand_stack.pop()
+        if "import os" not in self.code_stack and "import os\n" not in self.code_stack:
+            code_string+="import os\n"
+        code_string+=(
+            f"output_directory = os.path.join(os.getcwd(), 'split_data')\n"
+            f"if not os.path.exists(output_directory):\n"  
+            f"    os.makedirs(output_directory)\n"
+            f"{second_var} = {first_var}.groupby({column})\n"
+            f"for group_name, group_df in {second_var}:\n"
+            f"    output_file_path = os.path.join(output_directory, f'{{group_name}}.csv')\n"
+            f"    group_df.to_csv(output_file_path, index=False)\n"
+                      )
+        self.code_stack.append(code_string)
 
     def combine_columns(self):
         result_col = self.operand_stack.pop()

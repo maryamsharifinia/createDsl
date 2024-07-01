@@ -33,6 +33,15 @@ inp1["brand"] = inp1["brand"].replace("Benz", "Mercedes")
 replaced=inp1
 removed = inp1.drop_duplicates(subset=["sales"])
 
+import os
+output_directory = os.path.join(os.getcwd(), 'split_data')
+if not os.path.exists(output_directory):
+    os.makedirs(output_directory)
+temp = inp1.groupby("region")
+for group_name, group_df in temp:
+    output_file_path = os.path.join(output_directory, f'{group_name}.csv')
+    group_df.to_csv(output_file_path, index=False)
+
 removed.to_csv("removed.csv", index=False)
 
 replaced.to_csv("replaced.csv", index=False)

@@ -116,7 +116,7 @@ removeDuplicatesStatement
     ;
 
 splitDataStatement
-    : SPLIT DATA BASED ON COLUMN '(' column ')' AND SAVE RESULTS TO SEPARATE FILES ';'
+    : SPLIT DATA BASED ON COLUMN '(' column ')' IN (path|id) (asStatement)? AND SAVE RESULTS TO SEPARATE FILES ';'
     ;
 
 combineColumnsStatement
@@ -148,6 +148,7 @@ EXPORT: 'export';
 FROM: 'from';
 FILTER: 'Filter';
 FILE: 'file';
+FILES:'files';
 FOR: 'for';
 FORMAT: 'format';
 GROUP: 'Group';
@@ -166,15 +167,17 @@ REORDER: 'Reorder';
 RENAME: 'Rename';
 REPLACE: 'Replace';
 REMOVE: 'Remove';
+RESULTS:'results';
 RESIZE: 'Resize';
 ROWS: 'rows';
 ROW: 'row';
 RESULT: 'result';
+SAVE: 'save';
 SORT: 'Sort';
 SEARCH: 'Search';
 SPLIT: 'Split';
 SET: 'Set';
-SAVE: 'save';
+SEPARATE:'separate';
 SUM: 'sum';
 TO: 'to';
 TYPE: 'float'| 'str' | 'int'| 'bool'| 'date' | 'type';

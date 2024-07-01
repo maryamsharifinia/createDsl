@@ -1,3 +1,3 @@
-No.,name,brand,price,sales,prodYear,date,addCol1
-9,test9,asd_bM,21,10,1990,2002-07-14,2000
-7,test7,BMW,123456,10,1990,2002-07-14,2000
+No.,name,brand,price,sales,prodYear,date,region,addCol1
+9,test9,asd_bM,21,10,1990,2002-07-14,germany,2000
+7,test7,BMW,123456,10,1990,2002-07-14,germany,2000
