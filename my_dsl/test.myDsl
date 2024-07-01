@@ -7,6 +7,16 @@ Add columns "prodYear", "sales" to "all" in inp1 as addcolnamed;
 
 Change data type of column "prod", "sales" to float in inpNew1 as inpdatatype;
 
+Sort data by column "price" in inp1;
+Delete column "name" in inp1;
+Generate report for column "date" by year in inp1;
+Group by "brand" and sum values to "price" in inp1 as grouped;
+Reorder columns "No.", "brand", "price", "sales", "prodYear", "date" to "No.", "price", "brand", "sales", "prodYear", "date" in inp1 as reorder;
+Apply function
+
+export inp1 to "output.csv";
+export reorder to "reorder.csv";
+export grouped to "grouped.csv";
 export addcolnamed to "add_col_named.csv";
 export addcol to "add_col.csv";
 export inpdatatype to "data_type.csv";
