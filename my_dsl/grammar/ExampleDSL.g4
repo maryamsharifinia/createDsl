@@ -104,7 +104,7 @@ searchTextStatement
     ;
 
 replaceValuesStatement
-    : REPLACE VALUES values WITH values IN COLUMN '(' column ')' ';'
+    : REPLACE VALUES values WITH values IN COLUMN '(' column ')' IN (path|id) (asStatement)?';'
     ;
 values:NUMBER|STRING;
 addConditionStatement

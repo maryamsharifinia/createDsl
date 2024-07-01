@@ -25,9 +25,13 @@ grouped = inp1.groupby(["brand", "price"]).size().reset_index(name="counts")
 
 reorder = inp1[["No.", "brand", "price", "sales", "prodYear", "date", "No.", "price", "brand", "sales", "prodYear", "date"]]
 
-filtered = inp1[inp1["price"]==100]
+filtered = inp1[inp1["price"]>=100]
 
 searched = inp1[inp1["brand"].str.contains("bm", case=False, na=False)]
+
+inp1["brand"] = inp1["brand"].replace("Benz", "Mercedes")
+replaced=inp1
+replaced.to_csv("replaced.csv", index=False)
 
 searched.to_csv("searched.csv", index=False)
 

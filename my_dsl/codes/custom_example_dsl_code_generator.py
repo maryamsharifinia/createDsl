@@ -431,8 +431,8 @@ class CustomExampleDSLCodeGenerator:
         self.code_stack.append(code_string)
 
     def filter_rows(self):
-        print("Filtering rows...",self.operand_stack)
-        print("Filtering rows...",self.code_stack)
+        # print("filter_rows...",self.operand_stack)
+        # print("filter_rows...",self.code_stack)
         first_var = self.operand_stack.pop()
         second_var = first_var
         if self.is_as_called(first_var):
@@ -445,6 +445,8 @@ class CustomExampleDSLCodeGenerator:
         self.code_stack.append(code_string)
 
     def search_text(self):
+        # print("search_text...", self.operand_stack)
+        # print("search_text...", self.code_stack)
         first_var = self.operand_stack.pop()
         second_var = first_var
         if self.is_as_called(first_var):
@@ -456,13 +458,20 @@ class CustomExampleDSLCodeGenerator:
         self.code_stack.append(code_string)
 
     def replace_values(self):
-        print("replace_values is here::::", self.operand_stack)
-        print("replace_values code stack", self.code_stack)
-        # new_value = self.operand_stack.pop()
-        # old_value = self.operand_stack.pop()
-        # col_name = self.operand_stack.pop()
-        # code_string = f'df["{col_name}"] = df["{col_name}"].replace("{old_value}", "{new_value}")\n'
-        # self.code_stack.append(code_string)
+        # print("replace_values...", self.operand_stack)
+        # print("replace_values...", self.code_stack)
+        first_var = self.operand_stack.pop()
+        second_var = "temp_var"
+        if self.is_as_called(first_var):
+            first_var = self.operand_stack.pop()
+            second_var = self.code_stack.pop()
+        column = self.operand_stack.pop()
+        new_value = self.operand_stack.pop()
+        old_value = self.operand_stack.pop()
+        code_string = f'{first_var}[{column}] = {first_var}[{column}].replace({old_value}, {new_value})'
+        self.code_stack.append(code_string)
+        code_string = f'{second_var}={first_var}'
+        self.code_stack.append(code_string)
 
     def add_condition(self):
         condition = self.operand_stack.pop()
