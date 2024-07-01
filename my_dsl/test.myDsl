@@ -12,8 +12,8 @@ Delete column "name" in inp1;
 Generate report for column "date" by year in inp1;
 Group by "brand" and sum values to "price" in inp1 as grouped;
 Reorder columns "No.", "brand", "price", "sales", "prodYear", "date" to "No.", "price", "brand", "sales", "prodYear", "date" in inp1 as reorder;
-Apply function
-
+Filter rows where "price" > 100 in inp1 as filtered;
+export filtered to "filtered.csv";
 export inp1 to "output.csv";
 export reorder to "reorder.csv";
 export grouped to "grouped.csv";

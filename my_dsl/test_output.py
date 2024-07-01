@@ -25,6 +25,12 @@ grouped = inp1.groupby(["brand", "price"]).size().reset_index(name="counts")
 
 reorder = inp1[["No.", "brand", "price", "sales", "prodYear", "date", "No.", "price", "brand", "sales", "prodYear", "date"]]
 
+filtered = inp1[inp1["price"]>100]
+
+filtered.to_csv("filtered.csv", index=False)
+
+inp1.to_csv("output.csv", index=False)
+
 reorder.to_csv("reorder.csv", index=False)
 
 grouped.to_csv("grouped.csv", index=False)

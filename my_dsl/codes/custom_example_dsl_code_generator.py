@@ -431,8 +431,17 @@ class CustomExampleDSLCodeGenerator:
         self.code_stack.append(code_string)
 
     def filter_rows(self):
-        condition = self.operand_stack.pop()
-        code_string = f'df = df.query("{condition}")\n'
+        print("filter row is here::::",self.operand_stack)
+        print("filter row code stack",self.code_stack)
+        first_var = self.operand_stack.pop()
+        second_var = first_var
+        if self.is_as_called(first_var):
+            first_var = self.operand_stack.pop()
+            second_var = self.code_stack.pop()
+        value = self.operand_stack.pop()
+        column = self.operand_stack.pop()
+        code_string = f'{second_var} = {first_var}[{first_var}[{column}]>{value}]\n'
+        print(code_string)
         self.code_stack.append(code_string)
 
     def search_text(self):

@@ -94,7 +94,7 @@ groupByStatement
     ;
 
 filterRowsStatement
-    : FILTER ROWS WHERE column '>' value';'
+    : FILTER ROWS WHERE column '>' value IN (path|id) (asStatement)?';'
     ;
 value : NUMBER;
 searchTextStatement

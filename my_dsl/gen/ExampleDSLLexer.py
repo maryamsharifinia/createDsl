@@ -1,4 +1,4 @@
-# Generated from E:/University/Term 6/Compiler/Project/createDsl/my_dsl/grammar/ExampleDSL.g4 by ANTLR 4.13.1
+# Generated from C:/Users/Ali/Desktop/test_compiler/createDsl/my_dsl/grammar/ExampleDSL.g4 by ANTLR 4.13.1
 from antlr4 import *
 from io import StringIO
 import sys
