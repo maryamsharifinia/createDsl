@@ -1,7 +1,7 @@
-from default_codes.ast import AST
-from default_codes.make_ast_subtree import make_ast_subtree
-from gen.ExampleDSLListener import ExampleDSLListener
-from gen.ExampleDSLParser import ExampleDSLParser
+from my_dsl.default_codes.ast import AST
+from my_dsl.default_codes.make_ast_subtree import make_ast_subtree
+from my_dsl.gen.ExampleDSLListener import ExampleDSLListener
+from my_dsl.gen.ExampleDSLParser import ExampleDSLParser
 
 
 class CustomExampleDSLListener(ExampleDSLListener):
@@ -130,3 +130,4 @@ class CustomExampleDSLListener(ExampleDSLListener):
 
     def exitResizeDataStatement(self, ctx):
         make_ast_subtree(self.ast, ctx, "resize_data", keep_node=True)
+

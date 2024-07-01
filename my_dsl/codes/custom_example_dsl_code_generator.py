@@ -1,4 +1,4 @@
-from Erorrs.InputError import *
+from my_dsl.Erorrs.InputError import *
 
 
 class CustomExampleDSLCodeGenerator:
@@ -307,127 +307,49 @@ class CustomExampleDSLCodeGenerator:
 
         self.code_stack.append(code_string)
 
-    #ALISH
+    #ALISHO
     def sort_data(self):
-        temp_or_targetvar = self.operand_stack.pop()
-        code_string = ""
-        as_code = ""
-
-        if self.is_as_called(temp_or_targetvar):
-            temp_or_targetvar = self.operand_stack.pop()
-            as_code = self.code_stack.pop()
-        else:
-            code_string += f"{temp_or_targetvar}"
-
-        sort_columns = []
-        while len(self.operand_stack) > 0:
-            sort_columns.append(self.operand_stack.pop())
-
-        sort_columns = ", ".join(sort_columns[::-1])
-        code_string = f"{temp_or_targetvar} = {temp_or_targetvar}.sort_values(by=[{sort_columns}])\n"
+        col_name = self.operand_stack.pop()
+        code_string = f'df = df.sort_values(by={col_name})\n'
         self.code_stack.append(code_string)
 
-    #ALISH
+    #ALISHO
     def delete_column(self):
-        #print(self.operand_stack)
-        #print(self.variables)
+        col_name = self.operand_stack.pop()
+        code_string = f'df = df.drop(columns=[{col_name}])\n'
+        self.code_stack.append(code_string)
 
-        temp_or_targetvar = self.operand_stack.pop()
-        code_string = ""
-        as_code = ""
 
-        if self.is_as_called(temp_or_targetvar):
-            temp_or_targetvar = self.operand_stack.pop()
-            as_code = self.code_stack.pop()
-        else:
-            code_string += f"{temp_or_targetvar}"
-
-        temp_or_col = self.operand_stack.pop()
-
-        if self.is_to_called(temp_or_col):
-            col_code = self.code_stack.pop()
-            code_string += as_code + ".drop(columns=[" + f"{col_code}])"
-        else:
-            code_string += as_code + ".drop(columns=[" + f"{temp_or_col}])"
-
-        self.code_stack.append(code_string + "\n")
-
-    #ALISH
+    #ALISHO
     def rename_file(self):
-        #print(self.operand_stack)
-        new_file = self.operand_stack.pop()
-        old_file = self.operand_stack.pop()
-        code_string = f"os.rename({old_file}, {new_file})\n"
+        new_name = self.operand_stack.pop()
+        code_string = f'import os\nos.rename("output.csv", "{new_name}")\n'
         self.code_stack.append(code_string)
 
     def apply_condition(self):
-        # print(self.operand_stack)
-        temp_or_targetvar = self.operand_stack.pop()
-        condition = self.operand_stack.pop()
-        if_condition = self.operand_stack.pop()
-        else_condition = self.operand_stack.pop()
-        code_string = f"{temp_or_targetvar}.apply(lambda x: {if_condition} if {condition} else {else_condition})\n"
+        end = int(self.operand_stack.pop())
+        start = int(self.operand_stack.pop())
+        code_string = f'df = df.iloc[{start - 1}:{end}]\n'
         self.code_stack.append(code_string)
 
-    #ALISH
+    #ALISHO
     def generate_report(self):
-        target_var = self.operand_stack.pop()
-        date_granularity = self.operand_stack.pop()
-        col_name = self.operand_stack.pop().lower()
-
-        if date_granularity == "day":
-            code_string = (f'{target_var}[{col_name}] = pd.to_datetime({target_var}[{col_name}], errors="coerce")\n'
-                           f'report = {target_var}.groupby({target_var}[{col_name}].dt.date).size()\n')
-        elif date_granularity == "month":
-            code_string = (f'{target_var}[{col_name}] = pd.to_datetime({target_var}[{col_name}], errors="coerce")\n'
-                           f'report = {target_var}.groupby({target_var}[{col_name}].dt.to_period("M")).size()\n')
-        elif date_granularity == "year":
-            code_string = (f'{target_var}[{col_name}] = pd.to_datetime({target_var}[{col_name}], errors="coerce")\n'
-                           f'report = {target_var}.groupby({target_var}[{col_name}].dt.to_period("Y")).size()\n')
-        else:
-            code_string = f'report = {target_var}.groupby({col_name}).size()\n'
-
-        code_string += 'print(report)\n'
+        col_name = self.operand_stack.pop()
+        code_string = (f'report = df.groupby(df["{col_name}"].dt.to_period("M")).size()\n'
+                       f'print(report)\n')
         self.code_stack.append(code_string)
 
-    #ALISH
     def reorder_columns(self):
-        # print(self.operand_stack)
-        # print(self.variables)
-
-        temp_or_targetvar = self.operand_stack.pop()
-        code_string = ""
-        as_code = ""
-
-        if self.is_as_called(temp_or_targetvar):
-            temp_or_targetvar = self.operand_stack.pop()
-            as_code = self.code_stack.pop()
-        else:
-            code_string += f"{temp_or_targetvar}"
-
-        col_list = []
-        while len(self.operand_stack) > 0:
-            col_list.append(self.operand_stack.pop())
-        code_string += as_code + f" = {temp_or_targetvar}[[" + ", ".join(col_list[::-1]) + "]]\n"
-
+        columns = self.operand_stack.pop().split(", ")
+        code_string = f'df = df[{columns}]\n'
         self.code_stack.append(code_string)
 
-    #ALISH
     def group_by(self):
-        temp_or_targetvar = self.operand_stack.pop()
-        code_string = ""
-        as_code = ""
-
-        if self.is_as_called(temp_or_targetvar):
-            temp_or_targetvar = self.operand_stack.pop()
-            as_code = self.code_stack.pop()
-
-        group_by_columns = []
-        while len(self.operand_stack) > 0:
-            group_by_columns.append(self.operand_stack.pop())
-
-        group_by_columns = ", ".join(group_by_columns[::-1])
-        code_string += f'{as_code} = {temp_or_targetvar}.groupby([{group_by_columns}]).size().reset_index(name="counts")\n'
+        agg_func = self.operand_stack.pop()
+        col_name = self.operand_stack.pop()
+        group_by_col = self.operand_stack.pop()
+        code_string = (f'grouped = df.groupby("{group_by_col}").{agg_func}("{col_name}")\n'
+                       f'print(grouped)\n')
         self.code_stack.append(code_string)
 
     def filter_rows(self):
