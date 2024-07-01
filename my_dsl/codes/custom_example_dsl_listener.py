@@ -130,3 +130,4 @@ class CustomExampleDSLListener(ExampleDSLListener):
 
     def exitResizeDataStatement(self, ctx):
         make_ast_subtree(self.ast, ctx, "resize_data", keep_node=True)
+
