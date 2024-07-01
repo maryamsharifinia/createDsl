@@ -442,12 +442,9 @@ class CustomExampleDSLCodeGenerator:
         operator = self.operand_stack.pop()
         column = self.operand_stack.pop()
         code_string = f'{second_var} = {first_var}[{first_var}[{column}]{operator}{value}]\n'
-        print(code_string)
         self.code_stack.append(code_string)
 
     def search_text(self):
-        print("search col is here::::", self.operand_stack)
-        print("search col code stack", self.code_stack)
         first_var = self.operand_stack.pop()
         second_var = first_var
         if self.is_as_called(first_var):
@@ -456,16 +453,16 @@ class CustomExampleDSLCodeGenerator:
         column = self.operand_stack.pop()
         keyword = self.operand_stack.pop()
         code_string = f'{second_var} = {first_var}[{first_var}[{column}].str.contains({keyword}, case=False, na=False)]\n'
-        print(code_string)
-
         self.code_stack.append(code_string)
 
     def replace_values(self):
-        new_value = self.operand_stack.pop()
-        old_value = self.operand_stack.pop()
-        col_name = self.operand_stack.pop()
-        code_string = f'df["{col_name}"] = df["{col_name}"].replace("{old_value}", "{new_value}")\n'
-        self.code_stack.append(code_string)
+        print("replace_values is here::::", self.operand_stack)
+        print("replace_values code stack", self.code_stack)
+        # new_value = self.operand_stack.pop()
+        # old_value = self.operand_stack.pop()
+        # col_name = self.operand_stack.pop()
+        # code_string = f'df["{col_name}"] = df["{col_name}"].replace("{old_value}", "{new_value}")\n'
+        # self.code_stack.append(code_string)
 
     def add_condition(self):
         condition = self.operand_stack.pop()
