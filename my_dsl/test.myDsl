@@ -17,6 +17,8 @@ Search for "bm" in column ("brand") in inp1 as searched;
 Replace values "Benz" with "Mercedes" in column("brand") in inp1 as replaced;
 Remove duplicate rows based on column ("sales") in inp1 as removed;
 Split data based on column ("region") in inp1 and save results to separate files;
+Combine columns "name" and "brand" and "region" and "date" in inp1 as combined and save result to "combined_column";
+export combined to "combined.csv";
 export removed to "removed.csv";
 export replaced to "replaced.csv";
 export searched to "searched.csv";

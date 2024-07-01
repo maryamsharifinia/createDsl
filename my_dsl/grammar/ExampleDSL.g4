@@ -38,7 +38,7 @@ asStatement: AS id;
 toStatement: TO column;
 path : STRING;
 column : STRING;
-result : STRING;
+result_column : STRING;
 
 combineStatement
     : COMBINE (((path|id) ',' (path|id))(',' (path|id))*) asStatement';'
@@ -120,7 +120,7 @@ splitDataStatement
     ;
 
 combineColumnsStatement
-    : COMBINE COLUMNS column AND column AND SAVE RESULT TO result ';'
+    : COMBINE COLUMNS column (AND column)+ IN (path|id) (asStatement)? AND SAVE RESULT TO result_column ';'
     ;
 
 resizeDataStatement

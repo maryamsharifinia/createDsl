@@ -89,12 +89,12 @@ class ExampleDSLListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by ExampleDSLParser#result.
-    def enterResult(self, ctx:ExampleDSLParser.ResultContext):
+    # Enter a parse tree produced by ExampleDSLParser#result_column.
+    def enterResult_column(self, ctx:ExampleDSLParser.Result_columnContext):
         pass
 
-    # Exit a parse tree produced by ExampleDSLParser#result.
-    def exitResult(self, ctx:ExampleDSLParser.ResultContext):
+    # Exit a parse tree produced by ExampleDSLParser#result_column.
+    def exitResult_column(self, ctx:ExampleDSLParser.Result_columnContext):
         pass
 
 

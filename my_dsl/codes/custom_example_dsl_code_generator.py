@@ -516,10 +516,21 @@ class CustomExampleDSLCodeGenerator:
         self.code_stack.append(code_string)
 
     def combine_columns(self):
-        result_col = self.operand_stack.pop()
-        col2 = self.operand_stack.pop()
-        col1 = self.operand_stack.pop()
-        code_string = f'df["{result_col}"] = df["{col1}"] + " " + df["{col2}"]\n'
+        # print("split_data...", self.operand_stack)
+        # print("split_data...", self.code_stack)
+        code_string = ""
+        combined_column = self.operand_stack.pop()
+        first_var = self.operand_stack.pop()
+        second_var = "temp_var"
+        if self.is_as_called(first_var):
+            first_var = self.operand_stack.pop()
+            second_var = self.code_stack.pop()
+
+        columns=[]
+        while len(self.operand_stack)>0:
+            columns.append(self.operand_stack.pop())
+        code_string = (f'{second_var}={first_var}\n'
+                       f'{second_var}[{combined_column}] = {first_var}[{columns[::-1]}].apply(lambda row: " ".join(row.values.astype(str)), axis=1)\n').replace("'","")
         self.code_stack.append(code_string)
 
     def resize_data(self):

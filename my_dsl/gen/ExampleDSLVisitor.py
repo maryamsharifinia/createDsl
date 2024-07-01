@@ -54,8 +54,8 @@ class ExampleDSLVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by ExampleDSLParser#result.
-    def visitResult(self, ctx:ExampleDSLParser.ResultContext):
+    # Visit a parse tree produced by ExampleDSLParser#result_column.
+    def visitResult_column(self, ctx:ExampleDSLParser.Result_columnContext):
         return self.visitChildren(ctx)
 
 
