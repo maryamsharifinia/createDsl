@@ -31,6 +31,10 @@ searched = inp1[inp1["brand"].str.contains("bm", case=False, na=False)]
 
 inp1["brand"] = inp1["brand"].replace("Benz", "Mercedes")
 replaced=inp1
+removed = inp1.drop_duplicates(subset=["sales"])
+
+removed.to_csv("removed.csv", index=False)
+
 replaced.to_csv("replaced.csv", index=False)
 
 searched.to_csv("searched.csv", index=False)

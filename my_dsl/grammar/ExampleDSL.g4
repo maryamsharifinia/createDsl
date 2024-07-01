@@ -112,7 +112,7 @@ addConditionStatement
     ;
 
 removeDuplicatesStatement
-    : REMOVE DUPLICATE ROWS BASED ON COLUMN '(' column ')' ';'
+    : REMOVE DUPLICATE ROWS BASED ON COLUMN '(' column ')' IN (path|id) (asStatement)?';'
     ;
 
 splitDataStatement

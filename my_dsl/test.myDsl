@@ -15,6 +15,8 @@ Reorder columns "No.", "brand", "price", "sales", "prodYear", "date" to "No.", "
 Filter rows where "price" >= 100 in inp1 as filtered;
 Search for "bm" in column ("brand") in inp1 as searched;
 Replace values "Benz" with "Mercedes" in column("brand") in inp1 as replaced;
+Remove duplicate rows based on column ("sales") in inp1 as removed;
+export removed to "removed.csv";
 export replaced to "replaced.csv";
 export searched to "searched.csv";
 export filtered to "filtered.csv";

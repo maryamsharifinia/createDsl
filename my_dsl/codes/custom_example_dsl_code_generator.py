@@ -479,9 +479,17 @@ class CustomExampleDSLCodeGenerator:
         self.code_stack.append(code_string)
 
     def remove_duplicates(self):
-        col_name = self.operand_stack.pop()
-        code_string = f'df = df.drop_duplicates(subset=["{col_name}"])\n'
+        # print("replace_values...", self.operand_stack)
+        # print("replace_values...", self.code_stack)
+        first_var = self.operand_stack.pop()
+        second_var = first_var
+        if self.is_as_called(first_var):
+            first_var = self.operand_stack.pop()
+            second_var = self.code_stack.pop()
+        column = self.operand_stack.pop()
+        code_string = f'{second_var} = {first_var}.drop_duplicates(subset=[{column}])\n'
         self.code_stack.append(code_string)
+
 
     def split_data(self):
         col_name = self.operand_stack.pop()
