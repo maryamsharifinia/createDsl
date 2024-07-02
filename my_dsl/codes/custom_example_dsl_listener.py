@@ -1,7 +1,7 @@
-from default_codes.ast import AST
-from default_codes.make_ast_subtree import make_ast_subtree
-from gen.ExampleDSLListener import ExampleDSLListener
-from gen.ExampleDSLParser import ExampleDSLParser
+from my_dsl.default_codes.ast import AST
+from my_dsl.default_codes.make_ast_subtree import make_ast_subtree
+from my_dsl.gen.ExampleDSLListener import ExampleDSLListener
+from my_dsl.gen.ExampleDSLParser import ExampleDSLParser
 
 
 class CustomExampleDSLListener(ExampleDSLListener):
@@ -23,6 +23,13 @@ class CustomExampleDSLListener(ExampleDSLListener):
             "sortDataStatement",
             "deleteColumnStatement",
             "renameFileStatement",
+            "step",
+            "to",
+            "from",
+            "query",
+            "columns",
+            "rows",
+            "selectStatement",
             "applyConditionStatement",
             "generateReportStatement",
             "reorderColumnsStatement",
@@ -58,10 +65,10 @@ class CustomExampleDSLListener(ExampleDSLListener):
             add_column_num = self.variables[str(ctx.getChild(1).getText())][2]
 
         self.variables[str(ctx.getChild(1).getText())] = ["statement", "statement", add_column_num]
-        make_ast_subtree(self.ast, ctx, "as", keep_node=True)
+        make_ast_subtree(self.ast, ctx, "as_state", keep_node=True)
 
     def exitToStatement(self, ctx: ExampleDSLParser.AsStatementContext):
-        make_ast_subtree(self.ast, ctx, "to", keep_node=True)
+        make_ast_subtree(self.ast, ctx, "to_state", keep_node=True)
 
     def exitExportFileStatement(self, ctx):
 
@@ -94,6 +101,27 @@ class CustomExampleDSLListener(ExampleDSLListener):
 
     def exitRenameFileStatement(self, ctx):
         make_ast_subtree(self.ast, ctx, "rename_file", keep_node=True)
+
+    def exitQuery(self, ctx):
+        make_ast_subtree(self.ast, ctx, "query__", keep_node=False)
+
+    def exitColumns(self, ctx):
+        make_ast_subtree(self.ast, ctx, "cols__", keep_node=True)
+
+    def exitRows(self, ctx):
+        make_ast_subtree(self.ast, ctx, "rows__", keep_node=True)
+
+    def exitFrom(self, ctx):
+        make_ast_subtree(self.ast, ctx, "from__", keep_node=True)
+
+    def exitTo(self, ctx):
+        make_ast_subtree(self.ast, ctx, "to__", keep_node=True)
+
+    def exitStep(self, ctx):
+        make_ast_subtree(self.ast, ctx, "step__", keep_node=True)
+
+    def exitSelectStatement(self, ctx):
+        make_ast_subtree(self.ast, ctx, "select", keep_node=True)
 
     def exitApplyConditionStatement(self, ctx):
         make_ast_subtree(self.ast, ctx, "apply_condition", keep_node=True)
@@ -130,4 +158,3 @@ class CustomExampleDSLListener(ExampleDSLListener):
 
     def exitResizeDataStatement(self, ctx):
         make_ast_subtree(self.ast, ctx, "resize_data", keep_node=True)
-

@@ -13,7 +13,7 @@ statement
     | sortDataStatement
     | deleteColumnStatement
     | renameFileStatement
-    | applyConditionStatement
+    | selectStatement
     | generateReportStatement
     | reorderColumnsStatement
     | groupByStatement
@@ -40,6 +40,7 @@ path : STRING;
 column : STRING;
 result_column : STRING;
 
+
 combineStatement
     : COMBINE (((path|id) ',' (path|id))(',' (path|id))*) asStatement';'
     ;
@@ -53,7 +54,7 @@ addColumnsStatement
     ;
 
 renameColumnStatement
-    : RENAME COLUMN (column(',' column)*) TO (column(',' column)*) IN (path|id) (asStatement)?';'
+    : RENAME COLUMNS (column(',' column)*) TO (column(',' column)*) IN (path|id) (asStatement)?';'
     ;
 
 changeDataTypeStatement
@@ -75,9 +76,18 @@ renameFileStatement
     ;
 file_name:STRING;
 
-applyConditionStatement
-    : APPLY CONDITION ON ROWS from=NUMBER TO to=NUMBER IN (path|id)';'
+number: NUMBER;
+from: FROM number;
+to: TO number;
+step: STEP number;
+query: (from)? (to)? (step)?;
+
+rows: ROWS ((number(',' number)*)|(query));
+columns: COLUMNS ((column(',' column)*)|(number(',' number)*)|(query));
+selectStatement
+    : SELECT (rows)? (columns)? IN (path|id) asStatement';'
     ;
+
 
 generateReportStatement
     : GENERATE REPORT FOR COLUMN column BY period IN (path|id)';'
@@ -128,64 +138,65 @@ resizeDataStatement
     ;
 
 id returns[value_attr = str(), type_attr = str()]: ID;
-ADD: 'Add';
-AS: 'as';
-APPLY: 'Apply';
-AND: 'and';
-BY: 'by';
-BASED: 'based';
-COLUMN: 'column';
-COLUMNS: 'columns';
-COMBINE: 'Combine';
-CONDITION: 'condition';
-COMPARISON_OPERATOR : '>'|'<'|'>='|'<='|'=='|'!=';
-CONVERT: 'Convert';
-CHANGE: 'Change';
-DUPLICATE: 'duplicate';
-DELETE: 'Delete';
-DATA: 'data';
+STEP: 'step';
+SELECT: 'select';
 EXPORT: 'export';
-FROM: 'from';
-FILTER: 'Filter';
-FILE: 'file';
-FILES:'files';
-FOR: 'for';
-FORMAT: 'format';
-GROUP: 'Group';
-GENERATE: 'Generate';
-IN: 'in';
 IMPORT: 'import';
 INPUT: 'input';
-MULTIPLYING: 'multiplying';
-NEW: 'new';
 OUTPUT: 'output';
-ON: 'on';
-OF: 'of';
-PATH: 'path';
 REPORT:'report';
-REORDER: 'Reorder';
+WRITE: 'write';
+COMBINE: 'Combine';
+COMPARISON_OPERATOR : '>'|'<'|'>='|'<='|'=='|'!=';
+CONVERT: 'Convert';
+ADD: 'Add';
 RENAME: 'Rename';
+CHANGE: 'Change';
+SORT: 'Sort';
+DELETE: 'Delete';
+APPLY: 'Apply';
+GENERATE: 'Generate';
+REORDER: 'Reorder';
+GROUP: 'Group';
+FILTER: 'Filter';
+SEARCH: 'Search';
 REPLACE: 'Replace';
 REMOVE: 'Remove';
 RESULTS:'results';
-RESIZE: 'Resize';
-ROWS: 'rows';
-ROW: 'row';
-RESULT: 'result';
-SAVE: 'save';
-SORT: 'Sort';
-SEARCH: 'Search';
 SPLIT: 'Split';
+RESIZE: 'Resize';
 SET: 'Set';
 SEPARATE:'separate';
-SUM: 'sum';
-TO: 'to';
+FILE: 'file';
+FILES:'files';
+PATH: 'path';
+FORMAT: 'format';
+DATA: 'data';
+COLUMN: 'column';
+COLUMNS: 'columns';
 TYPE: 'float'| 'str' | 'int'| 'bool'| 'date' | 'type';
-WRITE: 'write';
-WITH: 'with';
-WHERE: 'where';
+ROWS: 'rows';
+ROW: 'row';
+CONDITION: 'condition';
 VALUES: 'values';
-
+IN: 'in';
+RESULT: 'result';
+SAVE: 'save';
+TO: 'to';
+WITH: 'with';
+AND: 'and';
+BY: 'by';
+FROM: 'from';
+WHERE: 'where';
+ON: 'on';
+OF: 'of';
+FOR: 'for';
+AS: 'as';
+BASED: 'based';
+SUM: 'sum';
+NEW: 'new';
+MULTIPLYING: 'multiplying';
+DUPLICATE: 'duplicate';
 
 NUMBER: [0-9]+;
 STRING: '"' .*? '"';

@@ -1,4 +1,4 @@
-# Generated from C:/Users/Ali/Desktop/test_compiler/createDsl/my_dsl/grammar/ExampleDSL.g4 by ANTLR 4.13.1
+# Generated from F:/University/compiler/pych/compiler/my_dsl/grammar/ExampleDSL.g4 by ANTLR 4.13.1
 from antlr4 import *
 if "." in __name__:
     from .ExampleDSLParser import ExampleDSLParser
@@ -188,12 +188,75 @@ class ExampleDSLListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by ExampleDSLParser#applyConditionStatement.
-    def enterApplyConditionStatement(self, ctx:ExampleDSLParser.ApplyConditionStatementContext):
+    # Enter a parse tree produced by ExampleDSLParser#number.
+    def enterNumber(self, ctx:ExampleDSLParser.NumberContext):
         pass
 
-    # Exit a parse tree produced by ExampleDSLParser#applyConditionStatement.
-    def exitApplyConditionStatement(self, ctx:ExampleDSLParser.ApplyConditionStatementContext):
+    # Exit a parse tree produced by ExampleDSLParser#number.
+    def exitNumber(self, ctx:ExampleDSLParser.NumberContext):
+        pass
+
+
+    # Enter a parse tree produced by ExampleDSLParser#from.
+    def enterFrom(self, ctx:ExampleDSLParser.FromContext):
+        pass
+
+    # Exit a parse tree produced by ExampleDSLParser#from.
+    def exitFrom(self, ctx:ExampleDSLParser.FromContext):
+        pass
+
+
+    # Enter a parse tree produced by ExampleDSLParser#to.
+    def enterTo(self, ctx:ExampleDSLParser.ToContext):
+        pass
+
+    # Exit a parse tree produced by ExampleDSLParser#to.
+    def exitTo(self, ctx:ExampleDSLParser.ToContext):
+        pass
+
+
+    # Enter a parse tree produced by ExampleDSLParser#step.
+    def enterStep(self, ctx:ExampleDSLParser.StepContext):
+        pass
+
+    # Exit a parse tree produced by ExampleDSLParser#step.
+    def exitStep(self, ctx:ExampleDSLParser.StepContext):
+        pass
+
+
+    # Enter a parse tree produced by ExampleDSLParser#query.
+    def enterQuery(self, ctx:ExampleDSLParser.QueryContext):
+        pass
+
+    # Exit a parse tree produced by ExampleDSLParser#query.
+    def exitQuery(self, ctx:ExampleDSLParser.QueryContext):
+        pass
+
+
+    # Enter a parse tree produced by ExampleDSLParser#rows.
+    def enterRows(self, ctx:ExampleDSLParser.RowsContext):
+        pass
+
+    # Exit a parse tree produced by ExampleDSLParser#rows.
+    def exitRows(self, ctx:ExampleDSLParser.RowsContext):
+        pass
+
+
+    # Enter a parse tree produced by ExampleDSLParser#columns.
+    def enterColumns(self, ctx:ExampleDSLParser.ColumnsContext):
+        pass
+
+    # Exit a parse tree produced by ExampleDSLParser#columns.
+    def exitColumns(self, ctx:ExampleDSLParser.ColumnsContext):
+        pass
+
+
+    # Enter a parse tree produced by ExampleDSLParser#selectStatement.
+    def enterSelectStatement(self, ctx:ExampleDSLParser.SelectStatementContext):
+        pass
+
+    # Exit a parse tree produced by ExampleDSLParser#selectStatement.
+    def exitSelectStatement(self, ctx:ExampleDSLParser.SelectStatementContext):
         pass
 
 
