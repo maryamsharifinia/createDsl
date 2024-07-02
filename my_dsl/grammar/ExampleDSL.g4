@@ -84,9 +84,12 @@ query: (from)? (to)? (step)?;
 
 rows: ROWS ((number(',' number)*)|(query));
 columns: COLUMNS ((column(',' column)*)|(number(',' number)*)|(query));
+
+assign: ASSIGN values IN;
 selectStatement
-    : SELECT (rows)? (columns)? IN (path|id) asStatement';'
+    : (assign)? SELECT (rows)? (columns)? IN ((path asStatement)|(id (asStatement)?))';'
     ;
+
 
 
 generateReportStatement
@@ -100,7 +103,7 @@ reorderColumnsStatement
     ;
 
 groupByStatement
-    : GROUP BY column AND SUM VALUES TO column IN (path|id) (asStatement)';'
+    : GROUP BY column AND SUM VALUES TO column IN (path|id) (asStatement)?';'
     ;
 
 filterRowsStatement
@@ -116,6 +119,7 @@ searchTextStatement
 replaceValuesStatement
     : REPLACE VALUES values WITH values IN COLUMN '(' column ')' IN (path|id) (asStatement)?';'
     ;
+
 values:NUMBER|STRING;
 addConditionStatement
     : ADD CONDITION WHERE column '>' value ';'
@@ -138,6 +142,7 @@ resizeDataStatement
     ;
 
 id returns[value_attr = str(), type_attr = str()]: ID;
+ASSIGN: 'assign';
 STEP: 'step';
 SELECT: 'select';
 EXPORT: 'export';

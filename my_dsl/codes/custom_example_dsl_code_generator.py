@@ -6,7 +6,8 @@ class CustomExampleDSLCodeGenerator:
         self.non_operands = [
             'program', 'import_file', 'as_state', 'to_state', 'export_file', 'combine', 'convert', 'add_columns',
             'rename_column',
-            'change_data_type', 'sort_data', 'delete_column', 'rename_file', 'cols__', 'rows__', 'select', 'query__',
+            'change_data_type', 'sort_data', 'delete_column', 'rename_file', 'cols__', 'rows__', 'select', 'assign',
+            'query__',
             'apply_condition',
             'generate_report', 'reorder_columns', 'group_by', 'filter_rows', 'search_text',
             'replace_values', 'add_condition', 'remove_duplicates', 'split_data',
@@ -60,6 +61,9 @@ class CustomExampleDSLCodeGenerator:
         elif item == "rows__":
             self.rows()
 
+        elif item == "assign":
+            self.assign()
+
         elif item == "combine":
             self.combine_files()
 
@@ -89,9 +93,6 @@ class CustomExampleDSLCodeGenerator:
 
         elif item == "select":
             self.select()
-
-        elif item == "apply_condition":
-            self.apply_condition()
 
         elif item == "generate_report":
             self.generate_report()
@@ -145,7 +146,6 @@ class CustomExampleDSLCodeGenerator:
         code_string = f'[{target_col_name}]'
         self.code_stack.append(code_string)
         self.push_to_called()
-
 
     #############################################ok############################################
     def push_as_called(self):
@@ -398,7 +398,6 @@ class CustomExampleDSLCodeGenerator:
         self.code_stack.append(code_string)
 
     def columns(self):
-        #print(self.operand_stack)
         temp_or_query = self.operand_stack.pop()
         code_string = ''
         is_num = False
@@ -411,7 +410,7 @@ class CustomExampleDSLCodeGenerator:
             cols = [temp_or_query]
             while len(self.operand_stack) > 0:
                 temp = self.operand_stack.pop()
-                if temp == "rows__":
+                if temp == 'rows__':
                     self.operand_stack.append(temp)
                     break
                 cols.append(temp)
@@ -433,8 +432,13 @@ class CustomExampleDSLCodeGenerator:
         else:
             rows = [temp_or_query]
             while len(self.operand_stack) > 0:
-                rows.append(self.operand_stack.pop())
+                temp = self.operand_stack.pop()
+                if temp == 'assign__':
+                    self.operand_stack.append(temp)
+                    break
+                rows.append(temp)
             code_string = '[' + ', '.join(rows[::-1]) + ']'
+
 
         self.push_rows()
         self.code_stack.append(code_string)
@@ -445,9 +449,10 @@ class CustomExampleDSLCodeGenerator:
         step_code = ''
         while len(self.operand_stack) > 0:
             temp = self.operand_stack.pop()
-            if temp == 'rows__':
+            if temp in ['rows__', 'assign__']:
                 self.operand_stack.append(temp)
                 break
+
             if temp == 'step__':
                 step_code = f'{self.operand_stack.pop()}'
             elif temp == 'from__':
@@ -459,27 +464,35 @@ class CustomExampleDSLCodeGenerator:
         self.code_stack.append(query_code)
         self.push_query()
 
+    def assign(self):
+
+        val = self.operand_stack.pop()
+        self.operand_stack.append("assign__")
+        self.code_stack.append(val)
+
     def select(self):
+        print("all ", self.operand_stack)
         temp_or_targetvar = self.operand_stack.pop()
         code_string = ""
         as_code = ""
 
         if self.is_as_called(temp_or_targetvar):
-            temp_or_targetvar = self.operand_stack.pop()
+            targetvar = self.operand_stack.pop()
             as_code = self.code_stack.pop()
-            if temp_or_targetvar[1:-1].endswith(".csv"):
-                code_string += f"{as_code} = pd.read_csv({temp_or_targetvar})"
+            if targetvar[1:-1].endswith(".csv"):
+                code_string += f"{as_code} = pd.read_csv({targetvar})"
             else:
-                code_string += f"{as_code} = {temp_or_targetvar}.copy()"
+                code_string += f"{as_code} = {targetvar}.copy()"
         else:
-            code_string += f"{temp_or_targetvar}"  # as statement is a MUST
+            code_string += f"{temp_or_targetvar}"
 
         has_row = False
         has_col = False
+        has_assign = False
         is_col_num = False
         row_code = ''
         col_code = ''
-
+        assign_val = ''
         if len(self.operand_stack) == 0:
             self.code_stack.append(code_string + '\n')
             return
@@ -495,29 +508,32 @@ class CustomExampleDSLCodeGenerator:
                 elif temp == "rows__":
                     has_row = True
                     row_code = self.code_stack.pop()
+                elif temp == "assign__":
+                    has_assign = True
+                    assign_val = self.code_stack.pop()
                 else:
-                    print(temp)
+                    print()
 
-        # check if row or col is inputted
-        if not has_row:
-            row_code = ":"
-        if not has_col:
-            col_code = ":"
-            is_col_num = True
-        if is_col_num:
-            code_string = code_string + f'.iloc[{row_code}, {col_code}]'
+        if has_assign:
+            if self.is_as_called(temp_or_targetvar):
+                #print(code_string)
+                code_string += f'\n{as_code}.iloc[{row_code}, {col_code}] = {assign_val}\n'
+            else:
+                code_string += f'.iloc[{row_code}, {col_code}] = {assign_val}\n'
         else:
-            code_string = code_string + f'.loc[{row_code}, {col_code}]'
+            # check if row or col is inputted
+            if not has_row:
+                row_code = ":"
+            if not has_col:
+                col_code = ":"
+                is_col_num = True
+            if is_col_num:
+                code_string = (code_string if self.is_as_called(temp_or_targetvar) else f'{code_string} = {temp_or_targetvar}') + f'.iloc[{row_code}, {col_code}]'
+            else:
+                code_string = (code_string if self.is_as_called(temp_or_targetvar) else f'{code_string} = {temp_or_targetvar}') + f'.loc[{row_code}, {col_code}]'
 
-        self.code_stack.append(code_string)
+            code_string += f'\n{(as_code if self.is_as_called(temp_or_targetvar) else temp_or_targetvar)}.reset_index(inplace=True, drop="index")\n'
 
-    def apply_condition(self):
-        # print(self.operand_stack)
-        temp_or_targetvar = self.operand_stack.pop()
-        condition = self.operand_stack.pop()
-        if_condition = self.operand_stack.pop()
-        else_condition = self.operand_stack.pop()
-        code_string = f"{temp_or_targetvar}.apply(lambda x: {if_condition} if {condition} else {else_condition})\n"
         self.code_stack.append(code_string)
 
     # ALISH

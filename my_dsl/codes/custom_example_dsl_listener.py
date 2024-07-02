@@ -23,6 +23,7 @@ class CustomExampleDSLListener(ExampleDSLListener):
             "sortDataStatement",
             "deleteColumnStatement",
             "renameFileStatement",
+            "assign",
             "step",
             "to",
             "from",
@@ -120,11 +121,11 @@ class CustomExampleDSLListener(ExampleDSLListener):
     def exitStep(self, ctx):
         make_ast_subtree(self.ast, ctx, "step__", keep_node=True)
 
+    def exitAssign(self, ctx):
+        make_ast_subtree(self.ast, ctx, "assign", keep_node=True)
+
     def exitSelectStatement(self, ctx):
         make_ast_subtree(self.ast, ctx, "select", keep_node=True)
-
-    def exitApplyConditionStatement(self, ctx):
-        make_ast_subtree(self.ast, ctx, "apply_condition", keep_node=True)
 
     def exitGenerateReportStatement(self, ctx):
         make_ast_subtree(self.ast, ctx, "generate_report", keep_node=True)

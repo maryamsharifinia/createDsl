@@ -1,5 +1,5 @@
 import "input.csv" as inp1;
-Rename column "prodYear","No." to "prod",   "index"    in inp1 as inpNew1;
+Rename columns "prodYear","No." to "prod",   "index"    in inp1 as inpNew1;
 
 Add columns "prodYear", "sales" in inp1 as addcol;
 Add columns "prodYear", "sales" in inp1;

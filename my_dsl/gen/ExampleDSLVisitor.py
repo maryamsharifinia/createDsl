@@ -1,4 +1,4 @@
-# Generated from E:/University/Term 6/Compiler/Project/createDsl/my_dsl/grammar/ExampleDSL.g4 by ANTLR 4.13.1
+# Generated from F:/University/compiler/pych/compiler/my_dsl/grammar/ExampleDSL.g4 by ANTLR 4.13.1
 from antlr4 import *
 if "." in __name__:
     from .ExampleDSLParser import ExampleDSLParser
@@ -141,6 +141,11 @@ class ExampleDSLVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by ExampleDSLParser#columns.
     def visitColumns(self, ctx:ExampleDSLParser.ColumnsContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ExampleDSLParser#assign.
+    def visitAssign(self, ctx:ExampleDSLParser.AssignContext):
         return self.visitChildren(ctx)
 
 
