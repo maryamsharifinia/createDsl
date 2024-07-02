@@ -481,6 +481,7 @@ class CustomExampleDSLCodeGenerator:
 
         if len(self.operand_stack) == 0:
             self.code_stack.append(code_string + '\n')
+            return
         else:
             while len(self.operand_stack) > 0:
                 temp = self.operand_stack.pop()
@@ -495,6 +496,13 @@ class CustomExampleDSLCodeGenerator:
                     row_code = self.code_stack.pop()
                 else:
                     print(temp)
+
+        # check if row or col is inputted
+        if not has_row:
+            row_code = ":"
+        if not has_col:
+            col_code = ":"
+            is_col_num = True
         if is_col_num:
             code_string = code_string + f'.iloc[{row_code}, {col_code}]'
         else:
