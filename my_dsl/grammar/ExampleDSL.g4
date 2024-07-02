@@ -100,7 +100,7 @@ reorderColumnsStatement
     ;
 
 groupByStatement
-    : GROUP BY column AND SUM VALUES TO column IN (path|id) (asStatement)?';'
+    : GROUP BY column AND SUM VALUES TO column IN (path|id) (asStatement)';'
     ;
 
 filterRowsStatement

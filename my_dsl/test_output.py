@@ -1,10 +1,8 @@
 import pandas as pd
 inp1 = pd.read_csv("input.csv")
 
-inpNew1 = inp1.rename(columns={"No.": "index", "prodYear": "prod", })
-
 addcol = inp1.copy()
-addcol['addCol0'] = inp1["sales"] + inp1["prodYear"]
+addcol['addCol0'] = inp1["sales"] + inp1["prodYear"] + inp1[statement] + inp1[]
 
 inp1['addCol1'] = inp1["sales"] + inp1["prodYear"]
 

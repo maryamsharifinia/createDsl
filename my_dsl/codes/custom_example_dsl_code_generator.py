@@ -352,15 +352,16 @@ class CustomExampleDSLCodeGenerator:
         if self.is_as_called(temp_or_targetvar):
             temp_or_targetvar = self.operand_stack.pop()
             as_code = self.code_stack.pop()
-        else:
-            code_string += f"{temp_or_targetvar}"
 
         sort_columns = []
         while len(self.operand_stack) > 0:
             sort_columns.append(self.operand_stack.pop())
 
         sort_columns = ", ".join(sort_columns[::-1])
-        code_string = f"{temp_or_targetvar} = {temp_or_targetvar}.sort_values(by=[{sort_columns}])\n"
+        if as_code:
+            code_string = f"{as_code} = {temp_or_targetvar}.sort_values(by=[{sort_columns}])\n"
+        else:
+            code_string = f"{temp_or_targetvar} = {temp_or_targetvar}.sort_values(by=[{sort_columns}])\n"
         self.code_stack.append(code_string)
 
     # ALISH
