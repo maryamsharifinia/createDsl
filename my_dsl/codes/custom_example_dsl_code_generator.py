@@ -539,23 +539,42 @@ class CustomExampleDSLCodeGenerator:
 
     # ALISH
     def generate_report(self):
-        target_var = self.operand_stack.pop()
-        date_granularity = self.operand_stack.pop()
-        col_name = self.operand_stack.pop().lower()
+        temp_or_targetvar = self.operand_stack.pop()
+        if self.is_as_called(temp_or_targetvar):
+            as_code = self.code_stack.pop()
+            target_var = self.operand_stack.pop()
+            date_granularity = self.operand_stack.pop()
+            col_name = self.operand_stack.pop().lower()
 
-        if date_granularity == "day":
-            code_string = (f'{target_var}[{col_name}] = pd.to_datetime({target_var}[{col_name}], errors="coerce")\n'
-                           f'report = {target_var}.groupby({target_var}[{col_name}].dt.date).size()\n')
-        elif date_granularity == "month":
-            code_string = (f'{target_var}[{col_name}] = pd.to_datetime({target_var}[{col_name}], errors="coerce")\n'
-                           f'report = {target_var}.groupby({target_var}[{col_name}].dt.to_period("M")).size()\n')
-        elif date_granularity == "year":
-            code_string = (f'{target_var}[{col_name}] = pd.to_datetime({target_var}[{col_name}], errors="coerce")\n'
-                           f'report = {target_var}.groupby({target_var}[{col_name}].dt.to_period("Y")).size()\n')
+            if date_granularity == "day":
+                code_string = (f'{target_var}[{col_name}] = pd.to_datetime({target_var}[{col_name}], errors="coerce")\n'
+                               f'{as_code} = {target_var}.groupby({target_var}[{col_name}].dt.date).size()\n')
+            elif date_granularity == "month":
+                code_string = (f'{target_var}[{col_name}] = pd.to_datetime({target_var}[{col_name}], errors="coerce")\n'
+                               f'{as_code} = {target_var}.groupby({target_var}[{col_name}].dt.to_period("M")).size()\n')
+            elif date_granularity == "year":
+                code_string = (f'{target_var}[{col_name}] = pd.to_datetime({target_var}[{col_name}], errors="coerce")\n'
+                               f'{as_code} = {target_var}.groupby({target_var}[{col_name}].dt.to_period("Y")).size()\n')
+            else:
+                code_string = f'{as_code} = {target_var}.groupby({col_name}).size()\n'
+            code_string += f'print({as_code})\n'
         else:
-            code_string = f'report = {target_var}.groupby({col_name}).size()\n'
+            target_var = self.operand_stack.pop()
+            date_granularity = self.operand_stack.pop()
+            col_name = self.operand_stack.pop().lower()
 
-        code_string += 'print(report)\n'
+            if date_granularity == "day":
+                code_string = (f'{target_var}[{col_name}] = pd.to_datetime({target_var}[{col_name}], errors="coerce")\n'
+                               f'report = {target_var}.groupby({target_var}[{col_name}].dt.date).size()\n')
+            elif date_granularity == "month":
+                code_string = (f'{target_var}[{col_name}] = pd.to_datetime({target_var}[{col_name}], errors="coerce")\n'
+                               f'report = {target_var}.groupby({target_var}[{col_name}].dt.to_period("M")).size()\n')
+            elif date_granularity == "year":
+                code_string = (f'{target_var}[{col_name}] = pd.to_datetime({target_var}[{col_name}], errors="coerce")\n'
+                               f'report = {target_var}.groupby({target_var}[{col_name}].dt.to_period("Y")).size()\n')
+            else:
+                code_string = f'report = {target_var}.groupby({col_name}).size()\n'
+            code_string += 'print(report)\n'
         self.code_stack.append(code_string)
 
     # ALISH

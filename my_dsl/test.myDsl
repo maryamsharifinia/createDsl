@@ -9,7 +9,7 @@ Change data type of column "prod", "sales" to float in inpNew1 as inpdatatype;
 
 Sort data by column "price" in inp1;
 Delete column "name" in inp1;
-Generate report for column "date" by year in inp1;
+Generate report for column "date" by year in inp1 as rep;
 Group by "brand" and sum values to "price" in inp1 as grouped;
 Reorder columns "No.", "brand", "price", "sales", "prodYear", "date" to "No.", "price", "brand", "sales", "prodYear", "date" in inp1 as reorder;
 Filter rows where "price" >= 100 in inp1 as filtered;

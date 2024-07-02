@@ -18,8 +18,8 @@ inp1 = inp1.sort_values(by=["price"])
 inp1.drop(columns=["name"])
 
 inp1["date"] = pd.to_datetime(inp1["date"], errors="coerce")
-report = inp1.groupby(inp1["date"].dt.to_period("Y")).size()
-print(report)
+rep = inp1.groupby(inp1["date"].dt.to_period("Y")).size()
+print(rep)
 
 grouped = inp1.groupby(["brand", "price"]).size().reset_index(name="counts")
 

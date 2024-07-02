@@ -76,7 +76,7 @@ deleteColumnStatement
     ;
 
 renameFileStatement
-    : RENAME OUTPUT FILE TO file_name ';'
+    : RENAME file_name TO file_name';'
     ;
 file_name:STRING;
 
@@ -96,7 +96,7 @@ selectStatement
     ;
 
 generateReportStatement
-    : GENERATE REPORT FOR COLUMN column BY period IN (path|id)';'
+    : GENERATE REPORT FOR COLUMN column BY period IN (path|id) (asStatement)?';'
     ;
 
 period:'day'|'month'| 'year';
