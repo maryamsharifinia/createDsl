@@ -59,6 +59,11 @@ class ExampleDSLVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by ExampleDSLParser#operation.
+    def visitOperation(self, ctx:ExampleDSLParser.OperationContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by ExampleDSLParser#combineStatement.
     def visitCombineStatement(self, ctx:ExampleDSLParser.CombineStatementContext):
         return self.visitChildren(ctx)
@@ -231,6 +236,16 @@ class ExampleDSLVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by ExampleDSLParser#resizeDataStatement.
     def visitResizeDataStatement(self, ctx:ExampleDSLParser.ResizeDataStatementContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ExampleDSLParser#updateFromsheetStatement.
+    def visitUpdateFromsheetStatement(self, ctx:ExampleDSLParser.UpdateFromsheetStatementContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ExampleDSLParser#extractTablesFromWebStatement.
+    def visitExtractTablesFromWebStatement(self, ctx:ExampleDSLParser.ExtractTablesFromWebStatementContext):
         return self.visitChildren(ctx)
 
 

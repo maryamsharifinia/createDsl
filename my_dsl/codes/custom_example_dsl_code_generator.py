@@ -11,7 +11,7 @@ class CustomExampleDSLCodeGenerator:
             'apply_condition',
             'generate_report', 'reorder_columns', 'group_by', 'filter_rows', 'search_text',
             'replace_values', 'add_condition', 'remove_duplicates', 'split_data',
-            'combine_columns', 'resize_data'
+            'combine_columns', 'resize_data', 'update_from_sheet','extract_tables_from_web',
         ]
         self.operand_stack = []
         self.code_stack = []
@@ -126,6 +126,12 @@ class CustomExampleDSLCodeGenerator:
 
         elif item == "resize_data":
             self.resize_data()
+
+        elif item == "update_from_sheet":
+            self.update_from_sheet()
+
+        elif item == "extract_tables_from_web":
+            self.extract_tables_from_web()
 
     #############################################ok############################################
     def generate_program(self):
@@ -701,7 +707,86 @@ class CustomExampleDSLCodeGenerator:
         self.code_stack.append(code_string)
 
     def resize_data(self):
-        factor = float(self.operand_stack.pop())
+        file_path = self.operand_stack.pop()
+        value = float(self.operand_stack.pop())
+        operation = self.operand_stack.pop()
         col_name = self.operand_stack.pop()
-        code_string = f'df["{col_name}"] = df["{col_name}"] * {factor}\n'
+        code_string = f"""
+
+file_path = {file_path}
+column_name = {col_name}
+operation = "{operation}"
+value = {value} 
+try:
+    if file_path.endswith('.xls') or file_path.endswith('.xlsx'):
+        df = pd.read_excel(file_path)
+    elif file_path.endswith('.csv'):
+        df = pd.read_csv(file_path)
+    else:
+        raise ValueError("Unsupported file format. Only .xls, .xlsx, and .csv are supported.")
+    if operation == '*':
+        df[column_name] = df[column_name] * value
+    elif operation == '/':
+        df[column_name] = df[column_name] / value
+    elif operation == '+':
+        df[column_name] = df[column_name] + value
+    elif operation == '-':
+        df[column_name] = df[column_name] - value
+    else:
+        raise ValueError("Invalid operation. Supported operations are '*', '/', '+', '-'.")
+    if file_path.endswith('.xls') or file_path.endswith('.xlsx'):
+        df.to_excel(file_path, index=False)
+    elif file_path.endswith('.csv'):
+        df.to_csv(file_path, index=False)
+    print("Operation  performed on column  successfully.")
+except Exception as e: 
+    print(e)
+"""
         self.code_stack.append(code_string)
+
+    # YASIN
+    def update_from_sheet(self):
+        sheetID = self.operand_stack.pop()
+        path = self.operand_stack.pop()
+        code_string = f"""
+sheet_id = {sheetID}
+local_path = {path}
+csv_export_url = f"https://docs.google.com/spreadsheets/d/{{sheet_id}}/export?format=csv"
+df = pd.read_csv(csv_export_url)
+df.to_csv(local_path, index=False)
+"""
+        self.code_stack.append(code_string)
+
+    # YASIN
+    def extract_tables_from_web(self):
+        web_id = self.operand_stack.pop()
+        code_string = f"""
+###extract tables from web
+import requests
+import pandas as pd
+from bs4 import BeautifulSoup
+# Define the URL in a variable
+url = "https://"+ {web_id}
+response = requests.get(url)
+soup = BeautifulSoup(response.text, 'html.parser')
+tables = soup.find_all('table')
+if not tables:
+    print("No tables found.")
+else:
+    for i, table in enumerate(tables):
+        try:
+            rows = table.find_all('tr')
+            header = [th.get_text(strip=True) for th in rows[0].find_all('th')]
+            data = [[td.get_text(strip=True) for td in row.find_all('td')] for row in rows[1:]]
+            df = pd.DataFrame(data, columns=header)
+            table_name = None
+            if table.caption:
+                table_name = table.caption.get_text(strip=True).replace(' ', '_')
+            if not table_name:
+                table_name = f"table_{{i+1}}"
+            df.to_csv(f"{{table_name}}.csv", index=False)
+            print(f"Saved {{table_name}}.csv")
+        except Exception as e:
+            print(f"Error parsing table {{i+1}}: {{str(e)}}")
+###end tables from web
+"""

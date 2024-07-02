@@ -44,6 +44,8 @@ class CustomExampleDSLListener(ExampleDSLListener):
             "combineColumnsStatement",
             "resizeDataStatement",
             "exportFileStatement",
+            "updateFromsheetStatement",
+            "extractTablesFromWebStatement",
         ]
         self.rule_names = rule_names
         self.ast = AST()
@@ -159,3 +161,9 @@ class CustomExampleDSLListener(ExampleDSLListener):
 
     def exitResizeDataStatement(self, ctx):
         make_ast_subtree(self.ast, ctx, "resize_data", keep_node=True)
+
+    def exitUpdateFromsheetStatement(self, ctx):
+        make_ast_subtree(self.ast, ctx, "update_from_sheet", keep_node=True)
+
+    def exitExtractTablesFromWebStatement(self, ctx):
+        make_ast_subtree(self.ast, ctx, "extract_tables_from_web", keep_node=True)

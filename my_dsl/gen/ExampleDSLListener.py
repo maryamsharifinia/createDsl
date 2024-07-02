@@ -98,6 +98,15 @@ class ExampleDSLListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by ExampleDSLParser#operation.
+    def enterOperation(self, ctx:ExampleDSLParser.OperationContext):
+        pass
+
+    # Exit a parse tree produced by ExampleDSLParser#operation.
+    def exitOperation(self, ctx:ExampleDSLParser.OperationContext):
+        pass
+
+
     # Enter a parse tree produced by ExampleDSLParser#combineStatement.
     def enterCombineStatement(self, ctx:ExampleDSLParser.CombineStatementContext):
         pass
@@ -410,6 +419,24 @@ class ExampleDSLListener(ParseTreeListener):
 
     # Exit a parse tree produced by ExampleDSLParser#resizeDataStatement.
     def exitResizeDataStatement(self, ctx:ExampleDSLParser.ResizeDataStatementContext):
+        pass
+
+
+    # Enter a parse tree produced by ExampleDSLParser#updateFromsheetStatement.
+    def enterUpdateFromsheetStatement(self, ctx:ExampleDSLParser.UpdateFromsheetStatementContext):
+        pass
+
+    # Exit a parse tree produced by ExampleDSLParser#updateFromsheetStatement.
+    def exitUpdateFromsheetStatement(self, ctx:ExampleDSLParser.UpdateFromsheetStatementContext):
+        pass
+
+
+    # Enter a parse tree produced by ExampleDSLParser#extractTablesFromWebStatement.
+    def enterExtractTablesFromWebStatement(self, ctx:ExampleDSLParser.ExtractTablesFromWebStatementContext):
+        pass
+
+    # Exit a parse tree produced by ExampleDSLParser#extractTablesFromWebStatement.
+    def exitExtractTablesFromWebStatement(self, ctx:ExampleDSLParser.ExtractTablesFromWebStatementContext):
         pass
 
 
