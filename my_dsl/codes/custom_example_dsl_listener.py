@@ -2,6 +2,7 @@ from my_dsl.default_codes.ast import AST
 from my_dsl.default_codes.make_ast_subtree import make_ast_subtree
 from my_dsl.gen.ExampleDSLListener import ExampleDSLListener
 from my_dsl.gen.ExampleDSLParser import ExampleDSLParser
+from my_dsl.Erorrs.InputError import *
 
 
 class CustomExampleDSLListener(ExampleDSLListener):
@@ -59,15 +60,12 @@ class CustomExampleDSLListener(ExampleDSLListener):
         make_ast_subtree(self.ast, ctx, "program", keep_node=True)
 
     def exitImportFileStatement(self, ctx):
-        self.variables[str(ctx.getChild(2).getChild(1).getText())] = [ctx.getChild(1).getText(), "FILE", 0]
+        self.variables[str(ctx.getChild(2).getChild(1).getText())] = [ctx.getChild(1).getText(), "FILE"]
         make_ast_subtree(self.ast, ctx, "import_file", keep_node=True)
 
     def exitAsStatement(self, ctx: ExampleDSLParser.AsStatementContext):
-        add_column_num = 0
-        if str(ctx.getChild(1).getText()) in self.variables:
-            add_column_num = self.variables[str(ctx.getChild(1).getText())][2]
 
-        self.variables[str(ctx.getChild(1).getText())] = ["statement", "statement", add_column_num]
+        self.variables[str(ctx.getChild(1).getText())] = ["statement", "statement"]
         make_ast_subtree(self.ast, ctx, "as_state", keep_node=True)
 
     def exitToStatement(self, ctx: ExampleDSLParser.AsStatementContext):
@@ -75,10 +73,8 @@ class CustomExampleDSLListener(ExampleDSLListener):
 
     def exitExportFileStatement(self, ctx):
 
-        if str(ctx.getChild(1).getText()) in self.variables:
-            print("No Error in exporting")
-        else:
-            print(f"Error in exporting!!! no variable named {str(ctx.getChild(1).getText())} !!!")
+        if not str(ctx.getChild(1).getText()) in self.variables:
+            raise ExportFileError(str(ctx.getChild(1).getText()))
         make_ast_subtree(self.ast, ctx, "export_file", keep_node=True)
 
     def exitCombineStatement(self, ctx):

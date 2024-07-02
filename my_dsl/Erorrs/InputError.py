@@ -3,11 +3,6 @@ class UserInputError(Exception):
         super(UserInputError, self).__init__(message)
 
 
-class InputFileNotFound(UserInputError):
-    def __init__(self):
-        super(InputFileNotFound, self).__init__(message="input file not found ")
-
-
-class OutputFileNotFound(UserInputError):
-    def __init__(self):
-        super(OutputFileNotFound, self).__init__(message="output file not found ")
+class ExportFileError(UserInputError):
+    def __init__(self, var):
+        super(ExportFileError, self).__init__(message=f"variable {var} not declared !!!")
