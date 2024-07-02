@@ -59,6 +59,11 @@ class ExampleDSLVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by ExampleDSLParser#operation.
+    def visitOperation(self, ctx:ExampleDSLParser.OperationContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by ExampleDSLParser#combineStatement.
     def visitCombineStatement(self, ctx:ExampleDSLParser.CombineStatementContext):
         return self.visitChildren(ctx)

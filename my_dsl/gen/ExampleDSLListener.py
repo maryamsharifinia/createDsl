@@ -98,6 +98,15 @@ class ExampleDSLListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by ExampleDSLParser#operation.
+    def enterOperation(self, ctx:ExampleDSLParser.OperationContext):
+        pass
+
+    # Exit a parse tree produced by ExampleDSLParser#operation.
+    def exitOperation(self, ctx:ExampleDSLParser.OperationContext):
+        pass
+
+
     # Enter a parse tree produced by ExampleDSLParser#combineStatement.
     def enterCombineStatement(self, ctx:ExampleDSLParser.CombineStatementContext):
         pass

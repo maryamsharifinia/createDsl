@@ -477,10 +477,46 @@ class CustomExampleDSLCodeGenerator:
         code_string = f'df["{result_col}"] = df["{col1}"] + " " + df["{col2}"]\n'
         self.code_stack.append(code_string)
 
+
+    #YASIN
     def resize_data(self):
-        factor = float(self.operand_stack.pop())
+        file_path= self.operand_stack.pop()
+        value = float(self.operand_stack.pop())
+        operation = self.operand_stack.pop()
         col_name = self.operand_stack.pop()
-        code_string = f'df["{col_name}"] = df["{col_name}"] * {factor}\n'
+        code_string = f"""
+
+import pandas as pd
+file_path = {file_path}
+column_name = {col_name}
+operation = "{operation}"
+value = {value} 
+try:
+    if file_path.endswith('.xls') or file_path.endswith('.xlsx'):
+        df = pd.read_excel(file_path)
+    elif file_path.endswith('.csv'):
+        df = pd.read_csv(file_path)
+    else:
+        raise ValueError("Unsupported file format. Only .xls, .xlsx, and .csv are supported.")
+    if operation == '*':
+        df[column_name] = df[column_name] * value
+    elif operation == '/':
+        df[column_name] = df[column_name] / value
+    elif operation == '+':
+        df[column_name] = df[column_name] + value
+    elif operation == '-':
+        df[column_name] = df[column_name] - value
+    else:
+        raise ValueError("Invalid operation. Supported operations are '*', '/', '+', '-'.")
+    if file_path.endswith('.xls') or file_path.endswith('.xlsx'):
+        df.to_excel(file_path, index=False)
+    elif file_path.endswith('.csv'):
+        df.to_csv(file_path, index=False)
+
+    print("Operation  performed on column  successfully.")
+except Exception as e: 
+    print(e)
+"""
         self.code_stack.append(code_string)
 
 
@@ -498,6 +534,9 @@ df.to_csv(local_path, index=False)
 """
         self.code_stack.append(code_string)
 
+
+
+    #YASIN
     def extract_tables_from_web(self):
         web_id=self.operand_stack.pop()
         code_string = f"""

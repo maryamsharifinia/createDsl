@@ -41,6 +41,7 @@ toStatement: TO column;
 path : STRING;
 column : STRING;
 result : STRING;
+operation : OPERATION;
 //sheetlink : URL;
 
 combineStatement
@@ -125,7 +126,7 @@ combineColumnsStatement
     ;
 
 resizeDataStatement
-    : RESIZE DATA IN COLUMN '(' column ')' BY MULTIPLYING WITH value ';'
+    : RESIZE DATA IN COLUMN  column  BY operation WITH value IN (path|id) ';'
     ;
 updateFromsheetStatement
     : Update (path|id) FROM path ';'
@@ -188,6 +189,7 @@ BASED: 'based';
 SUM: 'sum';
 NEW: 'new';
 MULTIPLYING: 'multiplying';
+OPERATION :'*'|'/'|'+'|'-' ;
 DUPLICATE: 'duplicate';
 Update : 'update';
 EXTRACT : 'extract';
