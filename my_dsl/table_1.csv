@@ -1,0 +1,10 @@
+Name,Description
+Windows,Discusses windows in general.
+Window Classes,"Describes the types of window classes, how the system locates them, and the elements that define the default behavior of windows that belong to them."
+Window Procedures,Discusses window procedures. Every window has an associated window procedure that processes all messages sent or posted to all windows of the class.
+Messages and Message Queues,Describes messages and message queues and how to use them in your applications.
+Timers,"Discusses timers. A timer is an internal routine that repeatedly measures a specified interval, in milliseconds."
+Window Properties,Discusses window properties. A window property is any data assigned to a window.
+Configuration,"Describes the functions that can be used to control the configuration of system metrics and various system attributes such as double-click time, screen saver time-out, window border width, and desktop pattern."
+Hooks,Discusses hooks. A hook is a point in the system message-handling mechanism where an application can install a subroutine to monitor the message traffic.
+Multiple Document Interface,Discusses the Multiple Document Interface which is a specification that defines a user interface for applications that enable the user to work with more than one document at the same time.

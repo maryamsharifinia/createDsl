@@ -189,6 +189,11 @@ class ExampleDSLVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by ExampleDSLParser#extractTablesFromWebStatement.
+    def visitExtractTablesFromWebStatement(self, ctx:ExampleDSLParser.ExtractTablesFromWebStatementContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by ExampleDSLParser#id.
     def visitId(self, ctx:ExampleDSLParser.IdContext):
         return self.visitChildren(ctx)

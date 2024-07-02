@@ -332,6 +332,15 @@ class ExampleDSLListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by ExampleDSLParser#extractTablesFromWebStatement.
+    def enterExtractTablesFromWebStatement(self, ctx:ExampleDSLParser.ExtractTablesFromWebStatementContext):
+        pass
+
+    # Exit a parse tree produced by ExampleDSLParser#extractTablesFromWebStatement.
+    def exitExtractTablesFromWebStatement(self, ctx:ExampleDSLParser.ExtractTablesFromWebStatementContext):
+        pass
+
+
     # Enter a parse tree produced by ExampleDSLParser#id.
     def enterId(self, ctx:ExampleDSLParser.IdContext):
         pass

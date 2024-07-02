@@ -9,6 +9,39 @@ csv_export_url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?form
 df = pd.read_csv(csv_export_url)
 df.to_csv(local_path, index=False)
 
+
+###extract tables from web
+import requests
+import pandas as pd
+from bs4 import BeautifulSoup
+
+# Define the URL in a variable
+url = "https://"+ "learn.microsoft.com/en-us/windows/win32/winmsg/windowing"
+
+response = requests.get(url)
+soup = BeautifulSoup(response.text, 'html.parser')
+tables = soup.find_all('table')
+
+if not tables:
+    print("No tables found.")
+else:
+    for i, table in enumerate(tables):
+        try:
+            rows = table.find_all('tr')
+            header = [th.get_text(strip=True) for th in rows[0].find_all('th')]
+            data = [[td.get_text(strip=True) for td in row.find_all('td')] for row in rows[1:]]
+            df = pd.DataFrame(data, columns=header)
+            table_name = None
+            if table.caption:
+                table_name = table.caption.get_text(strip=True).replace(' ', '_')
+            if not table_name:
+                table_name = f"table_{i+1}"
+            df.to_csv(f"{table_name}.csv", index=False)
+            print(f"Saved {table_name}.csv")
+        except Exception as e:
+            print(f"Error parsing table {i+1}: {str(e)}")
+###end tables from web
+
 inpNew1 = inp1.rename(columns={"No.": "index", "prodYear": "prod", })
 
 addcol = inp1.copy()

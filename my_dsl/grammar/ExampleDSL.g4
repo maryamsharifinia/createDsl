@@ -26,6 +26,7 @@ statement
     | combineColumnsStatement
     | resizeDataStatement
     | updateFromsheetStatement
+    |extractTablesFromWebStatement
     ;
 
 importFileStatement
@@ -129,6 +130,11 @@ resizeDataStatement
 updateFromsheetStatement
     : Update (path|id) FROM path ';'
     ;
+extractTablesFromWebStatement
+    : EXTRACT FROM path ';'
+    ;
+
+
 id returns[value_attr = str(), type_attr = str()]: ID;
 EXPORT: 'export';
 IMPORT: 'import';
@@ -184,6 +190,7 @@ NEW: 'new';
 MULTIPLYING: 'multiplying';
 DUPLICATE: 'duplicate';
 Update : 'update';
+EXTRACT : 'extract';
 
 //URL: '"' .*? '"';
 NUMBER: [0-9]+;
