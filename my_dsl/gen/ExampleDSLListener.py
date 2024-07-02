@@ -1,4 +1,4 @@
-# Generated from E:/University/Term 6/Compiler/Project/createDsl/my_dsl/grammar/ExampleDSL.g4 by ANTLR 4.13.1
+# Generated from F:/University/compiler/pych/compiler/my_dsl/grammar/ExampleDSL.g4 by ANTLR 4.13.1
 from antlr4 import *
 if "." in __name__:
     from .ExampleDSLParser import ExampleDSLParser
@@ -401,15 +401,6 @@ class ExampleDSLListener(ParseTreeListener):
 
     # Exit a parse tree produced by ExampleDSLParser#splitDataStatement.
     def exitSplitDataStatement(self, ctx:ExampleDSLParser.SplitDataStatementContext):
-        pass
-
-
-    # Enter a parse tree produced by ExampleDSLParser#combineColumnsStatement.
-    def enterCombineColumnsStatement(self, ctx:ExampleDSLParser.CombineColumnsStatementContext):
-        pass
-
-    # Exit a parse tree produced by ExampleDSLParser#combineColumnsStatement.
-    def exitCombineColumnsStatement(self, ctx:ExampleDSLParser.CombineColumnsStatementContext):
         pass
 
 

@@ -23,7 +23,6 @@ statement
     | addConditionStatement
     | removeDuplicatesStatement
     | splitDataStatement
-    | combineColumnsStatement
     | resizeDataStatement
     | updateFromsheetStatement
     | extractTablesFromWebStatement
@@ -46,7 +45,7 @@ operation : OPERATION;
 //sheetlink : URL;
 
 combineStatement
-    : COMBINE (((path|id) ',' (path|id))(',' (path|id))*) asStatement';'
+    : COMBINE ((path|id)(',' (path|id))*) asStatement';'
     ;
 
 convertStatement
@@ -76,7 +75,7 @@ deleteColumnStatement
     ;
 
 renameFileStatement
-    : RENAME file_name TO file_name';'
+    : RENAME file_name TO file_name ';'
     ;
 file_name:STRING;
 
@@ -136,9 +135,7 @@ splitDataStatement
     : SPLIT DATA BASED ON COLUMN '(' column ')' IN (path|id) (asStatement)? AND SAVE RESULTS TO SEPARATE FILES ';'
     ;
 
-combineColumnsStatement
-    : COMBINE COLUMNS column (AND column)+ IN (path|id) (asStatement)? AND SAVE RESULT TO result_column ';'
-    ;
+
 
 resizeDataStatement
     : RESIZE DATA IN COLUMN  column  BY operation WITH value IN (path|id) ';'

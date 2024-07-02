@@ -161,7 +161,7 @@ class CustomExampleDSLCodeGenerator:
     def push_to_called(self):
         self.operand_stack.append("toCalled__")
 
-    def push_coulmns(self):
+    def push_columns(self):
         self.operand_stack.append("columns__")
 
     def push_rows(self):
@@ -416,7 +416,7 @@ class CustomExampleDSLCodeGenerator:
             extra_info_col = 'n'
         else:
             extra_info_col = 'w'
-        self.push_coulmns()
+        self.push_columns()
         self.code_stack.append(code_string+extra_info_col)
 
     # Armin
@@ -462,14 +462,12 @@ class CustomExampleDSLCodeGenerator:
 
     # Armin
     def assign(self):
-        #print(self.operand_stack)
         val = self.operand_stack.pop()
         self.push_assign()
         self.code_stack.append(val)
 
     # Armin
     def select(self):
-        #print(self.operand_stack)
         temp_or_targetvar = self.operand_stack.pop()
         code_string = ""
         as_code = ""
