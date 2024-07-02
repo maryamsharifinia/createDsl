@@ -13,7 +13,7 @@ statement
     | sortDataStatement
     | deleteColumnStatement
     | renameFileStatement
-    | applyConditionStatement
+    | selectStatement
     | generateReportStatement
     | reorderColumnsStatement
     | groupByStatement
@@ -45,6 +45,8 @@ result : STRING;
 operation : OPERATION;
 //sheetlink : URL;
 
+result_column : STRING;
+
 combineStatement
     : COMBINE (((path|id) ',' (path|id))(',' (path|id))*) asStatement';'
     ;
@@ -58,7 +60,7 @@ addColumnsStatement
     ;
 
 renameColumnStatement
-    : RENAME COLUMN (column(',' column)*) TO (column(',' column)*) IN (path|id) (asStatement)?';'
+    : RENAME COLUMNS (column(',' column)*) TO (column(',' column)*) IN (path|id) (asStatement)?';'
     ;
 
 changeDataTypeStatement
@@ -80,9 +82,18 @@ renameFileStatement
     ;
 file_name:STRING;
 
-applyConditionStatement
-    : APPLY CONDITION ON ROWS from=NUMBER TO to=NUMBER IN (path|id)';'
+number: NUMBER;
+from: FROM number;
+to: TO number;
+step: STEP number;
+query: (from)? (to)? (step)?;
+
+rows: ROWS ((number(',' number)*)|(query));
+columns: COLUMNS ((column(',' column)*)|(number(',' number)*)|(query));
+selectStatement
+    : SELECT (rows)? (columns)? IN (path|id) asStatement';'
     ;
+
 
 generateReportStatement
     : GENERATE REPORT FOR COLUMN column BY period IN (path|id)';'
@@ -99,15 +110,17 @@ groupByStatement
     ;
 
 filterRowsStatement
-    : FILTER ROWS WHERE column '>' value';'
+    : FILTER ROWS WHERE column comparison_operator value IN (path|id) (asStatement)?';'
     ;
 value : NUMBER;
+text:STRING;
+comparison_operator : COMPARISON_OPERATOR;
 searchTextStatement
-    : SEARCH FOR text=STRING IN COLUMN '(' column ')' ';'
+    : SEARCH FOR text IN COLUMN '(' column ')' IN (path|id) (asStatement)?';'
     ;
 
 replaceValuesStatement
-    : REPLACE VALUES values WITH values IN COLUMN '(' column ')' ';'
+    : REPLACE VALUES values WITH values IN COLUMN '(' column ')' IN (path|id) (asStatement)?';'
     ;
 values:NUMBER|STRING;
 addConditionStatement
@@ -115,15 +128,15 @@ addConditionStatement
     ;
 
 removeDuplicatesStatement
-    : REMOVE DUPLICATE ROWS BASED ON COLUMN '(' column ')' ';'
+    : REMOVE DUPLICATE ROWS BASED ON COLUMN '(' column ')' IN (path|id) (asStatement)?';'
     ;
 
 splitDataStatement
-    : SPLIT DATA BASED ON COLUMN '(' column ')' AND SAVE RESULTS TO SEPARATE FILES ';'
+    : SPLIT DATA BASED ON COLUMN '(' column ')' IN (path|id) (asStatement)? AND SAVE RESULTS TO SEPARATE FILES ';'
     ;
 
 combineColumnsStatement
-    : COMBINE COLUMNS column AND column AND SAVE RESULT TO result ';'
+    : COMBINE COLUMNS column (AND column)+ IN (path|id) (asStatement)? AND SAVE RESULT TO result_column ';'
     ;
 
 resizeDataStatement
@@ -138,6 +151,8 @@ extractTablesFromWebStatement
 
 
 id returns[value_attr = str(), type_attr = str()]: ID;
+STEP: 'step';
+SELECT: 'select';
 EXPORT: 'export';
 IMPORT: 'import';
 INPUT: 'input';
@@ -145,6 +160,7 @@ OUTPUT: 'output';
 REPORT:'report';
 WRITE: 'write';
 COMBINE: 'Combine';
+COMPARISON_OPERATOR : '>'|'<'|'>='|'<='|'=='|'!=';
 CONVERT: 'Convert';
 ADD: 'Add';
 RENAME: 'Rename';
@@ -159,10 +175,13 @@ FILTER: 'Filter';
 SEARCH: 'Search';
 REPLACE: 'Replace';
 REMOVE: 'Remove';
+RESULTS:'results';
 SPLIT: 'Split';
 RESIZE: 'Resize';
 SET: 'Set';
+SEPARATE:'separate';
 FILE: 'file';
+FILES:'files';
 PATH: 'path';
 FORMAT: 'format';
 DATA: 'data';
@@ -175,6 +194,7 @@ CONDITION: 'condition';
 VALUES: 'values';
 IN: 'in';
 RESULT: 'result';
+SAVE: 'save';
 TO: 'to';
 WITH: 'with';
 AND: 'and';
@@ -185,7 +205,6 @@ ON: 'on';
 OF: 'of';
 FOR: 'for';
 AS: 'as';
-SAVE: 'save';
 BASED: 'based';
 SUM: 'sum';
 NEW: 'new';

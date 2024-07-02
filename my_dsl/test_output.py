@@ -99,6 +99,39 @@ grouped = inp1.groupby(["brand", "price"]).size().reset_index(name="counts")
 
 reorder = inp1[["No.", "brand", "price", "sales", "prodYear", "date", "No.", "price", "brand", "sales", "prodYear", "date"]]
 
+<<<<<<< HEAD
+=======
+filtered = inp1[inp1["price"]>=100]
+
+searched = inp1[inp1["brand"].str.contains("bm", case=False, na=False)]
+
+inp1["brand"] = inp1["brand"].replace("Benz", "Mercedes")
+replaced=inp1
+removed = inp1.drop_duplicates(subset=["sales"])
+
+import os
+output_directory = os.path.join(os.getcwd(), 'split_data')
+if not os.path.exists(output_directory):
+    os.makedirs(output_directory)
+temp_var = inp1.groupby("region")
+for group_name, group_df in temp_var:
+    output_file_path = os.path.join(output_directory, f'{group_name}.csv')
+    group_df.to_csv(output_file_path, index=False)
+
+combined=inp1
+combined["combined_column"] = inp1[["name", "brand", "region", "date"]].apply(lambda row: " ".join(row.values.astype(str)), axis=1)
+
+combined.to_csv("combined.csv", index=False)
+
+removed.to_csv("removed.csv", index=False)
+
+replaced.to_csv("replaced.csv", index=False)
+
+searched.to_csv("searched.csv", index=False)
+
+filtered.to_csv("filtered.csv", index=False)
+
+>>>>>>> origin/newGrammar
 inp1.to_csv("output.csv", index=False)
 
 reorder.to_csv("reorder.csv", index=False)

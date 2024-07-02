@@ -1,0 +1,5 @@
+import "input.csv" as inp1;
+
+select rows from 0 to 4 step 2 columns from 0 to 4 in inp1 as inp2;
+
+export inp2 to "select.csv";

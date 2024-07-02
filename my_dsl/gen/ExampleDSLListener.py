@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Generated from C:/Users/yasin/Desktop/project_c/createDsl/my_dsl/grammar/ExampleDSL.g4 by ANTLR 4.13.1
+=======
+# Generated from F:/University/compiler/pych/compiler/my_dsl/grammar/ExampleDSL.g4 by ANTLR 4.13.1
+>>>>>>> origin/newGrammar
 from antlr4 import *
 if "." in __name__:
     from .ExampleDSLParser import ExampleDSLParser
@@ -89,12 +93,12 @@ class ExampleDSLListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by ExampleDSLParser#result.
-    def enterResult(self, ctx:ExampleDSLParser.ResultContext):
+    # Enter a parse tree produced by ExampleDSLParser#result_column.
+    def enterResult_column(self, ctx:ExampleDSLParser.Result_columnContext):
         pass
 
-    # Exit a parse tree produced by ExampleDSLParser#result.
-    def exitResult(self, ctx:ExampleDSLParser.ResultContext):
+    # Exit a parse tree produced by ExampleDSLParser#result_column.
+    def exitResult_column(self, ctx:ExampleDSLParser.Result_columnContext):
         pass
 
 
@@ -197,12 +201,75 @@ class ExampleDSLListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by ExampleDSLParser#applyConditionStatement.
-    def enterApplyConditionStatement(self, ctx:ExampleDSLParser.ApplyConditionStatementContext):
+    # Enter a parse tree produced by ExampleDSLParser#number.
+    def enterNumber(self, ctx:ExampleDSLParser.NumberContext):
         pass
 
-    # Exit a parse tree produced by ExampleDSLParser#applyConditionStatement.
-    def exitApplyConditionStatement(self, ctx:ExampleDSLParser.ApplyConditionStatementContext):
+    # Exit a parse tree produced by ExampleDSLParser#number.
+    def exitNumber(self, ctx:ExampleDSLParser.NumberContext):
+        pass
+
+
+    # Enter a parse tree produced by ExampleDSLParser#from.
+    def enterFrom(self, ctx:ExampleDSLParser.FromContext):
+        pass
+
+    # Exit a parse tree produced by ExampleDSLParser#from.
+    def exitFrom(self, ctx:ExampleDSLParser.FromContext):
+        pass
+
+
+    # Enter a parse tree produced by ExampleDSLParser#to.
+    def enterTo(self, ctx:ExampleDSLParser.ToContext):
+        pass
+
+    # Exit a parse tree produced by ExampleDSLParser#to.
+    def exitTo(self, ctx:ExampleDSLParser.ToContext):
+        pass
+
+
+    # Enter a parse tree produced by ExampleDSLParser#step.
+    def enterStep(self, ctx:ExampleDSLParser.StepContext):
+        pass
+
+    # Exit a parse tree produced by ExampleDSLParser#step.
+    def exitStep(self, ctx:ExampleDSLParser.StepContext):
+        pass
+
+
+    # Enter a parse tree produced by ExampleDSLParser#query.
+    def enterQuery(self, ctx:ExampleDSLParser.QueryContext):
+        pass
+
+    # Exit a parse tree produced by ExampleDSLParser#query.
+    def exitQuery(self, ctx:ExampleDSLParser.QueryContext):
+        pass
+
+
+    # Enter a parse tree produced by ExampleDSLParser#rows.
+    def enterRows(self, ctx:ExampleDSLParser.RowsContext):
+        pass
+
+    # Exit a parse tree produced by ExampleDSLParser#rows.
+    def exitRows(self, ctx:ExampleDSLParser.RowsContext):
+        pass
+
+
+    # Enter a parse tree produced by ExampleDSLParser#columns.
+    def enterColumns(self, ctx:ExampleDSLParser.ColumnsContext):
+        pass
+
+    # Exit a parse tree produced by ExampleDSLParser#columns.
+    def exitColumns(self, ctx:ExampleDSLParser.ColumnsContext):
+        pass
+
+
+    # Enter a parse tree produced by ExampleDSLParser#selectStatement.
+    def enterSelectStatement(self, ctx:ExampleDSLParser.SelectStatementContext):
+        pass
+
+    # Exit a parse tree produced by ExampleDSLParser#selectStatement.
+    def exitSelectStatement(self, ctx:ExampleDSLParser.SelectStatementContext):
         pass
 
 
@@ -257,6 +324,24 @@ class ExampleDSLListener(ParseTreeListener):
 
     # Exit a parse tree produced by ExampleDSLParser#value.
     def exitValue(self, ctx:ExampleDSLParser.ValueContext):
+        pass
+
+
+    # Enter a parse tree produced by ExampleDSLParser#text.
+    def enterText(self, ctx:ExampleDSLParser.TextContext):
+        pass
+
+    # Exit a parse tree produced by ExampleDSLParser#text.
+    def exitText(self, ctx:ExampleDSLParser.TextContext):
+        pass
+
+
+    # Enter a parse tree produced by ExampleDSLParser#comparison_operator.
+    def enterComparison_operator(self, ctx:ExampleDSLParser.Comparison_operatorContext):
+        pass
+
+    # Exit a parse tree produced by ExampleDSLParser#comparison_operator.
+    def exitComparison_operator(self, ctx:ExampleDSLParser.Comparison_operatorContext):
         pass
 
 

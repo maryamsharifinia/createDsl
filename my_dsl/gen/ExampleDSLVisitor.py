@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Generated from C:/Users/yasin/Desktop/project_c/createDsl/my_dsl/grammar/ExampleDSL.g4 by ANTLR 4.13.1
+=======
+# Generated from F:/University/compiler/pych/compiler/my_dsl/grammar/ExampleDSL.g4 by ANTLR 4.13.1
+>>>>>>> origin/newGrammar
 from antlr4 import *
 if "." in __name__:
     from .ExampleDSLParser import ExampleDSLParser
@@ -54,8 +58,8 @@ class ExampleDSLVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by ExampleDSLParser#result.
-    def visitResult(self, ctx:ExampleDSLParser.ResultContext):
+    # Visit a parse tree produced by ExampleDSLParser#result_column.
+    def visitResult_column(self, ctx:ExampleDSLParser.Result_columnContext):
         return self.visitChildren(ctx)
 
 
@@ -114,8 +118,43 @@ class ExampleDSLVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by ExampleDSLParser#applyConditionStatement.
-    def visitApplyConditionStatement(self, ctx:ExampleDSLParser.ApplyConditionStatementContext):
+    # Visit a parse tree produced by ExampleDSLParser#number.
+    def visitNumber(self, ctx:ExampleDSLParser.NumberContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ExampleDSLParser#from.
+    def visitFrom(self, ctx:ExampleDSLParser.FromContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ExampleDSLParser#to.
+    def visitTo(self, ctx:ExampleDSLParser.ToContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ExampleDSLParser#step.
+    def visitStep(self, ctx:ExampleDSLParser.StepContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ExampleDSLParser#query.
+    def visitQuery(self, ctx:ExampleDSLParser.QueryContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ExampleDSLParser#rows.
+    def visitRows(self, ctx:ExampleDSLParser.RowsContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ExampleDSLParser#columns.
+    def visitColumns(self, ctx:ExampleDSLParser.ColumnsContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ExampleDSLParser#selectStatement.
+    def visitSelectStatement(self, ctx:ExampleDSLParser.SelectStatementContext):
         return self.visitChildren(ctx)
 
 
@@ -146,6 +185,16 @@ class ExampleDSLVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by ExampleDSLParser#value.
     def visitValue(self, ctx:ExampleDSLParser.ValueContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ExampleDSLParser#text.
+    def visitText(self, ctx:ExampleDSLParser.TextContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ExampleDSLParser#comparison_operator.
+    def visitComparison_operator(self, ctx:ExampleDSLParser.Comparison_operatorContext):
         return self.visitChildren(ctx)
 
 

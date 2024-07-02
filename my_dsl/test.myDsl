@@ -15,8 +15,22 @@ Delete column "name" in inp1;
 Generate report for column "date" by year in inp1;
 Group by "brand" and sum values to "price" in inp1 as grouped;
 Reorder columns "No.", "brand", "price", "sales", "prodYear", "date" to "No.", "price", "brand", "sales", "prodYear", "date" in inp1 as reorder;
+<<<<<<< HEAD
 
 
+=======
+Filter rows where "price" >= 100 in inp1 as filtered;
+Search for "bm" in column ("brand") in inp1 as searched;
+Replace values "Benz" with "Mercedes" in column("brand") in inp1 as replaced;
+Remove duplicate rows based on column ("sales") in inp1 as removed;
+Split data based on column ("region") in inp1 and save results to separate files;
+Combine columns "name" and "brand" and "region" and "date" in inp1 as combined and save result to "combined_column";
+export combined to "combined.csv";
+export removed to "removed.csv";
+export replaced to "replaced.csv";
+export searched to "searched.csv";
+export filtered to "filtered.csv";
+>>>>>>> origin/newGrammar
 export inp1 to "output.csv";
 export reorder to "reorder.csv";
 export grouped to "grouped.csv";
