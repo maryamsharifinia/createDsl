@@ -27,6 +27,7 @@ statement
     | resizeDataStatement
     | updateFromsheetStatement
     |extractTablesFromWebStatement
+    |extractTablesFromWebStatement
     ;
 
 importFileStatement
