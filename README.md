@@ -136,8 +136,22 @@ Using the defined ANTLR grammar, you can write the following commands in your DS
 ### Data resizing commands
 23. **Change the size of data according to a formula or mathematical operation:**
  ```dsl
- Resize data in column("price") by multiplying with 0.9;
+ Resize data in column "sales" by + with 10 in "input.csv" ;
+ Resize data in column "profit" by * with 11 in "input.csv" ;
  ```
+
+### Update data from google sheets
+24. **update a local csv file with an online google sheets file operation:**
+ ```dsl
+ update "test1.csv" from "1Qdz1B7Ky4y7DYk-F3Z1gIOdL6BMV5DqJwDXSzQazm_o";
+ ```
+
+### Extract tables of Websites
+25. **extract all tables of a webpage and save into local files operation :**
+ ```dsl
+ extract from "learn.microsoft.com/en-us/windows/win32/winmsg/windowing";;
+ ```
+
 
 ### Final description
 This grammar and commands allow you to easily manage your CSV and XLS files using DSL and perform various operations on them.

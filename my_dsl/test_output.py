@@ -1,6 +1,47 @@
 import pandas as pd
 inp1 = pd.read_csv("input.csv")
 
+
+
+import pandas as pd
+file_path = "input.csv"
+column_name = "sales"
+operation = "+"
+value = 10.0 
+try:
+    if file_path.endswith('.xls') or file_path.endswith('.xlsx'):
+        df = pd.read_excel(file_path)
+    elif file_path.endswith('.csv'):
+        df = pd.read_csv(file_path)
+    else:
+        raise ValueError("Unsupported file format. Only .xls, .xlsx, and .csv are supported.")
+    if operation == '*':
+        df[column_name] = df[column_name] * value
+    elif operation == '/':
+        df[column_name] = df[column_name] / value
+    elif operation == '+':
+        df[column_name] = df[column_name] + value
+    elif operation == '-':
+        df[column_name] = df[column_name] - value
+    else:
+        raise ValueError("Invalid operation. Supported operations are '*', '/', '+', '-'.")
+    if file_path.endswith('.xls') or file_path.endswith('.xlsx'):
+        df.to_excel(file_path, index=False)
+    elif file_path.endswith('.csv'):
+        df.to_csv(file_path, index=False)
+
+    print("Operation  performed on column  successfully.")
+except Exception as e: 
+    print(e)
+
+
+
+sheet_id = "1Qdz1B7Ky4y7DYk-F3Z1gIOdL6BMV5DqJwDXSzQazm_o"
+local_path = "test1.csv"
+csv_export_url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv"
+df = pd.read_csv(csv_export_url)
+df.to_csv(local_path, index=False)
+
 addcol = inp1.copy()
 addcol['addCol0'] = inp1["sales"] + inp1["prodYear"] + inp1[statement] + inp1[]
 

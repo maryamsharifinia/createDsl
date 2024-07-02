@@ -25,6 +25,8 @@ statement
     | splitDataStatement
     | combineColumnsStatement
     | resizeDataStatement
+    | updateFromsheetStatement
+    |extractTablesFromWebStatement
     ;
 
 importFileStatement
@@ -39,7 +41,8 @@ toStatement: TO column;
 path : STRING;
 column : STRING;
 result_column : STRING;
-
+operation : OPERATION;
+//sheetlink : URL;
 
 combineStatement
     : COMBINE (((path|id) ',' (path|id))(',' (path|id))*) asStatement';'
@@ -134,8 +137,15 @@ combineColumnsStatement
     ;
 
 resizeDataStatement
-    : RESIZE DATA IN COLUMN '(' column ')' BY MULTIPLYING WITH value ';'
+    : RESIZE DATA IN COLUMN  column  BY operation WITH value IN (path|id) ';'
     ;
+updateFromsheetStatement
+    : Update (path|id) FROM path ';'
+    ;
+extractTablesFromWebStatement
+    : EXTRACT FROM path ';'
+    ;
+
 
 id returns[value_attr = str(), type_attr = str()]: ID;
 STEP: 'step';
@@ -196,7 +206,10 @@ BASED: 'based';
 SUM: 'sum';
 NEW: 'new';
 MULTIPLYING: 'multiplying';
+OPERATION :'*'|'/'|'+'|'-' ;
 DUPLICATE: 'duplicate';
+Update : 'update';
+EXTRACT : 'extract';
 
 NUMBER: [0-9]+;
 STRING: '"' .*? '"';

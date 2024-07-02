@@ -1,7 +1,7 @@
-from my_dsl.default_codes.ast import AST
-from my_dsl.default_codes.make_ast_subtree import make_ast_subtree
-from my_dsl.gen.ExampleDSLListener import ExampleDSLListener
-from my_dsl.gen.ExampleDSLParser import ExampleDSLParser
+from default_codes.ast import AST
+from default_codes.make_ast_subtree import make_ast_subtree
+from gen.ExampleDSLListener import ExampleDSLListener
+from gen.ExampleDSLParser import ExampleDSLParser
 
 
 class CustomExampleDSLListener(ExampleDSLListener):
@@ -43,6 +43,8 @@ class CustomExampleDSLListener(ExampleDSLListener):
             "combineColumnsStatement",
             "resizeDataStatement",
             "exportFileStatement",
+            "updateFromsheetStatement",
+            "extractTablesFromWebStatement",
         ]
         self.rule_names = rule_names
         self.ast = AST()
@@ -158,3 +160,9 @@ class CustomExampleDSLListener(ExampleDSLListener):
 
     def exitResizeDataStatement(self, ctx):
         make_ast_subtree(self.ast, ctx, "resize_data", keep_node=True)
+
+    def exitUpdateFromsheetStatement(self, ctx):
+        make_ast_subtree(self.ast, ctx, "update_from_sheet", keep_node=True)
+
+    def exitExtractTablesFromWebStatement(self, ctx):
+        make_ast_subtree(self.ast, ctx, "extract_tables_from_web", keep_node=True)
